@@ -140,7 +140,7 @@ export default function Brief() {
             <section className="bf-card bf-done">
               <p className="label" translate="no">{t(brief.title)}</p>
               <h1 tabIndex={-1}><T en="Thank you. It's with me now." es="Gracias. Ya lo tengo." /></h1>
-              <p className="muted"><T en="I'll reply within one business day with next steps. If anything changes in the meantime, write to me on WhatsApp." es="Le respondo en un día hábil con los siguientes pasos. Si algo cambia mientras tanto, escríbame por WhatsApp." /></p>
+              <p className="muted">{brief.done ? t(brief.done) : <T en="I'll reply within one business day with next steps. If anything changes in the meantime, write to me on WhatsApp." es="Le respondo en un día hábil con los siguientes pasos. Si algo cambia mientras tanto, escríbame por WhatsApp." />}</p>
               <div className="ctas">
                 <a className="btn primary" href={CONTACT.waLink} target="_blank" rel="noopener"><T en="Message me on WhatsApp" es="Escríbame por WhatsApp" /><span className="ar" aria-hidden="true">→</span></a>
                 <Link className="btn ghost" to="/"><T en="Back to tonight.design" es="Volver a tonight.design" /></Link>

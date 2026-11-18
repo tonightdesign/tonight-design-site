@@ -80,6 +80,45 @@ export const BRIEFS = {
     ],
   },
 
+  fixes: {
+    title: { en: '5 free fixes', es: '5 mejoras gratis' },
+    intro: {
+      en: 'Send me your links. Within 48 hours I send back the five changes that will matter most for your ads, website and bookings. Free.',
+      es: 'Envíeme sus enlaces. En 48 horas le mando los cinco cambios que más van a ayudar a sus anuncios, sitio web y reservas. Gratis.',
+    },
+    done: {
+      en: 'You will have your five fixes within 48 hours, by email or WhatsApp. If I need anything else, I will ask.',
+      es: 'Tendrá sus cinco mejoras en 48 horas, por correo o WhatsApp. Si necesito algo más, se lo pregunto.',
+    },
+    questions: [
+      { id: 'business', type: 'choice', required: true,
+        q: { en: 'What kind of business is it?', es: '¿Qué tipo de negocio es?' },
+        options: [
+          { en: 'Hotel', es: 'Hotel' },
+          { en: 'Wellness retreat', es: 'Retiro de bienestar' },
+          { en: 'Restaurant or beach club', es: 'Restaurante o beach club' },
+          { en: 'Real estate', es: 'Bienes raíces' },
+          OTHER,
+        ] },
+      { id: 'links', type: 'textarea', required: true,
+        q: { en: 'Where should I look?', es: '¿Dónde debo mirar?' },
+        help: { en: 'Your website, Instagram and booking page. Paste the links.', es: 'Su sitio web, Instagram y página de reservas. Pegue los enlaces.' } },
+      { id: 'focus', type: 'multi',
+        q: { en: 'What worries you most?', es: '¿Qué le preocupa más?' },
+        help: { en: 'Optional. Choose all that apply.', es: 'Opcional. Elija todas las que apliquen.' },
+        options: [
+          { en: 'Ads that don\'t bring bookings', es: 'Anuncios que no traen reservas' },
+          { en: 'Instagram', es: 'Instagram' },
+          { en: 'The website', es: 'El sitio web' },
+          { en: 'The booking page', es: 'La página de reservas' },
+          { en: 'Not sure', es: 'No estoy seguro' },
+        ] },
+      { id: 'notes', type: 'textarea',
+        q: { en: 'Anything I should know?', es: '¿Algo más que deba saber?' },
+        help: { en: 'Optional.', es: 'Opcional.' } },
+    ],
+  },
+
   'kin-kakaw': {
     lang: 'es',
     client: 'K’in Kakaw',
