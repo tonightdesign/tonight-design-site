@@ -7,10 +7,10 @@ import Synapse from '../components/Synapse.jsx'
 const CLIENTS = ['Ahau Collection', 'La Reserva Tulum', 'Casa Ganesh', 'Alaya', 'Villa Pescadores', 'Máre', 'Petrodex', 'Water Toys Center', 'Carmel', 'Mr. Shmokey Smokehouse']
 
 const INDEX = [
-  { img: '/work/petrodex.jpg', c: 'Petrodex', w: { en: 'Investor company profile, print A5 and A4', es: 'Perfil para inversionistas, impreso en A5 y A4' }, l: { en: 'Dubai', es: 'Dubái' } },
-  { img: '/work/water-toys.jpg', c: 'Water Toys Center', w: { en: 'Boat show backdrops and banners', es: 'Fondos y banners para salones náuticos' }, l: { en: 'Cannes · Monaco', es: 'Cannes · Mónaco' } },
-  { img: '/work/carmel.jpg', c: 'Carmel', w: { en: 'Press kit for a French music producer and DJ', es: 'Press kit para un productor musical y DJ francés' }, l: { en: 'Mexico', es: 'México' } },
-  { img: '/work/shmokey.jpg', c: 'Mr. Shmokey Smokehouse', w: { en: 'Menus, signage and light boxes', es: 'Menús, señalética y cajas de luz' }, l: { en: 'Restaurant', es: 'Restaurante' } },
+  { img: '/work/petrodex.jpg', w2: 1400, h2: 1050, c: 'Petrodex', w: { en: 'Investor company profile, print A5 and A4', es: 'Perfil para inversionistas, impreso en A5 y A4' }, l: { en: 'Dubai', es: 'Dubái' } },
+  { img: '/work/water-toys.jpg', w2: 1400, h2: 1048, c: 'Water Toys Center', w: { en: 'Boat show backdrops and banners', es: 'Fondos y banners para salones náuticos' }, l: { en: 'Cannes · Monaco', es: 'Cannes · Mónaco' } },
+  { img: '/work/carmel.jpg', w2: 1200, h2: 423, c: 'Carmel', w: { en: 'Press kit for a French music producer and DJ', es: 'Press kit para un productor musical y DJ francés' }, l: { en: 'Mexico', es: 'México' } },
+  { img: '/work/shmokey.jpg', w2: 1200, h2: 423, c: 'Mr. Shmokey Smokehouse', w: { en: 'Menus, signage and light boxes', es: 'Menús, señalética y cajas de luz' }, l: { en: 'Restaurant', es: 'Restaurante' } },
 ]
 
 const STAGES = [
@@ -67,7 +67,8 @@ const STEPS = [
   { h: { en: 'Monthly report', es: 'Reporte mensual' }, when: { en: 'Every month', es: 'Cada mes' }, p: { en: "Results against your starting numbers, and next month's plan.", es: 'Resultados contra sus números de inicio, y el plan del mes siguiente.' } },
 ]
 
-const usd = (n) => '$' + n.toLocaleString('en-US')
+const USD = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 })
+const usd = (n) => USD.format(n)
 
 function CopyLine({ k, v }) {
   const { lang } = useLang()
@@ -112,7 +113,7 @@ function Work() {
     if (!p.raf) p.raf = requestAnimationFrame(loop)
   }
   const move = (e) => { if (!fine) return; const p = pos.current; p.tx = e.clientX + 180; p.ty = e.clientY; if (!p.raf) p.raf = requestAnimationFrame(loop) }
-  const leave = () => { pos.current.on = false; setImg((s) => s && s) ; pv.current?.classList.remove('on') }
+  const leave = () => { pos.current.on = false; pv.current?.classList.remove('on') }
 
   useEffect(() => { if (img && pos.current.on) pv.current?.classList.add('on') }, [img])
 
@@ -120,13 +121,13 @@ function Work() {
     <section className="sec" id="work" aria-labelledby="h-work">
       <div className="wrap">
         <div className="head">
-          <p className="label">01 <b>/</b> <T en="Selected work" es="Trabajo seleccionado" /></p>
+          <p className="label"><T en="Selected work" es="Trabajo seleccionado" /></p>
           <h2 id="h-work"><T en="Ten years with hotels, developments and brands" es="Diez años con hoteles, desarrollos y marcas" /></h2>
           <p><T en="Most of it in the Riviera Maya, some of it in Europe and Dubai. Two long relationships first, then a few projects." es="La mayoría en la Riviera Maya, una parte en Europa y Dubái. Primero dos relaciones largas, después algunos proyectos." /></p>
         </div>
         <div className="feat">
           <article className="card">
-            <div className="img"><img src="/work/ahau.jpg" alt="Ahau Christmas menu card" loading="lazy" /></div>
+            <div className="img"><img src="/work/ahau.jpg" alt="Ahau Christmas menu card" width="1400" height="937" loading="lazy" /></div>
             <div className="row"><p className="label">Ahau Collection · Tulum</p><span className="tag"><T en="6 years" es="6 años" /></span></div>
             <h3><T en="Brand and campaigns for a four-hotel group" es="Marca y campañas para un grupo de cuatro hoteles" /></h3>
             <p><T en="Ahau, Casa Ganesh, Alaya and Villa Pescadores with its beach club, Máre. Each keeps its own look inside one system." es="Ahau, Casa Ganesh, Alaya y Villa Pescadores con su beach club, Máre. Cada uno conserva su estilo dentro de un mismo sistema." /></p>
@@ -136,7 +137,7 @@ function Work() {
             </div>
           </article>
           <article className="card">
-            <div className="img"><img src="/work/la-reserva.jpg" alt="La Reserva website section, Designed with intention" loading="lazy" /></div>
+            <div className="img"><img src="/work/la-reserva.jpg" alt="La Reserva website section, Designed with intention" width="1200" height="423" loading="lazy" /></div>
             <div className="row"><p className="label">La Reserva · Tulum</p><span className="tag"><T en="4 years" es="4 años" /></span></div>
             <h3><T en="In-house at a branded residence development" es="Dentro de un desarrollo de residencias de marca" /></h3>
             <p><T en="Sales brochures, the website, Meta ads and broker material." es="Brochures de venta, el sitio web, anuncios en Meta y material para brokers." /></p>
@@ -148,7 +149,7 @@ function Work() {
         <div className="idx" role="list">
           {INDEX.map((r) => (
             <div className="idx-row" role="listitem" key={r.c} onMouseEnter={(e) => enter(e, r.img)} onMouseMove={move} onMouseLeave={leave}>
-              <div className="th"><img src={r.img} alt="" loading="lazy" /></div>
+              <div className="th"><img src={r.img} alt="" width={r.w2} height={r.h2} loading="lazy" /></div>
               <span className="c">{r.c}</span><span className="w">{t(r.w)}</span><span className="l">{t(r.l)}</span>
               <span className="plus" aria-hidden="true">+</span>
             </div>
@@ -175,7 +176,7 @@ function Approach() {
     <section className="sec" id="approach" aria-labelledby="h-app">
       <div className="wrap">
         <div className="head">
-          <p className="label">02 <b>/</b> <T en="Approach" es="Enfoque" /></p>
+          <p className="label"><T en="Approach" es="Enfoque" /></p>
           <h2 id="h-app"><T en="Bookings leak between the ad and the room" es="Las reservas se pierden entre el anuncio y la habitación" /></h2>
           <p><T en="A guest passes four points before they book. Pick one to see what usually breaks there and what I do about it." es="Un huésped pasa por cuatro puntos antes de reservar. Elija uno para ver qué suele fallar ahí y qué hago al respecto." /></p>
         </div>
@@ -207,32 +208,37 @@ function Approach() {
 function How() {
   const t = useT()
   const ol = useRef(null)
-  const [p, setP] = useState(0)
-  const [lit, setLit] = useState([])
+  const bar = useRef(null)
+  // Scroll progress is written straight to the DOM, once per frame, so scrolling never re-renders React
   useEffect(() => {
+    let raf = 0
     const run = () => {
+      raf = 0
       const el = ol.current; if (!el) return
-      const r = el.getBoundingClientRect(), mid = innerHeight * 0.55
-      setP(Math.max(0, Math.min(1, (mid - r.top) / r.height)))
-      setLit([...el.querySelectorAll('li')].map((li) => li.getBoundingClientRect().top < mid))
+      const mid = innerHeight * 0.55
+      const r = el.getBoundingClientRect()
+      const tops = [...el.querySelectorAll('li')].map((li) => li.getBoundingClientRect().top)
+      bar.current.style.setProperty('--p', Math.max(0, Math.min(1, (mid - r.top) / r.height)) * 100 + '%')
+      el.querySelectorAll('li').forEach((li, i) => li.classList.toggle('lit', tops[i] < mid))
     }
+    const queue = () => { if (!raf) raf = requestAnimationFrame(run) }
     run()
-    addEventListener('scroll', run, { passive: true }); addEventListener('resize', run)
-    return () => { removeEventListener('scroll', run); removeEventListener('resize', run) }
+    addEventListener('scroll', queue, { passive: true }); addEventListener('resize', queue)
+    return () => { cancelAnimationFrame(raf); removeEventListener('scroll', queue); removeEventListener('resize', queue) }
   }, [])
   return (
     <section className="sec" id="how" aria-labelledby="h-how">
       <div className="wrap how">
         <div className="side">
-          <p className="label">03 <b style={{ fontWeight: 400, color: 'var(--dim)' }}>/</b> <T en="How it works" es="Cómo funciona" /></p>
+          <p className="label"><T en="How it works" es="Cómo funciona" /></p>
           <h2 id="h-how"><T en="Start free, then decide" es="Empiece gratis y después decida" /></h2>
           <p><T en="Each step stands on its own. You only move to the next one if the last was useful." es="Cada paso funciona por sí solo. Solo pasa al siguiente si el anterior le sirvió." /></p>
           <div className="ctas"><a className="btn ghost" href="#contact"><T en="Start with step 1" es="Empiece por el paso 1" /><span className="ar">→</span></a></div>
         </div>
         <ol className="steps" ref={ol}>
-          <span className="bar" aria-hidden="true" style={{ '--p': p * 100 + '%' }} />
+          <span className="bar" aria-hidden="true" ref={bar} />
           {STEPS.map((s, i) => (
-            <li key={i} className={lit[i] ? 'lit' : undefined}>
+            <li key={i}>
               <span className="n">0{i + 1}</span><h3>{t(s.h)}</h3><span className="when">{t(s.when)}</span><p>{t(s.p)}</p>
             </li>
           ))}
@@ -259,7 +265,7 @@ function Plans() {
     <section className="sec" id="plans" aria-labelledby="h-plans">
       <div className="wrap">
         <div className="head">
-          <p className="label">04 <b>/</b> <T en="Monthly plans" es="Planes mensuales" /></p>
+          <p className="label"><T en="Monthly plans" es="Planes mensuales" /></p>
           <h2 id="h-plans"><T en="Priced by the size of your property" es="Precios según el tamaño de su propiedad" /></h2>
           <p><T en="USD per month, three-month minimum. Ad spend is paid by you, directly to Meta. Choose your size:" es="USD al mes, mínimo tres meses. La inversión en anuncios la paga usted directamente a Meta. Elija su tamaño:" /></p>
         </div>
@@ -361,10 +367,9 @@ export default function Home() {
           </div>
         </section>
 
-        <div className="marquee" aria-label="Clients">
-          <div className="mq-track">
-            <ul>{CLIENTS.map((c) => <li key={c}>{c}</li>)}</ul>
-            <ul aria-hidden="true">{CLIENTS.map((c) => <li key={c}>{c}</li>)}</ul>
+        <div className="marquee">
+          <div className="wrap">
+            <ul aria-label="Clients" translate="no">{CLIENTS.map((c) => <li key={c}>{c}</li>)}</ul>
           </div>
         </div>
 
@@ -376,7 +381,7 @@ export default function Home() {
         <section className="sec" id="why" aria-labelledby="h-why">
           <div className="wrap">
             <div className="head">
-              <p className="label">05 <b>/</b> <T en="Why tonight.design" es="Por qué tonight.design" /></p>
+              <p className="label"><T en="Why tonight.design" es="Por qué tonight.design" /></p>
               <h2 id="h-why"><T en="Agency output, studio attention" es="Resultados de agencia, atención de estudio" /></h2>
             </div>
             <div className="why">
@@ -390,7 +395,7 @@ export default function Home() {
         <section className="contact" id="contact" aria-labelledby="h-ct" ref={contactRef}>
           <div className="glow" aria-hidden="true" />
           <div className="wrap">
-            <p className="label" style={{ marginBottom: 28 }}>06 <b style={{ fontWeight: 400, color: 'var(--dim)' }}>/</b> <T en="Start here" es="Empiece aquí" /></p>
+            <p className="label" style={{ marginBottom: 28 }}><T en="Start here" es="Empiece aquí" /></p>
             <div className="ct">
               <h2 id="h-ct">{lang === 'en' ? <>Get a free <em>Booking Snapshot</em></> : <>Pida su <em>Booking Snapshot</em> gratuito</>}</h2>
               <div className="r">

@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 
 const LangContext = createContext({ lang: 'en', setLang: () => {} })
 
@@ -9,6 +9,8 @@ function initialLang() {
     if (window.location.hash === '#es') return 'es'
     const saved = localStorage.getItem('td-lang')
     if (saved === 'es' || saved === 'en') return saved
+    // First visit: follow the browser's language
+    if ((navigator.languages || [navigator.language]).some((l) => /^es\b/i.test(l))) return 'es'
   } catch { /* storage can be blocked */ }
   return 'en'
 }
@@ -19,7 +21,8 @@ export function LangProvider({ children }) {
     document.documentElement.lang = lang
     try { localStorage.setItem('td-lang', lang) } catch { /* ignore */ }
   }, [lang])
-  return <LangContext.Provider value={{ lang, setLang }}>{children}</LangContext.Provider>
+  const value = useMemo(() => ({ lang, setLang }), [lang])
+  return <LangContext.Provider value={value}>{children}</LangContext.Provider>
 }
 
 export const useLang = () => useContext(LangContext)

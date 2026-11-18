@@ -1,18 +1,23 @@
+import { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { LangProvider } from './lang.jsx'
 import Home from './pages/Home.jsx'
-import Brief from './pages/Brief.jsx'
-import NotFound from './pages/NotFound.jsx'
+
+// The brief and 404 are split out so the homepage loads only what it needs
+const Brief = lazy(() => import('./pages/Brief.jsx'))
+const NotFound = lazy(() => import('./pages/NotFound.jsx'))
 
 export default function App() {
   return (
     <LangProvider>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/brief" element={<Brief />} />
-        <Route path="/brief/:project" element={<Brief />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Suspense fallback={<div className="bf" />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/brief" element={<Brief />} />
+          <Route path="/brief/:project" element={<Brief />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </LangProvider>
   )
 }

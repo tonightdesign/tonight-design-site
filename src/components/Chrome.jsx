@@ -46,7 +46,7 @@ export function Header({ active, simple = false }) {
       <header>
         <div className="wrap hd">
           <Link className="brand" to="/" aria-label="tonight.design">
-            <img src="/img/brain-disc.png" alt="" width="32" height="32" />tonight.design
+            <img src="/img/brain-disc.png" alt="" width="32" height="32" /><span translate="no">tonight.design</span>
           </Link>
           <div className="right">
             {!simple && (
@@ -74,9 +74,9 @@ export function Header({ active, simple = false }) {
             </button>
           </div>
           <nav aria-label="Menu">
-            {NAV.map((n, i) => (
+            {NAV.map((n) => (
               <a key={n.id} href={href(n.id)} onClick={() => setOpen(false)}>
-                <span><T en={n.en} es={n.es} /></span><span className="n">0{i + 1}</span>
+                <span><T en={n.en} es={n.es} /></span>
               </a>
             ))}
           </nav>
