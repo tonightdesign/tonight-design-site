@@ -198,6 +198,7 @@ export default function BrainMap({ labels, active, onActive, alt }) {
           key={i}
           type="button"
           className={i === active ? 'dot on' : 'dot'}
+          data-n={`0${i + 1}`}
           style={{ left: `${(r.dot[0] / BW) * 100}%`, top: `${(r.dot[1] / BH) * 100}%` }}
           aria-label={labels[i]}
           aria-pressed={i === active}
