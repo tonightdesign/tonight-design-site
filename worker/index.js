@@ -1,12 +1,29 @@
 /**
- * POST /api/brief
- * Receives a brief from /brief or /brief/<client> and emails it to the studio through Resend.
+ * tonight.design Worker
+ * - Serves the built site from dist/ (single-page app: unknown paths get index.html)
+ * - www.tonight.design redirects to tonight.design
+ * - POST /api/brief emails a brief through Resend
  *
- * Environment variables (Cloudflare Pages > Settings > Variables and secrets):
- *   RESEND_API_KEY  secret, from resend.com (required)
+ * Variables (Workers & Pages > tonight-design-site > Settings > Variables and secrets):
+ *   RESEND_API_KEY  secret, from resend.com (needed only for the brief)
  *   BRIEF_TO        where briefs go, default julian@tonight.design
  *   BRIEF_FROM      sender on a domain verified in Resend, default "tonight.design <briefs@tonight.design>"
  */
+
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url)
+    if (url.hostname === 'www.tonight.design') {
+      url.hostname = 'tonight.design'
+      return Response.redirect(url.toString(), 301)
+    }
+    if (url.pathname === '/api/brief') {
+      if (request.method !== 'POST') return json({ ok: false, error: 'method_not_allowed' }, 405)
+      return handleBrief(request, env)
+    }
+    return env.ASSETS.fetch(request)
+  },
+}
 
 const MAX_FIELD = 200
 const MAX_ANSWERS = 20000
@@ -19,7 +36,7 @@ const clean = (v, max = MAX_FIELD) => String(v ?? '').replace(/[\u0000-\u0008\u0
 
 const escapeHtml = (s) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]))
 
-export async function onRequestPost({ request, env }) {
+async function handleBrief(request, env) {
   let data
   try {
     data = await request.json()
@@ -76,4 +93,3 @@ export async function onRequestPost({ request, env }) {
   return json({ ok: true })
 }
 
-export const onRequestGet = () => json({ ok: false, error: 'method_not_allowed' }, 405)
