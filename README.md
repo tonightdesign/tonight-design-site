@@ -1,6 +1,6 @@
 # tonight.design
 
-Studio site. React + Vite, hosted on Netlify, DNS on Cloudflare, code on GitHub.
+Studio site. React + Vite, hosted on Cloudflare Pages, DNS and domain on Cloudflare, code on GitHub. Every push to `main` deploys.
 
 ## Pages
 - `/` studio site, English and Spanish (toggle, or `?lang=es`)
@@ -10,17 +10,25 @@ Studio site. React + Vite, hosted on Netlify, DNS on Cloudflare, code on GitHub.
 Question sets live in `src/briefs.js`. Copy a set, give it a new key, push, and the link works.
 
 ## Brief answers
-The brief posts to Netlify Forms (form name `brief`). Each submission holds the contact fields plus `answers`, the whole brief as readable text. Set up email notifications in Netlify: Site configuration > Forms > Form notifications. Free tier: 100 submissions a month.
+`functions/api/brief.js` is a Cloudflare Pages Function. It receives the brief and emails it through Resend, with Reply going to the client.
+
+Variables (Cloudflare Pages > Settings > Variables and secrets):
+- `RESEND_API_KEY` (secret, required)
+- `BRIEF_TO` default `julian@tonight.design`
+- `BRIEF_FROM` default `tonight.design <briefs@tonight.design>` (domain must be verified in Resend)
+
+`functions/_middleware.js` redirects www.tonight.design to tonight.design.
 
 ## Develop
 ```
 npm install
-npm run dev      # local preview
+npm run dev      # local preview (the brief function needs `npx wrangler pages dev dist` to run locally)
 npm run build    # output in dist/
 ```
-Every push to `main` deploys automatically on Netlify.
+
+## Cloudflare Pages build settings
+Framework preset Vite (or none) · build command `npm run build` · output `dist` · env var `NODE_VERSION` = `22`.
 
 ## DNS (Cloudflare)
-- Apex `tonight.design`: CNAME to `<site>.netlify.app`, proxy off (grey cloud)
-- `www`: CNAME to `<site>.netlify.app`, proxy off
-- Keep the existing MX, SPF and other mail records so julian@tonight.design keeps working
+- `tonight.design` and `www` are attached as Pages custom domains (Cloudflare creates the records)
+- Keep the Google Workspace mail records: MX `smtp.google.com`, SPF TXT, `_dmarc` TXT

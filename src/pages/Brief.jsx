@@ -7,7 +7,6 @@ import NotFound from './NotFound.jsx'
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const EMPTY_CONTACT = { name: '', company: '', email: '', whatsapp: '' }
-const encode = (data) => new URLSearchParams(data).toString()
 
 function answerText(q, a, t) {
   if (!a) return ''
@@ -106,15 +105,14 @@ export default function Brief() {
   const submit = async () => {
     setStatus('sending')
     const payload = {
-      'form-name': 'brief',
-      'bot-field': bot.current?.value || '',
+      botField: bot.current?.value || '',
       project: brief.client ? `${brief.client} (${project})` : project,
       language: lang,
       ...contact,
       answers: summary,
     }
     try {
-      const res = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: encode(payload) })
+      const res = await fetch('/api/brief', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
       if (!res.ok) throw new Error(String(res.status))
       try { sessionStorage.removeItem(draftKey) } catch { /* ignore */ }
       setStatus('sent')
