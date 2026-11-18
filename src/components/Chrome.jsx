@@ -79,7 +79,7 @@ export function Footer({ cta = false }) {
               <Link className="btn primary lg" to={FIXES}><T en="Find my 5 fixes" es="Quiero mis 5 mejoras" /><span className="ar" aria-hidden="true">→</span></Link>
               <a className="btn ghost lg" href="/#work"><T en="See the work" es="Ver el trabajo" /></a>
             </div>
-            <p className="ft-note"><T en="Free, in 48 hours, for your ads, website and bookings" es="Gratis, en 48 horas, para sus anuncios, sitio web y reservas" /></p>
+            <p className="ft-note"><T en="Free, in 48 hours, for your ads, website and bookings" es="Sin costo, en 48 horas, para sus anuncios, sitio web y reservas" /></p>
           </div>
         )}
         <div className="ft-side">

@@ -124,10 +124,10 @@ export default function Brief() {
   const mailFallback = `mailto:${CONTACT.email}?subject=${encodeURIComponent('Brief: ' + t(brief.title))}&body=${encodeURIComponent(`${contact.name} · ${contact.company}\n${contact.email} ${contact.whatsapp}\n\n${summary}`)}`
   const pct = status === 'sent' ? 100 : Math.round((Math.max(0, step - 1) / (qs.length + 2)) * 100)
   const contactErr = !contact.name.trim()
-    ? { en: 'Add your name so I know who to reply to.', es: 'Agregue su nombre para saber a quién responder.' }
+    ? { en: 'Add your name so I know who to reply to.', es: 'Escriba su nombre para saber con quién hablo.' }
     : !emailOk
-      ? { en: 'That email looks incomplete. Check it, or leave it empty and add WhatsApp.', es: 'El correo parece incompleto. Revíselo, o déjelo vacío y agregue WhatsApp.' }
-      : { en: 'Add an email or a WhatsApp number so I can reply.', es: 'Agregue un correo o un número de WhatsApp para poder responderle.' }
+      ? { en: 'That email looks incomplete. Check it, or leave it empty and add WhatsApp.', es: 'Al correo le falta algo. Revíselo, o déjelo vacío y ponga su WhatsApp.' }
+      : { en: 'Add an email or a WhatsApp number so I can reply.', es: 'Déjeme un correo o un WhatsApp para ponerme en contacto con usted.' }
 
   return (
     <div className="bf">
@@ -139,10 +139,10 @@ export default function Brief() {
           {status === 'sent' ? (
             <section className="bf-card bf-done">
               <p className="label" translate="no">{t(brief.title)}</p>
-              <h1 tabIndex={-1}><T en="Thank you. It's with me now." es="Gracias. Ya lo tengo." /></h1>
-              <p className="muted">{brief.done ? t(brief.done) : <T en="I'll reply within one business day with next steps. If anything changes in the meantime, write to me on WhatsApp." es="Le respondo en un día hábil con los siguientes pasos. Si algo cambia mientras tanto, escríbame por WhatsApp." />}</p>
+              <h1 tabIndex={-1}><T en="Thank you. It's with me now." es="¡Gracias! Ya me llegó." /></h1>
+              <p className="muted">{brief.done ? t(brief.done) : <T en="I'll reply within one business day with next steps. If anything changes in the meantime, write to me on WhatsApp." es="Le contesto en un día hábil con los siguientes pasos. Si algo cambia, mándeme un WhatsApp." />}</p>
               <div className="ctas">
-                <a className="btn primary" href={CONTACT.waLink} target="_blank" rel="noopener"><T en="Message me on WhatsApp" es="Escríbame por WhatsApp" /><span className="ar" aria-hidden="true">→</span></a>
+                <a className="btn primary" href={CONTACT.waLink} target="_blank" rel="noopener"><T en="Message me on WhatsApp" es="Mándeme un WhatsApp" /><span className="ar" aria-hidden="true">→</span></a>
                 <Link className="btn ghost" to="/"><T en="Back to tonight.design" es="Volver a tonight.design" /></Link>
               </div>
             </section>
@@ -155,12 +155,12 @@ export default function Brief() {
             </section>
           ) : step === 1 ? (
             <section className="bf-card">
-              <p className="label"><T en="About you" es="Sobre usted" /></p>
-              <h1 tabIndex={-1}><T en="Who should I reply to?" es="¿A quién le respondo?" /></h1>
+              <p className="label"><T en="About you" es="Sus datos" /></p>
+              <h1 tabIndex={-1}><T en="Who should I reply to?" es="¿Con quién tengo el gusto?" /></h1>
               <div className="fields">
                 <label className="field"><span><T en="Name" es="Nombre" /></span>
                   <input name="name" autoComplete="name" value={contact.name} onChange={(e) => setContact((c) => ({ ...c, name: e.target.value }))} aria-invalid={touched && !contact.name.trim()} /></label>
-                <label className="field"><span><T en="Company or property" es="Empresa o propiedad" /></span>
+                <label className="field"><span><T en="Company or property" es="Empresa o negocio" /></span>
                   <input name="company" autoComplete="organization" value={contact.company} onChange={(e) => setContact((c) => ({ ...c, company: e.target.value }))} /></label>
                 <label className="field"><span>Email</span>
                   <input name="email" type="email" inputMode="email" autoComplete="email" spellCheck={false} placeholder="nombre@empresa.com…" value={contact.email} onChange={(e) => setContact((c) => ({ ...c, email: e.target.value }))} aria-invalid={touched && !emailOk} /></label>
@@ -172,8 +172,8 @@ export default function Brief() {
             </section>
           ) : step === reviewStep ? (
             <section className="bf-card">
-              <p className="label"><T en="Review" es="Revisión" /></p>
-              <h1 tabIndex={-1}><T en="Everything right?" es="¿Todo correcto?" /></h1>
+              <p className="label"><T en="Review" es="Resumen" /></p>
+              <h1 tabIndex={-1}><T en="Everything right?" es="¿Está todo bien?" /></h1>
               <dl className="review">
                 <div><dt><T en="Contact" es="Contacto" /></dt><dd>{[contact.name, contact.company, contact.email, contact.whatsapp].filter(Boolean).join(' · ')}</dd><button type="button" className="edit" onClick={() => goTo(1)}><T en="Edit" es="Editar" /></button></div>
                 {qs.map((qq, i) => (
@@ -183,14 +183,14 @@ export default function Brief() {
               <input ref={bot} name="bot-field" tabIndex={-1} autoComplete="off" className="hp" aria-hidden="true" />
               <p className="err" role="alert" aria-live="polite">
                 {status === 'error' && <>
-                  <T en="The brief didn't send. Check your connection and try again, or send the same answers by email: " es="El brief no se envió. Revise su conexión e intente de nuevo, o mande las mismas respuestas por correo: " />
+                  <T en="The brief didn't send. Check your connection and try again, or send the same answers by email: " es="No se pudo enviar. Revise su conexión e inténtelo de nuevo, o mándeme sus respuestas por correo: " />
                   <a href={mailFallback}><T en="open email" es="abrir correo" /></a>
                 </>}
               </p>
               <div className="bf-nav">
                 <button type="button" className="btn ghost" onClick={back}><span aria-hidden="true">←</span><span><T en="Back" es="Atrás" /></span></button>
                 <button type="button" className="btn primary" onClick={submit} disabled={status === 'sending'}>
-                  {status === 'sending' ? <T en="Sending…" es="Enviando…" /> : <T en="Send brief" es="Enviar brief" />}<span className="ar" aria-hidden="true">→</span>
+                  {status === 'sending' ? <T en="Sending…" es="Enviando…" /> : <T en="Send brief" es="Enviar respuestas" />}<span className="ar" aria-hidden="true">→</span>
                 </button>
               </div>
             </section>
