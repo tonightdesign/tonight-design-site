@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react'
 import { T, useT } from '../lang.jsx'
-import { Footer, Header } from '../components/Chrome.jsx'
+import { Link } from 'react-router-dom'
+import { FIXES, Footer, Header } from '../components/Chrome.jsx'
 import BrainMap from '../components/BrainMap.jsx'
 
 // What happens in a guest's head, in order, and the service that answers each step.
@@ -115,7 +116,18 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="clients wrap" aria-labelledby="clients-h">
+        <section className="wrap fix-band" aria-labelledby="fix-h">
+          <div className="fix-card">
+            <div className="fix-text">
+              <span className="tag"><T en="5 free fixes" es="5 mejoras gratis" /></span>
+              <h2 id="fix-h"><T en={"Send me your links. I\u00a0send back five fixes."} es={"Envíeme sus enlaces. Le\u00a0devuelvo cinco mejoras."} /></h2>
+              <p><T en="Your ads, website and booking page, reviewed. The five changes that will matter most, in 48 hours. Free." es="Sus anuncios, sitio web y página de reservas, revisados. Los cinco cambios que más le van a ayudar, en 48 horas. Gratis." /></p>
+            </div>
+            <Link className="btn dark lg" to={FIXES}><T en="Find my 5 fixes" es="Quiero mis 5 mejoras" /><span className="ar" aria-hidden="true">→</span></Link>
+          </div>
+        </section>
+
+        <section className="clients wrap" id="work" aria-labelledby="clients-h">
           <h2 id="clients-h"><T en="Behind these brands" es="Detrás de estas marcas" /></h2>
           <ul className="cards">
             {CLIENTS.map((c) => (

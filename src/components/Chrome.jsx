@@ -30,7 +30,7 @@ export function Header({ simple = false }) {
         <div className="right">
           <LangSwitch />
           {!simple && (
-            <Link className="btn primary sm" to={FIXES}><T en="See what to fix" es="Ver qué mejorar" /></Link>
+            <Link className="btn primary sm" to="/brief"><T en="Start a project" es="Iniciar un proyecto" /></Link>
           )}
         </div>
       </div>
@@ -75,8 +75,11 @@ export function Footer({ cta = false }) {
         {cta && (
           <div className="ft-ask">
             <h2><T en="Where are you losing guests?" es="¿Dónde está perdiendo huéspedes?" /></h2>
-            <Link className="btn primary lg" to={FIXES}><T en="See what to fix" es="Ver qué mejorar" /><span className="ar" aria-hidden="true">→</span></Link>
-            <p className="ft-note"><T en="5 free fixes for your ads, website and bookings, in 48 hours" es="5 mejoras gratis para sus anuncios, sitio web y reservas, en 48 horas" /></p>
+            <div className="ft-ctas">
+              <Link className="btn primary lg" to={FIXES}><T en="Find my 5 fixes" es="Quiero mis 5 mejoras" /><span className="ar" aria-hidden="true">→</span></Link>
+              <a className="btn ghost lg" href="/#work"><T en="See the work" es="Ver el trabajo" /></a>
+            </div>
+            <p className="ft-note"><T en="Free, in 48 hours, for your ads, website and bookings" es="Gratis, en 48 horas, para sus anuncios, sitio web y reservas" /></p>
           </div>
         )}
         <div className="ft-side">

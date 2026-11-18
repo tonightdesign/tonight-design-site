@@ -95,6 +95,17 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rg
   .steps.focus .step:not(.on){opacity:.45}
 }
 
+/* the free fixes: a floating paper block between the brain and the brands */
+.fix-band{padding-block:8px 72px}
+.fix-card{max-width:960px;margin:0 auto;background:var(--ink);color:#111;box-shadow:0 8px 20px rgba(0,0,0,.22);padding:clamp(28px,5vw,48px) clamp(20px,5vw,56px);display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px}
+.fix-text{display:flex;flex-direction:column;gap:12px;flex:1 1 420px;min-width:0}
+.fix-card .tag{color:#05707c}
+.fix-card h2{font-size:clamp(24px,3.4vw,32px);line-height:1.15;letter-spacing:-.035em}
+.fix-card p{font-size:16px;line-height:1.55;color:#3d4545;max-width:52ch}
+.btn.dark{background:#111;border-color:#111;color:var(--ink)}
+.btn.dark:hover{background:var(--teal);border-color:var(--teal)}
+@media (min-width:1120px){.fix-band{padding-bottom:24px}}
+
 /* clients */
 .clients{display:flex;flex-direction:column;gap:32px;padding-block:24px 112px}
 .clients h2{font-size:clamp(26px,4vw,32px)}
@@ -114,6 +125,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rg
 .ft-in{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:40px;padding-block:40px calc(40px + env(safe-area-inset-bottom,0px))}
 .ft-cta .ft-in{padding-block:64px calc(52px + env(safe-area-inset-bottom,0px));align-items:stretch}
 .ft-ask{display:flex;flex-direction:column;align-items:flex-start;gap:24px}
+.ft-ctas{display:flex;flex-wrap:wrap;gap:12px}
 .ft-ask h2{font-size:clamp(28px,5vw,34px);letter-spacing:-.04em;line-height:1.15}
 .ft-note{font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:-12px}
 .ft-side{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;gap:24px}
