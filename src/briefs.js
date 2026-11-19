@@ -238,56 +238,11 @@ export const BRIEFS = {
         help: { en: 'Optional.', es: 'Opcional.' } },
     ],
   },
+}
 
-  'kin-kakaw': {
-    lang: 'es',
-    client: 'K’in Kakaw',
-    title: { en: 'K’in Kakaw · identity', es: 'K’in Kakaw · identidad' },
-    intro: {
-      en: 'Six questions to close the logo stage. About three minutes. Your answers come straight to me.',
-      es: 'Seis preguntas para cerrar la etapa del logotipo. Unos tres minutos. Sus respuestas me llegan directamente.',
-    },
-    questions: [
-      { id: 'approver', type: 'text', required: true,
-        q: { en: 'Who gives final approval on the logo?', es: '¿Quién da la aprobación final del logotipo?' },
-        help: { en: 'Name and email, please.', es: 'Nombre y correo, por favor.' } },
-      { id: 'direction', type: 'choice', required: true,
-        q: { en: 'Which direction do you prefer?', es: '¿Qué dirección prefieren?' },
-        options: [
-          { en: '01 Sol de cacao', es: '01 Sol de cacao' },
-          { en: '02 Cacao en crayola', es: '02 Cacao en crayola' },
-          { en: 'We need to see changes before deciding', es: 'Necesitamos ver ajustes antes de decidir', other: true },
-        ] },
-      { id: 'name-check', type: 'choice', required: true,
-        q: { en: 'Has the spelling and meaning of K’in Kakaw been checked with a Yucatec Maya speaker, and the trademark with IMPI?', es: '¿Ya validaron la ortografía y el significado de K’in Kakaw con un hablante de maya yucateco, y el registro de marca ante el IMPI?' },
-        options: [
-          { en: 'Yes, both', es: 'Sí, ambos' },
-          { en: 'No, we will do it', es: 'No, nosotros lo hacemos' },
-          { en: 'No, please have the studio arrange it', es: 'No, que lo gestione el estudio' },
-        ] },
-      { id: 'copy', type: 'choice', required: true,
-        q: { en: 'For the copy: which wording?', es: 'Para los textos: ¿qué frase usamos?' },
-        options: [
-          { en: '“café plant based”', es: '“café plant based”' },
-          { en: '“café de cocina vegetal”', es: '“café de cocina vegetal”' },
-          OTHER,
-        ] },
-      { id: 'applications', type: 'multi',
-        q: { en: 'After the logo, which applications do you need?', es: 'Después del logotipo, ¿qué aplicaciones necesitan?' },
-        help: { en: 'Choose all that apply. Add a date in the last box if you have one.', es: 'Elija todas las que apliquen. Agregue una fecha en la última casilla si la tienen.' },
-        options: [
-          { en: 'Cups and packaging', es: 'Vasos y empaques' },
-          { en: 'Menus', es: 'Menús' },
-          { en: 'Signage', es: 'Señalética' },
-          { en: 'Instagram', es: 'Instagram' },
-          { en: 'Other, or dates', es: 'Otro, o fechas', other: true },
-        ] },
-      { id: 'dates', type: 'choice', required: true,
-        q: { en: 'Do these dates work: feedback Friday 20 November, second round Wednesday 25, final files Monday 30?', es: '¿Les funcionan estas fechas: comentarios el viernes 20 de noviembre, segunda ronda el miércoles 25 y archivos finales el lunes 30?' },
-        options: [
-          { en: 'Yes', es: 'Sí' },
-          { en: 'We need other dates', es: 'Necesitamos otras fechas', other: true },
-        ] },
-    ],
-  },
+// K'in Kakaw starts from scratch: the full brand discovery, labelled with their name.
+BRIEFS['kin-kakaw'] = {
+  ...BRIEFS.brand,
+  client: 'K’in Kakaw',
+  title: { en: 'K’in Kakaw · brand discovery', es: 'K’in Kakaw · descubrimiento de marca' },
 }
