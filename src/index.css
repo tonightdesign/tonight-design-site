@@ -149,6 +149,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rg
 .opts{display:flex;flex-direction:column;border:0;border-top:1px solid var(--rule);margin:0;padding:0;min-width:0}
 .opt-btn{position:relative;display:flex;align-items:center;gap:16px;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);color:var(--ink);font:inherit;font-size:18px;padding:18px 4px;min-height:60px;cursor:pointer;transition:background .15s,color .15s}
 .opt-btn:hover{background:var(--ground-2)}
+.opt-btn:has(input:disabled){opacity:.4;cursor:not-allowed}
 .opt-btn input{position:absolute;left:4px;top:50%;width:1px;height:1px;opacity:0;margin:0;pointer-events:none}
 .opt-btn:has(input:checked){background:var(--ground-2)}
 .opt-btn:has(input:focus-visible){outline:2px solid var(--cyan);outline-offset:-2px}

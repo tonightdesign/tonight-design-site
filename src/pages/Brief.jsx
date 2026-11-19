@@ -219,7 +219,8 @@ function Question({ q, n, of, a = {}, setA, invalid, back, next }) {
   const multi = q.type === 'multi'
   const picked = multi ? (a.picked || []) : a.picked
   const isOn = (i) => (multi ? picked.includes(i) : picked === i)
-  const toggle = (i) => setA({ picked: multi ? (isOn(i) ? picked.filter((x) => x !== i) : [...picked, i]) : i })
+  const full = multi && q.max && picked.length >= q.max
+  const toggle = (i) => setA({ picked: multi ? (isOn(i) ? picked.filter((x) => x !== i) : full ? picked : [...picked, i]) : i })
   const otherOpen = q.options?.some((o, i) => o.other && isOn(i))
   const hid = `q-${q.id}`
 
@@ -233,7 +234,7 @@ function Question({ q, n, of, a = {}, setA, invalid, back, next }) {
         <fieldset className="opts" aria-labelledby={hid} aria-describedby={q.help ? `${hid}-help` : undefined} aria-invalid={invalid || undefined}>
           {q.options.map((o, i) => (
             <label key={i} className="opt-btn">
-              <input type={multi ? 'checkbox' : 'radio'} name={q.id} checked={isOn(i)} onChange={() => toggle(i)} />
+              <input type={multi ? 'checkbox' : 'radio'} name={q.id} checked={isOn(i)} disabled={full && !isOn(i)} onChange={() => toggle(i)} />
               <span className={'mark ' + (multi ? 'sq' : 'rd')} aria-hidden="true" />
               <span>{t(o)}</span>
             </label>
