@@ -37,7 +37,7 @@ export default function Brief() {
   const { lang, setLang } = useLang()
   const t = useT()
   const [params, setParams] = useSearchParams()
-  const draftKey = `td-brief-v1:${project}`
+  const draftKey = `td-brief-v2:${project}`
   const [draft] = useState(() => loadDraft(draftKey))
   const [contact, setContact] = useState(draft?.contact || EMPTY_CONTACT)
   const [answers, setAnswers] = useState(draft?.answers || {})
@@ -61,6 +61,13 @@ export default function Brief() {
     if (!new URLSearchParams(location.search).get('lang') && brief.lang) setLang(brief.lang)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [project])
+
+  useEffect(() => {
+    if (!brief) return
+    const before = document.title
+    document.title = `${t(brief.title)} · tonight.design`
+    return () => { document.title = before }
+  }, [brief, t])
 
   useEffect(() => {
     if (status === 'sent') return
