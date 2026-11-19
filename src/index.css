@@ -31,6 +31,7 @@ p{text-wrap:pretty}
 /* buttons */
 .ctas{display:flex;flex-wrap:wrap;gap:12px}
 .lede{font-size:clamp(18px,1.7vw,21px);color:var(--muted);max-width:48ch}
+.pricing{font-family:var(--mono,monospace);font-size:13px;color:var(--fg,#fff);margin-top:14px}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 20px;font-family:var(--mono);font-size:14px;line-height:1.2;text-decoration:none;border:1px solid var(--edge);min-height:48px;cursor:pointer;background:none;color:var(--ink);transition:background-color .15s,border-color .15s,color .15s}
 .btn .ar{transition:transform .2s}
 .btn:hover .ar{transform:translateX(4px)}

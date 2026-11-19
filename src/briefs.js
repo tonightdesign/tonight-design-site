@@ -15,6 +15,10 @@ export const BRIEFS = {
       en: 'Nine short questions, about five minutes. Your answers come straight to me and I reply within one business day.',
       es: 'Nueve preguntas cortas, como cinco minutos. Sus respuestas me llegan directo y le contesto en un día hábil.',
     },
+    pricing: {
+      en: 'Monthly work starts at $1,000. Brands start at $2,500.',
+      es: 'El trabajo mensual empieza en $1,000. Las marcas, en $2,500.',
+    },
     questions: [
       { id: 'need', type: 'multi', required: true,
         q: { en: 'What do you need?', es: '¿Qué necesita?' },
