@@ -128,8 +128,8 @@ export const BRIEFS = {
       es: 'Antes de diseñar, quiero entender su negocio. Son diecisiete preguntas, unos diez minutos. Con respuestas cortas basta, y lo que deje en blanco lo vemos en la llamada.',
     },
     done: {
-      en: 'Thank you. I will read everything and send you two or three times for a 30 minute call within one business day.',
-      es: 'Gracias. Voy a leer todo y en un día hábil le propongo dos o tres horarios para una llamada de 30 minutos.',
+      en: 'I will read everything and send you two or three times for a 30 minute call within one business day.',
+      es: 'Voy a leer todo y en un día hábil le propongo dos o tres horarios para una llamada de 30 minutos.',
     },
     questions: [
       { id: 'stage', type: 'choice', required: true,
@@ -172,7 +172,7 @@ export const BRIEFS = {
           { en: 'Playful', es: 'Divertida' },
           { en: 'Refined', es: 'Refinada' },
           { en: 'Bold', es: 'Atrevida' },
-          { en: 'Natural and earthy', es: 'Natural y terrenal' },
+          { en: 'Natural and earthy', es: 'Natural y orgánica' },
           { en: 'Rooted in local culture', es: 'Arraigada en la cultura local' },
           { en: 'Modern', es: 'Moderna' },
           OTHER,
@@ -213,7 +213,7 @@ export const BRIEFS = {
           { en: 'Not sure yet, let’s talk', es: 'Aún no lo sé, lo platicamos' },
         ] },
       { id: 'timeline', type: 'choice', required: true,
-        q: { en: 'When must the brand be ready?', es: '¿Para cuándo necesita la marca lista?' },
+        q: { en: 'When must the brand be ready?', es: '¿Para cuándo necesita tener lista la marca?' },
         options: [
           { en: 'Within a month', es: 'En menos de un mes' },
           { en: 'In one to three months', es: 'Entre uno y tres meses' },
