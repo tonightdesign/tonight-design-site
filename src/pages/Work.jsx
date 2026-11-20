@@ -62,7 +62,7 @@ export default function Work() {
         {w.link && <p className="wp-link"><Link to={w.link.to}>{t(w.link.text)} →</Link></p>}
 
         <Link className="next" to={`/work/${next.id}`}>
-          <img src={next.cover.src} width="1200" height="900" alt="" loading="lazy" decoding="async" />
+          <img src={next.cover.src} width="1400" height="713" alt="" loading="lazy" decoding="async" />
           <span className="next-tx">
             <span className="tag dim"><T en="Next project" es="Siguiente proyecto" /> · {t(next.step)}</span>
             <span className="next-nm" translate="no">{next.name}</span>

@@ -4,7 +4,7 @@
   A section is a heading, an optional line, and one or more images. `cols` lays the images side by side.
 */
 
-export const WORK = [
+const ALL = [
   {
     id: 'mr-shmokey',
     name: 'Mr. Shmokey',
@@ -131,6 +131,9 @@ export const WORK = [
     ],
   },
 ]
+
+// Order on the page
+export const WORK = ['ahau-collection', 'la-reserva', 'mare', 'mr-shmokey'].map((id) => ALL.find((w) => w.id === id))
 
 export const ALSO = [
   { src: '/work/petrodex-43.webp', name: 'Petrodex', place: { en: 'Dubai', es: 'Dubái' }, text: { en: 'Investor company profile, printed in A5 and A4.', es: 'Perfil para inversionistas, impreso en A5 y A4.' } },

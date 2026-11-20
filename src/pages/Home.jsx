@@ -88,7 +88,7 @@ export default function Home() {
             {WORK.map((w) => (
               <li key={w.id}>
                 <Link className="wc" to={`/work/${w.id}`}>
-                  <img src={w.cover.src} width="1200" height="900" alt={t(w.cover.alt)} loading="lazy" decoding="async" />
+                  <img src={w.cover.src} width="1400" height="713" alt={t(w.cover.alt)} loading="lazy" decoding="async" />
                   <span className="ttl"><h3 translate="no">{w.name}</h3><span className="tag">{t(w.step)}</span></span>
                   <span className="ln">{t(w.line)}</span>
                 </Link>
