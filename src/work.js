@@ -10,16 +10,16 @@ const ALL = [
     id: 'mr-shmokey',
     site: { k: { en: 'Instagram', es: 'Instagram' }, url: 'https://www.instagram.com/mr.shmokey/', text: '@mr.shmokey' },
     name: 'Mr. Shmokey',
-    line: { en: 'Burgers, signs and menus that stop the street.', es: 'Hamburguesas, letreros y menús que detienen la calle.' },
+    line: { en: 'Food photography and menus that stop the street.', es: 'Fotografía de comida y menús que detienen la calle.' },
     cover: { src: '/work/cover-shmokey.webp', alt: { en: 'The Mr. Shmokey Smokehouse logo over three burgers on a yellow logo pattern', es: 'El logo de Mr. Shmokey Smokehouse sobre tres hamburguesas y un patrón de logos amarillo' } },
     intro: {
-      en: 'Smokehouse and coffee bar in Tulum. The logo, the food photography and the light box menus over the counter.',
-      es: 'Smokehouse y coffee bar en Tulum. El logo, la fotografía de comida y los menús de caja de luz sobre la barra.',
+      en: 'Smokehouse and coffee bar in Tulum, and my first project after university. I shot the food photography and designed the branded menus, from the light boxes over the counter to the printed menus along the bar.',
+      es: 'Smokehouse y coffee bar en Tulum, y mi primer proyecto al salir de la universidad. Hice la fotografía de comida y diseñé los menús de marca, de las cajas de luz sobre la barra a los menús impresos del mostrador.',
     },
     facts: [
       { k: { en: 'Client', es: 'Cliente' }, v: { en: 'Mr. Shmokey', es: 'Mr. Shmokey' } },
       { k: { en: 'Place', es: 'Lugar' }, v: { en: 'Tulum', es: 'Tulum' } },
-      { k: { en: 'Made', es: 'Hice' }, v: { en: 'Logo, food photography, light box and printed menus', es: 'Logo, fotografía de comida, menús de caja de luz e impresos' } },
+      { k: { en: 'Made', es: 'Hice' }, v: { en: 'Food photography and branded menus', es: 'Fotografía de comida y menús de marca' } },
     ],
     sections: [
       {
@@ -27,7 +27,7 @@ const ALL = [
       },
       {
         title: { en: 'The burgers', es: 'Las hamburguesas' },
-        text: { en: 'Two burgers on the logo pattern.', es: 'Dos hamburguesas sobre el patrón del logo.' },
+        text: { en: 'My photography, set on the logo pattern.', es: 'Mi fotografía, sobre el patrón del logo.' },
         cols: 2,
         images: [
           { src: '/work/shmokey-burger-1.webp', w: 1000, h: 1000, alt: { en: 'A cheese burger on the Mr. Shmokey logo pattern', es: 'Una hamburguesa con queso sobre el patrón del logo de Mr. Shmokey' } },
@@ -37,7 +37,7 @@ const ALL = [
       {
         title: { en: 'The menus', es: 'Los menús' },
         text: { en: 'Light box menus over the counter and printed menus along the bar.', es: 'Menús de caja de luz sobre la barra y menús impresos a lo largo del mostrador.' },
-        images: [{ src: '/work/shmokey-storefront.webp', w: 1800, h: 917, alt: { en: 'The Mr. Shmokey counter at night with the lit menus above and printed menus below', es: 'La barra de Mr. Shmokey de noche con los menús iluminados arriba y los impresos abajo' } }],
+        images: [{ src: '/work/shmokey-storefront.webp', w: 1600, h: 815, alt: { en: 'The Mr. Shmokey counter at night with the lit menus above and printed menus below', es: 'La barra de Mr. Shmokey de noche con los menús iluminados arriba y los impresos abajo' } }],
       },
     ],
   },
@@ -143,9 +143,20 @@ const ALL = [
         },
       },
       {
-        title: { en: 'Referral ads', es: 'Anuncios de referidos' },
-        text: { en: 'Ads for the broker referral program.', es: 'Anuncios del programa de referidos para brokers.' },
-        images: [{ src: '/work/la-reserva-ads.webp', w: 2056, h: 720, alt: { en: 'Three Meta ads for the La Reserva referral program', es: 'Tres anuncios en Meta del programa de referidos de La Reserva' } }],
+        title: { en: 'A day at La Reserva', es: 'Un día en La Reserva' },
+        text: { en: 'A second carousel: morning, afternoon and dinner, then a WhatsApp chat with the sales director.', es: 'Un segundo carrusel: mañana, tarde y cena, y luego un chat de WhatsApp con el director de ventas.' },
+        carousel: {
+          w: 960,
+          h: 960,
+          slides: [1, 2, 3, 4, 5].map((n) => ({ en: `/work/la-reserva-day-en-${n}.webp`, es: `/work/la-reserva-day-es-${n}.webp` })),
+          alts: [
+            { en: 'Card 1: a day at La Reserva', es: 'Tarjeta 1: un día en La Reserva' },
+            { en: 'Card 2: morning', es: 'Tarjeta 2: la mañana' },
+            { en: 'Card 3: afternoon', es: 'Tarjeta 3: la tarde' },
+            { en: 'Card 4: dinner', es: 'Tarjeta 4: la cena' },
+            { en: 'Card 5: Ben, the sales director, with a WhatsApp button', es: 'Tarjeta 5: Ben, el director de ventas, con un botón de WhatsApp' },
+          ],
+        },
       },
       {
         title: { en: 'The brochure', es: 'El brochure' },

@@ -58,9 +58,9 @@ export default function Work() {
             {s.book && <Book b={s.book} />}
             {s.images && <div className={s.cols ? `shots c${s.cols}` : 'shots'}>
               {s.images.map((img) => img.video ? (
-                <video key={img.video} className={img.lead ? 'shot lead' : 'shot'} src={img.video} poster={img.src} width={img.w} height={img.h} aria-label={t(img.alt)} autoPlay muted loop playsInline preload="metadata" />
+                <LazyVideo key={img.video} className={img.lead ? 'shot lead' : 'shot'} src={img.video} poster={img.src} width={img.w} height={img.h} label={t(img.alt)} />
               ) : (
-                <img key={img.src} className="shot" src={img.src} width={img.w} height={img.h} alt={t(img.alt)} loading={n === 0 ? 'eager' : 'lazy'} decoding="async" />
+                <img key={img.src} className="shot" src={img.src} {...srcset(img, s.cols)} width={img.w} height={img.h} alt={t(img.alt)} loading={n === 0 ? 'eager' : 'lazy'} decoding="async" />
               ))}
             </div>}
           </section>
@@ -69,7 +69,7 @@ export default function Work() {
         {w.link && <p className="wp-link"><Link to={w.link.to}>{t(w.link.text)} →</Link></p>}
 
         <Link className="next" to={`/work/${next.id}`}>
-          <img src={next.cover.src} width="1400" height="713" alt="" loading="lazy" decoding="async" />
+          <img src={next.cover.src} srcSet={`${next.cover.src.replace('.webp', '-900.webp')} 900w, ${next.cover.src} 1400w`} sizes="(max-width: 640px) 100vw, 420px" width="1400" height="713" alt="" loading="lazy" decoding="async" />
           <span className="next-tx">
             <span className="tag dim"><T en="Next project" es="Siguiente proyecto" /></span>
             <span className="next-nm" translate="no">{next.name}</span>
@@ -97,7 +97,7 @@ function Carousel({ c }) {
     <div className="car">
       <div className="car-row" ref={row} tabIndex="0" aria-label={t({ en: 'Ad carousel, scroll sideways', es: 'Carrusel de anuncios, desplace hacia los lados' })}>
         {c.slides.map((sl, i) => (
-          <img key={i} src={t(sl)} width={c.w} height={c.h} alt={t(c.alts[i])} loading="lazy" decoding="async" />
+          <img key={i} src={t(sl)} width={c.w} height={c.h} style={{ aspectRatio: `${c.w} / ${c.h}` }} alt={t(c.alts[i])} loading="lazy" decoding="async" />
         ))}
       </div>
       <div className="car-nav">
@@ -196,4 +196,25 @@ function Book({ b }) {
       </div>
     </div>
   )
+}
+
+/** Images 1400 px and wider also ship a 900 px copy (name-900.webp) for phones. */
+function srcset(img, cols) {
+  if (!img.w || img.w < 1400) return {}
+  const small = img.src.replace(/\.webp$/, '-900.webp')
+  return { srcSet: `${small} 900w, ${img.src} ${img.w}w`, sizes: cols ? `(max-width: 640px) 100vw, ${Math.round(1152 / cols)}px` : '(max-width: 1200px) 100vw, 1152px' }
+}
+
+/** A muted story loop that only starts downloading when it is about to scroll into view. */
+function LazyVideo({ src, poster, label, ...rest }) {
+  const ref = useRef(null)
+  const [on, setOn] = useState(false)
+  useEffect(() => {
+    const el = ref.current
+    if (!el || !('IntersectionObserver' in window)) { setOn(true); return }
+    const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { setOn(true); io.disconnect() } }, { rootMargin: '400px' })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+  return <video ref={ref} src={on ? src : undefined} poster={poster} aria-label={label} autoPlay muted loop playsInline preload="none" {...rest} />
 }

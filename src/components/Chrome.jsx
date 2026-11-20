@@ -25,7 +25,7 @@ export function Header({ simple = false }) {
     <header>
       <div className="wrap hd">
         <Link className="brand" to="/" aria-label="tonight.design, home">
-          <img src="/img/brain-disc.png" alt="" width="30" height="30" /><span translate="no">tonight.design</span>
+          <img src="/img/brain-disc.webp" alt="" width="30" height="30" /><span translate="no">tonight.design</span>
         </Link>
         <div className="right">
           <LangSwitch />

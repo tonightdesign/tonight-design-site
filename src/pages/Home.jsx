@@ -112,7 +112,7 @@ export default function Home() {
             {WORK.map((w) => (
               <li key={w.id}>
                 <Link className="wc" to={`/work/${w.id}`}>
-                  <img src={w.cover.src} width="1400" height="713" alt={t(w.cover.alt)} loading="lazy" decoding="async" />
+                  <img src={w.cover.src} srcSet={`${w.cover.src.replace('.webp', '-900.webp')} 900w, ${w.cover.src} 1400w`} sizes="(max-width: 640px) 100vw, 560px" width="1400" height="713" alt={t(w.cover.alt)} loading="lazy" decoding="async" />
                   <span className="ttl"><h3 translate="no">{w.name}</h3></span>
                   <span className="ln">{t(w.line)}</span>
                 </Link>
@@ -124,7 +124,7 @@ export default function Home() {
             <ul>
               {ALSO.map((a) => (
                 <li key={a.name}>
-                  <img src={a.src} width="1080" height="1080" alt="" loading="lazy" decoding="async" />
+                  <img src={a.src} width="1080" height="1080" sizes="(max-width: 900px) 50vw, 264px" alt="" loading="lazy" decoding="async" />
                   <span className="also-nm"><span translate="no">{a.name}</span>{a.place && <> <span className="dim">{t(a.place)}</span></>}</span>
                   <span className="also-tx">{t(a.text)}</span>
                 </li>

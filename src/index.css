@@ -118,7 +118,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rg
 
 /* the work: four cards, one per step, each opening its own page */
 .work{display:flex;flex-direction:column;gap:56px;padding-block:72px 112px}
-.work>h2{font-size:clamp(32px,5vw,48px);line-height:1.1;letter-spacing:-.04em}
+.work>h2{font-size:clamp(27px,5vw,48px);line-height:1.1;letter-spacing:-.04em}
 .shot{display:block;width:100%;height:auto}
 @media (min-width:960px){.work{gap:72px;padding-top:96px}}
 .cards{display:grid;grid-template-columns:minmax(0,1fr);gap:48px}
@@ -137,6 +137,8 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rg
 .also li{display:flex;flex-direction:column;gap:12px}
 .also img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
 .also-nm{font-family:var(--mono);font-size:16px}
+.also-nm>span[translate]{white-space:nowrap}
+@media (max-width:899px){.also-nm{font-size:14px}}
 @media (min-width:900px){.also-nm,.also-tx{white-space:nowrap}}
 .also-nm .dim{font-size:12px}
 .also-tx{font-size:14px;color:var(--muted)}
@@ -250,7 +252,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rg
 .car{display:flex;flex-direction:column;gap:14px}
 .car-row{display:grid;grid-auto-flow:column;grid-auto-columns:82%;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
 .car-row::-webkit-scrollbar{display:none}
-.car-row img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;scroll-snap-align:start;display:block}
+.car-row img{width:100%;height:auto;object-fit:cover;scroll-snap-align:start;display:block}
 @media (min-width:640px){.car-row{grid-auto-columns:calc((100% - 32px) / 3)}}
 @media (min-width:1100px){.car-row{grid-auto-columns:calc((100% - 48px) / 3.4)}}
 .car-nav{display:flex;gap:8px;justify-content:flex-end}
