@@ -93,7 +93,14 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rg
 .walk p{font-size:14px;line-height:1.5;color:var(--muted);max-width:44ch}
 .walk .btn{flex:none}
 .walk.on .tag{color:var(--ink)}
-@media (min-width:960px){.hero{grid-template-columns:minmax(0,470fr) minmax(0,660fr);gap:36px;align-items:start;padding-block:40px 56px}.map-box{margin-top:-10px}}
+@media (min-width:960px){
+  /* the text sits centred on the brain; the free review hangs below the brain */
+  .hero{grid-template-columns:minmax(0,470fr) minmax(0,660fr);column-gap:36px;row-gap:0;align-items:start;padding-block:40px 56px}
+  .map-box{display:contents}
+  .hero-copy{grid-column:1;grid-row:1 / span 2;align-self:start;margin-top:var(--copy-shift,0px)}
+  .map{grid-column:2;grid-row:1;margin-top:var(--map-shift,-10px)}
+  .walk{grid-column:2;grid-row:2}
+}
 @media (max-width:420px){.steps{grid-template-columns:minmax(0,1fr)}}
 
 /* the free fixes: a slim paper band */

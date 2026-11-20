@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { T, useT } from '../lang.jsx'
 import { REVIEW, Footer, Header } from '../components/Chrome.jsx'
@@ -34,6 +34,29 @@ export default function Home() {
   const [active, setActive] = useState(-1)
   const onActive = useCallback((i) => setActive(i), [])
   const { hash } = useLocation()
+  const heroRef = useRef(null)
+
+  // On wide screens, line the middle of the text up with the middle of the brain.
+  // Whichever is shorter moves down; the free review stays tucked under the brain.
+  useEffect(() => {
+    const hero = heroRef.current
+    if (!hero) return
+    const copy = hero.querySelector('.hero-copy')
+    const map = hero.querySelector('.map')
+    const wide = window.matchMedia('(min-width: 960px)')
+    const fit = () => {
+      hero.style.removeProperty('--copy-shift')
+      hero.style.removeProperty('--map-shift')
+      if (!wide.matches) return
+      const d = (map.offsetHeight - copy.offsetHeight) / 2
+      if (d >= 0) hero.style.setProperty('--copy-shift', `${d}px`)
+      else hero.style.setProperty('--map-shift', `${-d}px`)
+    }
+    const ro = new ResizeObserver(fit)
+    ro.observe(copy); ro.observe(map)
+    wide.addEventListener('change', fit)
+    return () => { ro.disconnect(); wide.removeEventListener('change', fit) }
+  }, [])
 
   // Coming back from a project page with /#work: land on the cards, not the top
   useEffect(() => {
@@ -45,7 +68,7 @@ export default function Home() {
       <a className="skip" href="#main"><T en="Skip to content" es="Ir al contenido" /></a>
       <Header />
       <main id="main">
-        <section className="hero wrap" aria-labelledby="hero-h">
+        <section className="hero wrap" ref={heroRef} aria-labelledby="hero-h">
           <div className="hero-copy">
             <h1 id="hero-h"><T en="Before anyone says yes, four things happen in their head." es="Antes de decir que sí, a cualquiera le pasan cuatro cosas por la cabeza." /></h1>
             <p className="hero-sub"><T en="Brand, content, websites and Meta ads, in English and Spanish. Most of my work is for hotels, restaurants and real estate in Tulum." es="Marca, contenido, sitios web y anuncios en Meta, en español e inglés. La mayor parte de mi trabajo es para hoteles, restaurantes y bienes raíces en Tulum." /></p>
