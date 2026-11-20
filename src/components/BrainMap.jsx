@@ -12,6 +12,35 @@ export const REGIONS = [
   { dot: [110, 270], centre: [160, 250] },
 ]
 
+// The guest's path: through the four points in order, then down out of the brain to the walkthrough
+export const TAIL = [110, BH + 34]
+const PATH = [...REGIONS.map((r) => r.dot), TAIL]
+const seg = (i) => `M${PATH[i][0]},${PATH[i][1]} L${PATH[i + 1][0]},${PATH[i + 1][1]}`
+const WHOLE = 'M' + PATH.map((p) => p.join(',')).join(' L')
+
+/** Dotted path between the points. The active step's leg lights up and a signal runs along it to the next step. */
+function GuestPath({ active }) {
+  return (
+    <svg className="path" viewBox={`0 0 ${BW} ${BH}`} aria-hidden="true">
+      <path className="trail" d={WHOLE} />
+      <circle className="end" cx={TAIL[0]} cy={TAIL[1]} r="4" />
+      {active < 0 && (
+        <circle className="drift" r="3.5">
+          <animateMotion dur="7s" repeatCount="indefinite" path={WHOLE} keyPoints="0;1;1" keyTimes="0;.7;1" calcMode="linear" />
+        </circle>
+      )}
+      {active >= 0 && (
+        <g key={active}>
+          <path className="leg" d={seg(active)} />
+          <circle className="signal" r="5">
+            <animateMotion dur="1.1s" repeatCount="indefinite" path={seg(active)} keyPoints="0;1;1" keyTimes="0;.8;1" calcMode="spline" keySplines=".4 0 .2 1;0 0 1 1" />
+          </circle>
+        </g>
+      )}
+    </svg>
+  )
+}
+
 /**
  * The brain with live neural pathways. Only the brain itself reacts to the pointer
  * (pixels with alpha > 150), never the ground around it.
@@ -193,11 +222,12 @@ export default function BrainMap({ labels, active, onActive, alt }) {
         <img src="/img/brain.webp" alt={alt} width={BW} height={BH} fetchPriority="high" draggable="false" />
       </picture>
       <canvas ref={canvasRef} aria-hidden="true" />
+      <GuestPath active={active} />
       {REGIONS.map((r, i) => (
         <button
           key={i}
           type="button"
-          className={i === active ? 'dot on' : 'dot'}
+          className={i === active ? 'dot on' : i === active + 1 && active >= 0 ? 'dot up' : 'dot'}
           data-n={`0${i + 1}`}
           style={{ left: `${(r.dot[0] / BW) * 100}%`, top: `${(r.dot[1] / BH) * 100}%` }}
           aria-label={labels[i]}

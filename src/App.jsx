@@ -5,6 +5,7 @@ import Home from './pages/Home.jsx'
 
 // The brief and 404 are split out so the homepage loads only what it needs
 const Brief = lazy(() => import('./pages/Brief.jsx'))
+const Work = lazy(() => import('./pages/Work.jsx'))
 const NotFound = lazy(() => import('./pages/NotFound.jsx'))
 
 export default function App() {
@@ -13,6 +14,7 @@ export default function App() {
       <Suspense fallback={<div className="bf" />}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/work/:id" element={<Work />} />
           <Route path="/brief" element={<Brief />} />
           <Route path="/brief/:project" element={<Brief />} />
           <Route path="*" element={<NotFound />} />

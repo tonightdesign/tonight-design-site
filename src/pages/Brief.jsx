@@ -158,6 +158,7 @@ export default function Brief() {
               <p className="label" translate="no">tonight.design · brief</p>
               <h1 tabIndex={-1} translate="no">{t(brief.title)}</h1>
               <p className="lede">{t(brief.intro)}</p>
+              {brief.pricing && <p className="pricing">{t(brief.pricing)}</p>}
               <div className="ctas"><button className="btn primary" type="button" onClick={next}>{draft ? <T en="Continue" es="Continuar" /> : <T en="Start" es="Empezar" />}<span className="ar" aria-hidden="true">→</span></button></div>
             </section>
           ) : step === 1 ? (
