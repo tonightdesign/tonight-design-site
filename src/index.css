@@ -256,3 +256,38 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rg
 .car-nav button{background:none;border:1px solid var(--edge);color:var(--ink);font-family:var(--mono);font-size:16px;width:44px;height:44px;cursor:pointer;transition:border-color .15s,color .15s}
 .car-nav button:hover{border-color:var(--cyan);color:var(--cyan)}
 @media (hover:none){.car-nav{display:none}}
+
+/* website preview: a browser window you scroll inside */
+.sp{margin:0;border-radius:10px 10px 0 0;overflow:hidden;background:#F3EEE6}
+.sp-bar{height:34px;background:#D9D2C9;display:flex;align-items:center;gap:7px;padding:0 14px}
+.sp-bar i{width:11px;height:11px;border-radius:50%;background:#B8AFA5;flex:none}
+.sp-bar span{margin-left:12px;font-family:var(--mono);font-size:12px;color:#6f675e}
+.sp-scr{height:clamp(320px,62vw,760px);max-height:78vh;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#B8AFA5 transparent}
+.sp-scr img{display:block;width:100%;height:auto}
+
+/* brochure: a spread whose right page turns over the spine */
+.bk{display:flex;flex-direction:column;gap:14px}
+.bk:fullscreen{background:#111;justify-content:center;padding:16px}
+.bk:fullscreen .bk-spread{width:min(100%,calc((100vh - 90px) * 16 / 9));margin-inline:auto}
+.bk-spread{position:relative;aspect-ratio:16/9;perspective:2600px;cursor:pointer;touch-action:pan-y;user-select:none;background:#eee;box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+.bk-half,.bk-leaf{position:absolute;top:0;bottom:0;width:50%}
+.bk-half{background-size:200% 100%;background-repeat:no-repeat}
+.bk-half.l{left:0}.bk-half.r{right:0}
+.bk-leaf{transform-style:preserve-3d;z-index:2;will-change:transform}
+.bk-leaf.fwd{left:50%;transform-origin:0 50%;animation:turnF .7s cubic-bezier(.45,.05,.25,1) forwards}
+.bk-leaf.back{left:0;transform-origin:100% 50%;animation:turnB .7s cubic-bezier(.45,.05,.25,1) forwards}
+@keyframes turnF{to{transform:rotateY(-180deg)}}
+@keyframes turnB{to{transform:rotateY(180deg)}}
+.bk-face{position:absolute;inset:0;background-size:200% 100%;background-repeat:no-repeat;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.bk-rev{transform:rotateY(180deg)}
+.bk-face::after{content:"";position:absolute;inset:0;pointer-events:none;animation:shade .7s ease-in-out forwards}
+@keyframes shade{0%{background:rgba(0,0,0,0)}50%{background:rgba(0,0,0,.18)}100%{background:rgba(0,0,0,0)}}
+.bk-spine{position:absolute;top:0;bottom:0;left:calc(50% - 40px);width:80px;z-index:3;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,0),rgba(0,0,0,.10) 45%,rgba(0,0,0,.22) 50%,rgba(0,0,0,.10) 55%,rgba(0,0,0,0))}
+.bk-sr{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.bk-nav{display:flex;align-items:center;gap:8px}
+.bk-nav .tag{min-width:64px;text-align:center}
+.bk-nav button{background:none;border:1px solid var(--edge);color:var(--ink);font-family:var(--mono);font-size:16px;min-width:44px;height:44px;padding:0 12px;cursor:pointer;transition:border-color .15s,color .15s}
+.bk-nav button:hover:not(:disabled){border-color:var(--cyan);color:var(--cyan)}
+.bk-nav button:disabled{opacity:.35;cursor:default}
+.bk-nav .bk-full{margin-left:auto;font-size:13px}
+@media (prefers-reduced-motion:reduce){.bk-leaf{animation:none}}

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { T, useT } from '../lang.jsx'
 import { Footer, Header } from '../components/Chrome.jsx'
@@ -54,6 +54,8 @@ export default function Work() {
               </div>
             )}
             {s.carousel && <Carousel c={s.carousel} />}
+            {s.site && <SitePreview s={s.site} />}
+            {s.book && <Book b={s.book} />}
             {s.images && <div className={s.cols ? `shots c${s.cols}` : 'shots'}>
               {s.images.map((img) => img.video ? (
                 <video key={img.video} className={img.lead ? 'shot lead' : 'shot'} src={img.video} poster={img.src} width={img.w} height={img.h} aria-label={t(img.alt)} autoPlay muted loop playsInline preload="metadata" />
@@ -101,6 +103,96 @@ function Carousel({ c }) {
       <div className="car-nav">
         <button type="button" onClick={() => go(-1)} aria-label={t({ en: 'Previous card', es: 'Tarjeta anterior' })}>←</button>
         <button type="button" onClick={() => go(1)} aria-label={t({ en: 'Next card', es: 'Tarjeta siguiente' })}>→</button>
+      </div>
+    </div>
+  )
+}
+
+/** The client's home page in a browser window, scrolled inside the window. */
+function SitePreview({ s }) {
+  const t = useT()
+  return (
+    <figure className="sp">
+      <div className="sp-bar" aria-hidden="true"><i /><i /><i /><span>{s.url}</span></div>
+      <div className="sp-scr" tabIndex="0" aria-label={t({ en: 'Website preview, scrollable', es: 'Vista del sitio, con desplazamiento' })}>
+        <img src={s.src} width={s.w} height={s.h} alt={t(s.alt)} loading="lazy" decoding="async" />
+      </div>
+    </figure>
+  )
+}
+
+/** A brochure you leaf through: the right page turns over the spine like paper. */
+function Book({ b }) {
+  const t = useT()
+  const base = t(b.src)
+  const page = (i) => `${base}${String(i + 1).padStart(2, '0')}.webp`
+  const [cur, setCur] = useState(0)
+  const [turn, setTurn] = useState(null) // { dir: 1 | -1, to }
+  const box = useRef(null)
+  const startX = useRef(null)
+  const still = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  // keep the pages either side ready so a turn never shows a blank sheet
+  useEffect(() => {
+    ;[cur - 1, cur + 1, cur + 2].forEach((i) => { if (i >= 0 && i < b.pages) { const im = new Image(); im.src = page(i) } })
+  }, [cur, base]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  const go = useCallback((dir) => {
+    if (turn) return
+    const to = cur + dir
+    if (to < 0 || to >= b.pages) return
+    if (still) { setCur(to); return }
+    setTurn({ dir, to })
+  }, [cur, turn, b.pages, still])
+
+  const done = () => { if (turn) { setCur(turn.to); setTurn(null) } }
+
+  const L = turn ? (turn.dir > 0 ? cur : turn.to) : cur
+  const R = turn ? (turn.dir > 0 ? turn.to : cur) : cur
+  const bg = (i, side) => ({ backgroundImage: `url(${page(i)})`, backgroundPosition: side === 'l' ? '0 0' : '100% 0' })
+
+  const full = () => {
+    const el = box.current
+    if (!el) return
+    if (document.fullscreenElement) document.exitFullscreen()
+    else el.requestFullscreen?.().then(() => screen.orientation?.lock?.('landscape').catch(() => {})).catch(() => {})
+  }
+
+  return (
+    <div className="bk" ref={box}>
+      <div
+        className="bk-spread"
+        role="group"
+        aria-roledescription={t({ en: 'brochure', es: 'brochure' })}
+        aria-label={t({ en: `Page ${cur + 1} of ${b.pages}`, es: `Página ${cur + 1} de ${b.pages}` })}
+        tabIndex="0"
+        onKeyDown={(e) => { if (e.key === 'ArrowRight') go(1); if (e.key === 'ArrowLeft') go(-1) }}
+        onPointerDown={(e) => { startX.current = e.clientX }}
+        onPointerUp={(e) => {
+          if (startX.current == null) return
+          const dx = e.clientX - startX.current
+          startX.current = null
+          if (Math.abs(dx) > 40) { go(dx < 0 ? 1 : -1); return }
+          const r = e.currentTarget.getBoundingClientRect()
+          go(e.clientX - r.left > r.width / 2 ? 1 : -1)
+        }}
+      >
+        <div className="bk-half l" style={bg(L, 'l')} />
+        <div className="bk-half r" style={bg(R, 'r')} />
+        {turn && (
+          <div className={turn.dir > 0 ? 'bk-leaf fwd' : 'bk-leaf back'} onAnimationEnd={done}>
+            <div className="bk-face" style={turn.dir > 0 ? bg(cur, 'r') : bg(cur, 'l')} />
+            <div className="bk-face bk-rev" style={turn.dir > 0 ? bg(turn.to, 'l') : bg(turn.to, 'r')} />
+          </div>
+        )}
+        <div className="bk-spine" aria-hidden="true" />
+        <img className="bk-sr" src={page(cur)} alt="" width={b.w} height={b.h} />
+      </div>
+      <div className="bk-nav">
+        <button type="button" onClick={() => go(-1)} disabled={cur === 0} aria-label={t({ en: 'Previous page', es: 'Página anterior' })}>←</button>
+        <span className="tag dim" aria-live="polite">{String((turn ? turn.to : cur) + 1).padStart(2, '0')} / {b.pages}</span>
+        <button type="button" onClick={() => go(1)} disabled={cur === b.pages - 1} aria-label={t({ en: 'Next page', es: 'Página siguiente' })}>→</button>
+        <button type="button" className="bk-full" onClick={full}><T en="Full screen" es="Pantalla completa" /></button>
       </div>
     </div>
   )

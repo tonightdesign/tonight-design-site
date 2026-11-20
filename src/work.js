@@ -118,12 +118,13 @@ const ALL = [
     facts: [
       { k: { en: 'Client', es: 'Cliente' }, v: { en: 'La Reserva Tulum', es: 'La Reserva Tulum' } },
       { k: { en: 'Place', es: 'Lugar' }, v: { en: 'Tulum', es: 'Tulum' } },
-      { k: { en: 'Made', es: 'Hice' }, v: { en: 'Website, Meta ads, brochures and the photobook', es: 'Sitio web, anuncios en Meta, brochures y el photobook' } },
+      { k: { en: 'Made', es: 'Hice' }, v: { en: 'Website, Meta ads and the brochure', es: 'Sitio web, anuncios en Meta y el brochure' } },
     ],
     sections: [
       {
         title: { en: 'The website', es: 'El sitio web' },
-        images: [{ src: '/work/la-reserva-home.webp', w: 1915, h: 915, alt: { en: 'La Reserva Tulum home page: feel of a home, care of a hotel', es: 'Página de inicio de La Reserva Tulum: feel of a home, care of a hotel' } }],
+        text: { en: 'The whole home page. Scroll inside the window to read it.', es: 'La página de inicio completa. Desplácese dentro de la ventana para recorrerla.' },
+        site: { src: '/work/la-reserva-site-full.webp', w: 1200, h: 6834, url: 'lareservatulum.com', alt: { en: 'The full La Reserva Tulum home page, from the hero to the footer', es: 'La página de inicio completa de La Reserva Tulum, del encabezado al pie' } },
       },
       {
         title: { en: 'Meta ads', es: 'Anuncios en Meta' },
@@ -147,12 +148,9 @@ const ALL = [
         images: [{ src: '/work/la-reserva-ads.webp', w: 2056, h: 720, alt: { en: 'Three Meta ads for the La Reserva referral program', es: 'Tres anuncios en Meta del programa de referidos de La Reserva' } }],
       },
       {
-        title: { en: 'The photobook', es: 'El photobook' },
-        cols: 2,
-        images: [
-          { src: '/work/la-reserva-book.webp', w: 1500, h: 960, alt: { en: 'La Reserva photobook, volume one, closed', es: 'El photobook de La Reserva, volumen uno, cerrado' } },
-          { src: '/work/la-reserva-spread.webp', w: 1500, h: 960, alt: { en: 'An open spread of the photobook', es: 'Una doble página del photobook' } },
-        ],
+        title: { en: 'The brochure', es: 'El brochure' },
+        text: { en: 'Sixteen of its fifty-one pages. Turn them with the arrows, a swipe or a tap on either side.', es: 'Dieciséis de sus cincuenta y una páginas. Páselas con las flechas, deslizando o tocando a cada lado.' },
+        book: { pages: 16, src: { en: '/work/brochure-en-', es: '/work/brochure-es-' }, w: 1600, h: 900 },
       },
     ],
   },
