@@ -1,5 +1,5 @@
 /*
-  The four brands on the home page, in the order of the guest's four steps.
+  The four brands on the home page, in the order shown on the page.
   Each one has a card (cover + one line) and its own page at /work/<id>.
   A section is a heading, an optional line, and one or more images. `cols` lays the images side by side.
 */

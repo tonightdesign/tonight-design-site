@@ -12,7 +12,7 @@ export const REGIONS = [
   { dot: [110, 270], centre: [160, 250] },
 ]
 
-// The guest's path: through the four points in order, then down out of the brain to the walkthrough
+// The customer's path: through the four points in order, then down out of the brain to the walkthrough
 export const TAIL = [110, BH + 34]
 const PATH = [...REGIONS.map((r) => r.dot), TAIL]
 const seg = (i) => `M${PATH[i][0]},${PATH[i][1]} L${PATH[i + 1][0]},${PATH[i + 1][1]}`

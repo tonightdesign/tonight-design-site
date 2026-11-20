@@ -8,7 +8,7 @@ export const CONTACT = {
   waLink: 'https://wa.me/352621585610',
 }
 
-export const WALK = '/brief/walkthrough'
+export const REVIEW = '/brief/review'
 
 export function LangSwitch() {
   const { lang, setLang } = useLang()
@@ -66,7 +66,7 @@ function useTulumTime() {
   return time
 }
 
-/** Site footer. With cta, it carries the "Where are you losing guests?" block. */
+/** Site footer. With cta, it carries the "Where are you losing customers?" block. */
 export function Footer({ cta = false }) {
   const time = useTulumTime()
   return (
@@ -74,12 +74,12 @@ export function Footer({ cta = false }) {
       <div className="wrap ft-in">
         {cta && (
           <div className="ft-ask">
-            <h2><T en="Where are you losing guests?" es="¿Dónde está perdiendo huéspedes?" /></h2>
+            <h2><T en="Where are you losing customers?" es="¿Dónde está perdiendo clientes?" /></h2>
             <div className="ft-ctas">
-              <Link className="btn primary lg" to={WALK}><T en="Book a guest walkthrough" es="Pedir mi recorrido como huésped" /><span className="ar" aria-hidden="true">→</span></Link>
+              <Link className="btn primary lg" to={REVIEW}><T en="Get my free review" es="Quiero mi revisión" /><span className="ar" aria-hidden="true">→</span></Link>
               <a className="btn ghost lg" href="/#work"><T en="See the work" es="Ver el trabajo" /></a>
             </div>
-            <p className="ft-note"><T en="I go through your ads, website and booking page the way a guest would, and show you where a guest would hesitate or leave. 48 hours, no cost." es="Reviso sus anuncios, su sitio web y su página de reservas como lo haría un huésped, y le muestro dónde un huésped dudaría o se iría. En 48 horas, sin costo." /></p>
+            <p className="ft-note"><T en="I go through your ads, website and social as a new customer would, and show you where they hesitate or leave. In 24 hours, free." es="Reviso sus anuncios, su sitio web y sus redes como lo haría un cliente nuevo, y le señalo dónde duda o se va. En 24 horas, sin costo." /></p>
           </div>
         )}
         <div className="ft-side">

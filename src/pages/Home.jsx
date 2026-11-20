@@ -1,20 +1,20 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { T, useT } from '../lang.jsx'
-import { WALK, Footer, Header } from '../components/Chrome.jsx'
+import { REVIEW, Footer, Header } from '../components/Chrome.jsx'
 import BrainMap from '../components/BrainMap.jsx'
 import { ALSO, WORK } from '../work.js'
 
-// What happens in a guest's head, in order, and the service that answers each step
+// What happens in a customer's head, in order, and the service that answers each step
 const STEPS = [
   {
     tag: { en: '01 attention', es: '01 atención' },
     title: { en: 'The ad', es: 'El anuncio' },
-    text: { en: 'Ads and signs that make them stop.', es: 'Anuncios y letreros que los hacen detenerse.' },
+    text: { en: 'Ads and signs that make people stop.', es: 'Anuncios y letreros que hacen que la gente se detenga.' },
   },
   {
     tag: { en: '02 desire', es: '02 deseo' },
-    title: { en: 'The photos', es: 'Las fotos' },
+    title: { en: 'The content', es: 'El contenido' },
     text: { en: 'Posts, stories and print in both languages.', es: 'Posts, stories e impresos en los dos idiomas.' },
   },
   {
@@ -24,8 +24,8 @@ const STEPS = [
   },
   {
     tag: { en: '04 decision', es: '04 decisión' },
-    title: { en: 'The booking', es: 'La reserva' },
-    text: { en: 'A website that gets them to book.', es: 'Un sitio web que los lleva a reservar.' },
+    title: { en: 'The website', es: 'El sitio web' },
+    text: { en: 'A website that makes the yes easy.', es: 'Un sitio que les facilita decir que sí.' },
   },
 ]
 
@@ -47,8 +47,8 @@ export default function Home() {
       <main id="main">
         <section className="hero wrap" aria-labelledby="hero-h">
           <div className="hero-copy">
-            <h1 id="hero-h"><T en="Before a guest books, four things happen in their head." es="Antes de reservar, a un huésped le pasan cuatro cosas por la cabeza." /></h1>
-            <p className="hero-sub"><T en="Brand, content and Meta ads for hotels, wellness retreats, restaurants and real estate. In English and Spanish." es="Marca, contenido y anuncios en Meta para hoteles, retiros de bienestar, restaurantes y bienes raíces. En español e inglés." /></p>
+            <h1 id="hero-h"><T en="Before anyone says yes, four things happen in their head." es="Antes de decir que sí, a cualquiera le pasan cuatro cosas por la cabeza." /></h1>
+            <p className="hero-sub"><T en="Brand, content, websites and Meta ads, in English and Spanish. Most of my work is for hotels, restaurants and real estate in Tulum." es="Marca, contenido, sitios web y anuncios en Meta, en español e inglés. La mayor parte de mi trabajo es para hoteles, restaurantes y bienes raíces en Tulum." /></p>
             <ol className={active >= 0 ? 'steps focus' : 'steps'}>
               {STEPS.map((s, i) => (
                 <li
@@ -73,11 +73,11 @@ export default function Home() {
             />
             <div className={active === 3 ? 'walk on' : 'walk'}>
               <div className="walk-tx">
-                <span className="tag"><T en="Guest walkthrough" es="Recorrido como huésped" /></span>
-                <h2><T en="Follow your guest from ad to booking." es="Siga a su huésped del anuncio a la reserva." /></h2>
-                <p><T en="I go through your ads, website and booking page as a guest would, and show you where a guest would hesitate or leave. 48 hours, no cost." es="Reviso sus anuncios, su sitio web y su página de reservas como lo haría un huésped, y le muestro dónde un huésped dudaría o se iría. En 48 horas, sin costo." /></p>
+                <span className="tag"><T en="Free review" es="Revisión gratuita" /></span>
+                <h2><T en="See your brand the way a new customer does." es="Vea su marca como la ve un cliente nuevo." /></h2>
+                <p><T en="I go through your ads, website and social as a new customer would, and show you where they hesitate or leave. In 24 hours, free." es="Reviso sus anuncios, su sitio web y sus redes como lo haría un cliente nuevo, y le señalo dónde duda o se va. En 24 horas, sin costo." /></p>
               </div>
-              <Link className="btn primary" to={WALK}><T en="Book a walkthrough" es="Pedir mi recorrido" /><span className="ar" aria-hidden="true">→</span></Link>
+              <Link className="btn primary" to={REVIEW}><T en="Get my free review" es="Quiero mi revisión" /><span className="ar" aria-hidden="true">→</span></Link>
             </div>
           </div>
         </section>

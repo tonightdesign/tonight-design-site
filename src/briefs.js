@@ -40,6 +40,7 @@ export const BRIEFS = {
           { en: 'Vacation rental', es: 'Renta vacacional' },
           { en: 'Residential development', es: 'Desarrollo residencial' },
           { en: 'Restaurant, cafe or beach club', es: 'Restaurante, café o beach club' },
+          { en: 'Shop or product brand', es: 'Tienda o marca de producto' },
           OTHER,
         ] },
       { id: 'size', type: 'choice',
@@ -84,15 +85,15 @@ export const BRIEFS = {
     ],
   },
 
-  walkthrough: {
-    title: { en: 'Guest walkthrough', es: 'Recorrido como huésped' },
+  review: {
+    title: { en: 'Free review', es: 'Revisión gratuita' },
     intro: {
-      en: 'Send me your links. Within 48 hours I go through your ads, website and booking page as a guest would, and show you where a guest would hesitate or leave. Free.',
-      es: 'Mándeme sus enlaces. En 48 horas reviso sus anuncios, su sitio web y su página de reservas como lo haría un huésped, y le muestro dónde un huésped dudaría o se iría. Sin costo.',
+      en: 'Send me your links. Within 24 hours I go through your ads, website and social as a new customer would, and show you where they hesitate or leave. Free.',
+      es: 'Mándeme sus enlaces. En 24 horas reviso sus anuncios, su sitio web y sus redes como lo haría un cliente nuevo, y le señalo dónde duda o se va. Sin costo.',
     },
     done: {
-      en: 'You will have your walkthrough within 48 hours, by email or WhatsApp. If I need anything else, I will ask.',
-      es: 'En 48 horas le mando su recorrido por correo o WhatsApp. Si necesito algo más, le pregunto.',
+      en: 'You will have your review within 24 hours, by email or WhatsApp. If I need anything else, I will ask.',
+      es: 'En 24 horas le mando su revisión por correo o WhatsApp. Si necesito algo más, le pregunto.',
     },
     questions: [
       { id: 'business', type: 'choice', required: true,
@@ -102,11 +103,12 @@ export const BRIEFS = {
           { en: 'Wellness retreat', es: 'Retiro de bienestar' },
           { en: 'Restaurant or beach club', es: 'Restaurante o beach club' },
           { en: 'Real estate', es: 'Bienes raíces' },
+          { en: 'Shop or product brand', es: 'Tienda o marca de producto' },
           OTHER,
         ] },
       { id: 'links', type: 'textarea', required: true,
         q: { en: 'Where should I look?', es: '¿Dónde puedo ver su negocio?' },
-        help: { en: 'Your website, Instagram and booking page. Paste the links.', es: 'Su sitio web, Instagram y página de reservas. Pegue aquí los enlaces.' } },
+        help: { en: 'Your website, Instagram and anything else your customers see. Paste the links.', es: 'Su sitio web, Instagram y todo lo que ven sus clientes. Pegue aquí los enlaces.' } },
       { id: 'focus', type: 'multi',
         q: { en: 'What worries you most?', es: '¿Qué le gustaría mejorar primero?' },
         help: { en: 'Optional. Choose all that apply.', es: 'Opcional. Puede elegir varias.' },
@@ -114,7 +116,7 @@ export const BRIEFS = {
           { en: 'My ads', es: 'Mis anuncios' },
           { en: 'Instagram', es: 'Instagram' },
           { en: 'The website', es: 'El sitio web' },
-          { en: 'The booking page', es: 'La página de reservas' },
+          { en: 'Where they buy or book', es: 'Donde compran o reservan' },
           { en: 'Not sure', es: 'Todavía no sé' },
         ] },
       { id: 'notes', type: 'textarea',
@@ -251,5 +253,6 @@ BRIEFS['kin-kakaw'] = {
   title: { en: 'K’in Kakaw · brand discovery', es: 'K’in Kakaw · descubrimiento de marca' },
 }
 
-// Old links to the free fixes still work: same form, new name.
-BRIEFS.fixes = BRIEFS.walkthrough
+// Old links still work: same form, new name.
+BRIEFS.walkthrough = BRIEFS.review
+BRIEFS.fixes = BRIEFS.review
