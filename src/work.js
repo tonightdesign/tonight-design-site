@@ -1,12 +1,14 @@
 /*
   The four brands on the home page, in the order shown on the page.
   Each one has a card (cover + one line) and its own page at /work/<id>.
+  `site` is the client's own website (or Instagram), shown under the facts and opened in a new tab.
   A section is a heading, an optional line, and one or more images. `cols` lays the images side by side.
 */
 
 const ALL = [
   {
     id: 'mr-shmokey',
+    site: { k: { en: 'Instagram', es: 'Instagram' }, url: 'https://www.instagram.com/mr.shmokey/', text: '@mr.shmokey' },
     name: 'Mr. Shmokey',
     line: { en: 'Signage that stops the street.', es: 'Letreros que detienen a la calle.' },
     cover: { src: '/work/cover-shmokey.webp', alt: { en: 'The Mr. Shmokey logo above the coffee board', es: 'El logo de Mr. Shmokey sobre el menú de café' } },
@@ -32,6 +34,7 @@ const ALL = [
   },
   {
     id: 'mare',
+    site: { k: { en: 'Website', es: 'Sitio web' }, url: 'https://villapescadorestulum.com/', text: 'villapescadorestulum.com' },
     name: 'Máre',
     line: { en: 'A beach club brand, from scratch.', es: 'Una marca de beach club, desde cero.' },
     cover: { src: '/work/cover-mare.webp', alt: { en: 'The Máre logo and two of its characters, next to the menu', es: 'El logo de Máre y dos de sus personajes, junto al menú' } },
@@ -62,6 +65,7 @@ const ALL = [
   },
   {
     id: 'ahau-collection',
+    site: { k: { en: 'Website', es: 'Sitio web' }, url: 'https://ahaucollection.com/', text: 'ahaucollection.com' },
     name: 'Ahau Collection',
     line: { en: 'One system, four hotels.', es: 'Un sistema, cuatro hoteles.' },
     cover: { src: '/work/cover-ahau.webp', alt: { en: 'The Ahau Collection wordmark above the logos of Ahau, Alaya, Villa Pescadores and Casa Ganesh', es: 'El logo de Ahau Collection sobre los de Ahau, Alaya, Villa Pescadores y Casa Ganesh' } },
@@ -94,6 +98,7 @@ const ALL = [
   },
   {
     id: 'la-reserva',
+    site: { k: { en: 'Website', es: 'Sitio web' }, url: 'https://lareservatulum.com/', text: 'lareservatulum.com' },
     name: 'La Reserva',
     line: { en: 'The website and Meta ads.', es: 'El sitio web y los anuncios en Meta.' },
     cover: { src: '/work/cover-la-reserva.webp', alt: { en: 'The La Reserva Tulum home page with two referral ads', es: 'La página de inicio de La Reserva Tulum con dos anuncios de referidos' } },

@@ -94,7 +94,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rg
 .walk .btn{flex:none}
 .walk.on .tag{color:var(--ink)}
 @media (min-width:960px){
-  /* the text sits centred on the brain; the free review hangs below the brain */
+  /* the text sits centred on the brain and the free review together */
   .hero{grid-template-columns:minmax(0,470fr) minmax(0,660fr);column-gap:36px;row-gap:0;align-items:start;padding-block:40px 56px}
   .map-box{display:contents}
   .hero-copy{grid-column:1;grid-row:1 / span 2;align-self:start;margin-top:var(--copy-shift,0px)}
@@ -120,7 +120,6 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rg
 .wc h3{font-family:var(--mono);font-size:24px;line-height:1.25;letter-spacing:-.03em}
 .wc .ln{font-size:16px;line-height:1.4;color:var(--muted)}
 .wc:hover img{opacity:.88}
-.wc:hover h3{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
 .cap{font-family:var(--mono);font-size:12px;color:var(--dim)}
 .tag.dim,.dim{color:var(--dim)}
 .also{display:flex;flex-direction:column;gap:20px;padding-top:16px;border-top:1px solid var(--line)}
@@ -211,6 +210,8 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rg
 .facts div{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;font-size:14px;line-height:1.5}
 .facts dt{color:var(--dim);padding-top:2px}
 .facts dd{margin:0}
+.facts .site{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--edge);padding-bottom:1px;transition:color .15s,border-color .15s}
+.facts .site:hover{color:var(--cyan);border-color:var(--cyan)}
 .wp-sec{display:flex;flex-direction:column;gap:24px}
 .wp-sec+.wp-sec{margin-top:40px}
 .wp-sec-hd{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}

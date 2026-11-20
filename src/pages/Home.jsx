@@ -36,24 +36,25 @@ export default function Home() {
   const { hash } = useLocation()
   const heroRef = useRef(null)
 
-  // On wide screens, line the middle of the text up with the middle of the brain.
-  // Whichever is shorter moves down; the free review stays tucked under the brain.
+  // On wide screens, line the middle of the text up with the middle of the whole right side
+  // (the brain plus the free review under it). Whichever is shorter moves down.
   useEffect(() => {
     const hero = heroRef.current
     if (!hero) return
     const copy = hero.querySelector('.hero-copy')
     const map = hero.querySelector('.map')
+    const walk = hero.querySelector('.walk')
     const wide = window.matchMedia('(min-width: 960px)')
     const fit = () => {
       hero.style.removeProperty('--copy-shift')
       hero.style.removeProperty('--map-shift')
       if (!wide.matches) return
-      const d = (map.offsetHeight - copy.offsetHeight) / 2
+      const d = (map.offsetHeight + walk.offsetHeight - copy.offsetHeight) / 2
       if (d >= 0) hero.style.setProperty('--copy-shift', `${d}px`)
       else hero.style.setProperty('--map-shift', `${-d}px`)
     }
     const ro = new ResizeObserver(fit)
-    ro.observe(copy); ro.observe(map)
+    ro.observe(copy); ro.observe(map); ro.observe(walk)
     wide.addEventListener('change', fit)
     return () => { ro.disconnect(); wide.removeEventListener('change', fit) }
   }, [])

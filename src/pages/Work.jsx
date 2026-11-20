@@ -39,6 +39,9 @@ export default function Work() {
             {w.facts.map((f) => (
               <div key={f.k.en}><dt className="tag">{t(f.k)}</dt><dd>{t(f.v)}</dd></div>
             ))}
+            {w.site && (
+              <div><dt className="tag">{t(w.site.k)}</dt><dd><a className="site" href={w.site.url} target="_blank" rel="noopener noreferrer" translate="no">{w.site.text} ↗</a></dd></div>
+            )}
           </dl>
         </div>
 
