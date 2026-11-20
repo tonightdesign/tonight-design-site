@@ -160,8 +160,8 @@ const ALL = [
 export const WORK = ['ahau-collection', 'la-reserva', 'mare', 'mr-shmokey'].map((id) => ALL.find((w) => w.id === id))
 
 export const ALSO = [
-  { src: '/work/kin-kakaw-11.webp', name: "K'in Kakaw", text: { en: 'Logo for a cacao brand.', es: 'Logo para una marca de cacao.' } },
-  { src: '/work/petrodex-11.webp', name: 'Petrodex', place: { en: 'Dubai', es: 'Dubái' }, text: { en: 'Investor company profile, printed in A5 and A4.', es: 'Perfil para inversionistas, impreso en A5 y A4.' } },
-  { src: '/work/water-toys-11.webp', name: 'Water Toys Center', place: { en: 'Cannes, Monaco', es: 'Cannes, Mónaco' }, text: { en: 'Boat show backdrops and banners.', es: 'Fondos y banners para salones náuticos.' } },
-  { src: '/work/carmel-11.webp', name: 'Carmel', place: { en: 'Mexico', es: 'México' }, text: { en: 'Press kit for a French music producer and DJ.', es: 'Press kit para un productor musical y DJ francés.' } },
+  { src: '/work/kin-kakaw-11.webp', name: "K'in Kakaw", place: { en: 'Tulum', es: 'Tulum' }, text: { en: 'Brand for a plant-based restaurant.', es: 'Marca para un restaurante vegetal.' } },
+  { src: '/work/petrodex-11.webp', name: 'Petrodex', place: { en: 'Dubai', es: 'Dubái' }, text: { en: 'Investor profile in A5 and A4.', es: 'Perfil de inversión en A5 y A4.' } },
+  { src: '/work/water-toys-11.webp', name: 'Water Toys Center', place: { en: 'Monaco', es: 'Mónaco' }, text: { en: 'Boat show backdrops and banners.', es: 'Gráficos para salones náuticos.' } },
+  { src: '/work/carmel-11.webp', name: 'Carmel', place: { en: 'France', es: 'Francia' }, text: { en: 'Press kit for a DJ and producer.', es: 'Press kit para un DJ y productor.' } },
 ]
