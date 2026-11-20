@@ -149,8 +149,8 @@ const ALL = [
       },
       {
         title: { en: 'The brochure', es: 'El brochure' },
-        text: { en: 'Sixteen of its fifty-one pages. Turn them with the arrows, a swipe or a tap on either side.', es: 'Dieciséis de sus cincuenta y una páginas. Páselas con las flechas, deslizando o tocando a cada lado.' },
-        book: { pages: 16, src: { en: '/work/brochure-en-', es: '/work/brochure-es-' }, w: 1600, h: 900 },
+        text: { en: 'Fifteen of its fifty-one pages. Turn them with the arrows, a swipe or a tap on either side.', es: 'Quince de sus cincuenta y una páginas. Páselas con las flechas, deslizando o tocando a cada lado.' },
+        book: { pages: 15, src: { en: '/work/brochure-en-', es: '/work/brochure-es-' }, w: 1600, h: 900 },
       },
     ],
   },
