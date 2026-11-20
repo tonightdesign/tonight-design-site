@@ -137,7 +137,7 @@ export default function WhiteoutOrb({ label }) {
   return (
     <div className="wo-orb" ref={box} role="img" aria-label={label}>
       <canvas ref={back} aria-hidden="true" />
-      <img className="wo-rider" src="/work/whiteout-rider.webp" alt="" width="398" height="502" decoding="async" fetchpriority="high" />
+      <img className="wo-rider" src="/work/whiteout-rider.webp" alt="" width="398" height="502" decoding="async" loading="lazy" />
       <canvas ref={front} aria-hidden="true" />
     </div>
   )

@@ -1,7 +1,4 @@
 /* Whiteout Sessions event site. Only loaded on /whiteout. */
-@font-face{font-family:"WO Grotesk";src:url("/fonts/space-grotesk.woff2") format("woff2");font-weight:300 700;font-display:swap}
-@font-face{font-family:"WO Mono";src:url("/fonts/space-mono.woff2") format("woff2");font-weight:400;font-display:swap}
-@font-face{font-family:"WO Mono";src:url("/fonts/space-mono-bold.woff2") format("woff2");font-weight:700;font-display:swap}
 
 .wo{--wo-pad:max(20px,env(safe-area-inset-left,0px));--wo-ink:#fff;--wo-dim:#9a9a9a;--wo-line:#262626;
   min-height:100svh;background:#050505 url("/img/grain.png");color:var(--wo-ink);font-family:"WO Grotesk",var(--sans);font-size:17px;line-height:1.5}
@@ -23,10 +20,7 @@
 @media (max-width:640px){.wo-hd nav{display:none}}
 
 .wo-hero{display:flex;flex-direction:column;padding:8px var(--wo-pad) 56px}
-.wo-orb{position:relative;width:min(100%,72svh,760px);aspect-ratio:1;margin:0 auto}
-.wo-orb canvas,.wo-rider{position:absolute}
-.wo-orb canvas{inset:0;width:100%;height:100%}
-.wo-rider{left:50.7%;top:36.8%;width:39.8%;height:50.2%;user-select:none;-webkit-user-drag:none}
+.wo-hero .wo-orb{width:min(100%,72svh,760px);margin:0 auto}
 /* Fits the line to the full width: 9.25 is the title's width in ems at this tracking */
 .wo-hero h1{margin:8px 0 0 -.012em;font-family:"WO Grotesk",var(--sans);font-weight:700;font-size:calc((100vw - 2 * var(--wo-pad)) / 9.25);line-height:.86;letter-spacing:-.03em;white-space:nowrap}
 .wo-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 20px;margin-top:22px;font-size:13px;letter-spacing:.04em;text-transform:uppercase}

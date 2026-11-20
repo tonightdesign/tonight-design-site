@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { T, useT } from '../lang.jsx'
 import { REVIEW, Footer, Header } from '../components/Chrome.jsx'
 import BrainMap from '../components/BrainMap.jsx'
+import WhiteoutOrb from '../components/WhiteoutOrb.jsx'
 import { ALSO, WORK } from '../work.js'
 
 // What happens in a customer's head, in order, and the service that answers each step
@@ -112,7 +113,14 @@ export default function Home() {
             {WORK.map((w) => (
               <li key={w.id} className={w.wide ? 'wide' : undefined}>
                 <Link className="wc" to={`/work/${w.id}`}>
-                  <img src={w.cover.src} srcSet={`${w.cover.src.replace('.webp', '-900.webp')} 900w, ${w.cover.src} 1400w`} sizes={w.wide ? '(max-width: 640px) 100vw, 1152px' : '(max-width: 640px) 100vw, 560px'} width="1400" height="713" alt={t(w.cover.alt)} loading="lazy" decoding="async" />
+                  {w.id === 'whiteout-sessions' ? (
+                    <div className="wb">
+                      <span className="wb-t" aria-hidden="true" translate="no">WHITEOUT SESSIONS</span>
+                      <WhiteoutOrb label={t({ en: 'A snowboarder riding the inside wall of a spinning sphere of light dots', es: 'Un snowboarder sobre la pared interior de una esfera de puntos de luz que gira' })} />
+                    </div>
+                  ) : (
+                    <img src={w.cover.src} srcSet={`${w.cover.src.replace('.webp', '-900.webp')} 900w, ${w.cover.src} 1400w`} sizes="(max-width: 640px) 100vw, 560px" width="1400" height="713" alt={t(w.cover.alt)} loading="lazy" decoding="async" />
+                  )}
                   <span className="ttl"><h3 translate="no">{w.name}</h3>{w.tag && <span className="tag dim">{t(w.tag)}</span>}</span>
                   <span className="ln">{t(w.line)}</span>
                 </Link>
