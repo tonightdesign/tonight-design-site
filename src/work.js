@@ -68,7 +68,7 @@ const ALL = [
     site: { k: { en: 'Website', es: 'Sitio web' }, url: 'https://ahaucollection.com/', text: 'ahaucollection.com' },
     name: 'Ahau Collection',
     line: { en: 'One system, four hotels.', es: 'Un sistema, cuatro hoteles.' },
-    cover: { src: '/work/cover-ahau.webp', alt: { en: 'The Ahau Collection wordmark above the logos of Ahau, Alaya, Villa Pescadores and Casa Ganesh', es: 'El logo de Ahau Collection sobre los de Ahau, Alaya, Villa Pescadores y Casa Ganesh' } },
+    cover: { src: '/work/cover-ahau.webp', alt: { en: 'New Years Eve Party at Ahau: a statue drawn in white dots on black, 31.12.26, dinner 8 PM', es: 'Fiesta de Año Nuevo en Ahau: una estatua dibujada con puntos blancos sobre negro, 31.12.26, cena 8 PM' } },
     intro: {
       en: 'Four boutique hotels in Tulum. Ahau, Alaya and Villa Pescadores, each with rooms, a restaurant and a beach club, and Casa Ganesh. Six years on the brands, from menus to campaigns.',
       es: 'Cuatro hoteles boutique en Tulum. Ahau, Alaya y Villa Pescadores, cada uno con habitaciones, restaurante y beach club, y Casa Ganesh. Seis años en las marcas, de los menús a las campañas.',
@@ -80,9 +80,9 @@ const ALL = [
     ],
     sections: [
       {
-        title: { en: 'Campaigns', es: 'Campañas' },
-        text: { en: 'New Years Eve at Ahau: dinner, live music and a tribal white dress code.', es: 'Año Nuevo en Ahau: cena, música en vivo y dress code tribal en blanco.' },
-        images: [{ src: '/work/ahau-nye-banner.webp', w: 1600, h: 837, alt: { en: 'New Years Eve Party banner: a statue drawn in white dots on black, 31.12.26, dinner 8 PM', es: 'Banner de la fiesta de Año Nuevo: una estatua dibujada con puntos blancos sobre negro, 31.12.26, cena 8 PM' } }],
+        title: { en: 'The system', es: 'El sistema' },
+        text: { en: 'One wordmark over four hotels: Ahau, Alaya, Villa Pescadores and Casa Ganesh.', es: 'Un solo logo sobre cuatro hoteles: Ahau, Alaya, Villa Pescadores y Casa Ganesh.' },
+        images: [{ src: '/work/ahau-brand.webp', w: 1400, h: 713, alt: { en: 'The Ahau Collection wordmark below the logos of Ahau, Alaya, Villa Pescadores and Casa Ganesh', es: 'El logo de Ahau Collection bajo los de Ahau, Alaya, Villa Pescadores y Casa Ganesh' } }],
       },
       {
         title: { en: 'Stories', es: 'Stories' },
