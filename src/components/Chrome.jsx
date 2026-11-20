@@ -8,7 +8,7 @@ export const CONTACT = {
   waLink: 'https://wa.me/352621585610',
 }
 
-export const FIXES = '/brief/fixes'
+export const WALK = '/brief/walkthrough'
 
 export function LangSwitch() {
   const { lang, setLang } = useLang()
@@ -76,10 +76,10 @@ export function Footer({ cta = false }) {
           <div className="ft-ask">
             <h2><T en="Where are you losing guests?" es="¿Dónde está perdiendo huéspedes?" /></h2>
             <div className="ft-ctas">
-              <Link className="btn primary lg" to={FIXES}><T en="Find my 5 fixes" es="Quiero mis 5 mejoras" /><span className="ar" aria-hidden="true">→</span></Link>
+              <Link className="btn primary lg" to={WALK}><T en="Book a guest walkthrough" es="Pedir mi recorrido como huésped" /><span className="ar" aria-hidden="true">→</span></Link>
               <a className="btn ghost lg" href="/#work"><T en="See the work" es="Ver el trabajo" /></a>
             </div>
-            <p className="ft-note"><T en="Free, in 48 hours, for your ads, website and bookings" es="Sin costo, en 48 horas, para sus anuncios, sitio web y reservas" /></p>
+            <p className="ft-note"><T en="I go through your ads, website and booking page the way a guest would, and show you where they drop off. 48 hours, no cost." es="Reviso sus anuncios, su sitio web y su página de reservas como lo haría un huésped, y le muestro en qué punto se van. En 48 horas, sin costo." /></p>
           </div>
         )}
         <div className="ft-side">

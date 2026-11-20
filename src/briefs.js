@@ -84,15 +84,15 @@ export const BRIEFS = {
     ],
   },
 
-  fixes: {
-    title: { en: '5 free fixes', es: '5 mejoras gratis' },
+  walkthrough: {
+    title: { en: 'Guest walkthrough', es: 'Recorrido como huésped' },
     intro: {
-      en: 'Send me your links. Within 48 hours I send back the five changes that will matter most for your ads, website and bookings. Free.',
-      es: 'Mándeme sus enlaces y en 48 horas le envío los cinco cambios que más van a ayudar a sus anuncios, su sitio web y sus reservas. Sin costo.',
+      en: 'Send me your links. Within 48 hours I go through your ads, website and booking page as a guest would, and show you where they drop off. Free.',
+      es: 'Mándeme sus enlaces. En 48 horas reviso sus anuncios, su sitio web y su página de reservas como lo haría un huésped, y le muestro en qué punto se van. Sin costo.',
     },
     done: {
-      en: 'You will have your five fixes within 48 hours, by email or WhatsApp. If I need anything else, I will ask.',
-      es: 'En 48 horas le mando sus cinco mejoras por correo o WhatsApp. Si necesito algo más, le pregunto.',
+      en: 'You will have your walkthrough within 48 hours, by email or WhatsApp. If I need anything else, I will ask.',
+      es: 'En 48 horas le mando su recorrido por correo o WhatsApp. Si necesito algo más, le pregunto.',
     },
     questions: [
       { id: 'business', type: 'choice', required: true,
@@ -250,3 +250,6 @@ BRIEFS['kin-kakaw'] = {
   client: 'K’in Kakaw',
   title: { en: 'K’in Kakaw · brand discovery', es: 'K’in Kakaw · descubrimiento de marca' },
 }
+
+// Old links to the free fixes still work: same form, new name.
+BRIEFS.fixes = BRIEFS.walkthrough
