@@ -112,7 +112,7 @@ export default function Home() {
               <li key={w.id}>
                 <Link className="wc" to={`/work/${w.id}`}>
                   <img src={w.cover.src} width="1400" height="713" alt={t(w.cover.alt)} loading="lazy" decoding="async" />
-                  <span className="ttl"><h3 translate="no">{w.name}</h3><span className="tag">{t(w.step)}</span></span>
+                  <span className="ttl"><h3 translate="no">{w.name}</h3></span>
                   <span className="ln">{t(w.line)}</span>
                 </Link>
               </li>

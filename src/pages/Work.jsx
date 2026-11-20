@@ -31,7 +31,6 @@ export default function Work() {
         <Link className="back" to="/#work">← <T en="All work" es="Todo el trabajo" /></Link>
         <div className="wp-head">
           <div className="wp-title">
-            <span className="tag">{t(w.step)}</span>
             <h1 translate="no">{w.name}</h1>
             <p className="wp-line">{t(w.line)}</p>
             <p className="wp-intro">{t(w.intro)}</p>
@@ -64,7 +63,7 @@ export default function Work() {
         <Link className="next" to={`/work/${next.id}`}>
           <img src={next.cover.src} width="1400" height="713" alt="" loading="lazy" decoding="async" />
           <span className="next-tx">
-            <span className="tag dim"><T en="Next project" es="Siguiente proyecto" /> · {t(next.step)}</span>
+            <span className="tag dim"><T en="Next project" es="Siguiente proyecto" /></span>
             <span className="next-nm" translate="no">{next.name}</span>
             <span className="next-ln">{t(next.line)}</span>
           </span>

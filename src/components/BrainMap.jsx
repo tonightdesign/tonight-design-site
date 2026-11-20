@@ -19,7 +19,7 @@ const seg = (i) => `M${PATH[i][0]},${PATH[i][1]} L${PATH[i + 1][0]},${PATH[i + 1
 const WHOLE = 'M' + PATH.map((p) => p.join(',')).join(' L')
 
 /** Dotted path between the points. The active step's leg lights up and a signal runs along it to the next step. */
-function GuestPath({ active }) {
+function CustomerPath({ active }) {
   return (
     <svg className="path" viewBox={`0 0 ${BW} ${BH}`} aria-hidden="true">
       <path className="trail" d={WHOLE} />
@@ -222,7 +222,7 @@ export default function BrainMap({ labels, active, onActive, alt }) {
         <img src="/img/brain.webp" alt={alt} width={BW} height={BH} fetchPriority="high" draggable="false" />
       </picture>
       <canvas ref={canvasRef} aria-hidden="true" />
-      <GuestPath active={active} />
+      <CustomerPath active={active} />
       {REGIONS.map((r, i) => (
         <button
           key={i}

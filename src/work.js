@@ -8,7 +8,6 @@ const ALL = [
   {
     id: 'mr-shmokey',
     name: 'Mr. Shmokey',
-    step: { en: '01 attention', es: '01 atención' },
     line: { en: 'Signage that stops the street.', es: 'Letreros que detienen a la calle.' },
     cover: { src: '/work/cover-shmokey.webp', alt: { en: 'The Mr. Shmokey logo above the coffee board', es: 'El logo de Mr. Shmokey sobre el menú de café' } },
     intro: {
@@ -34,7 +33,6 @@ const ALL = [
   {
     id: 'mare',
     name: 'Máre',
-    step: { en: '02 desire', es: '02 deseo' },
     line: { en: 'A beach club brand, from scratch.', es: 'Una marca de beach club, desde cero.' },
     cover: { src: '/work/cover-mare.webp', alt: { en: 'The Máre logo and two of its characters, next to the menu', es: 'El logo de Máre y dos de sus personajes, junto al menú' } },
     intro: {
@@ -65,7 +63,6 @@ const ALL = [
   {
     id: 'ahau-collection',
     name: 'Ahau Collection',
-    step: { en: '03 memory', es: '03 memoria' },
     line: { en: 'One system, four hotels.', es: 'Un sistema, cuatro hoteles.' },
     cover: { src: '/work/cover-ahau.webp', alt: { en: 'The Ahau Collection wordmark above the logos of Ahau, Alaya, Villa Pescadores and Casa Ganesh', es: 'El logo de Ahau Collection sobre los de Ahau, Alaya, Villa Pescadores y Casa Ganesh' } },
     intro: {
@@ -98,7 +95,6 @@ const ALL = [
   {
     id: 'la-reserva',
     name: 'La Reserva',
-    step: { en: '04 decision', es: '04 decisión' },
     line: { en: 'The website and Meta ads.', es: 'El sitio web y los anuncios en Meta.' },
     cover: { src: '/work/cover-la-reserva.webp', alt: { en: 'The La Reserva Tulum home page with two referral ads', es: 'La página de inicio de La Reserva Tulum con dos anuncios de referidos' } },
     intro: {
