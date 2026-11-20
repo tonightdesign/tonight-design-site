@@ -25,7 +25,7 @@ const STEPS = [
   {
     tag: { en: '04 decision', es: '04 decisión' },
     title: { en: 'The booking', es: 'La reserva' },
-    text: { en: 'A booking page that keeps them.', es: 'Una página de reservas que no los deja ir.' },
+    text: { en: 'A website that gets them to book.', es: 'Un sitio web que los lleva a reservar.' },
   },
 ]
 
@@ -75,7 +75,7 @@ export default function Home() {
               <div className="walk-tx">
                 <span className="tag"><T en="Guest walkthrough" es="Recorrido como huésped" /></span>
                 <h2><T en="Follow your guest from ad to booking." es="Siga a su huésped del anuncio a la reserva." /></h2>
-                <p><T en="I go through your ads, website and booking page as a guest would, and show you where they drop off. 48 hours, no cost." es="Reviso sus anuncios, su sitio web y su página de reservas como lo haría un huésped, y le muestro en qué punto se van. En 48 horas, sin costo." /></p>
+                <p><T en="I go through your ads, website and booking page as a guest would, and show you where a guest would hesitate or leave. 48 hours, no cost." es="Reviso sus anuncios, su sitio web y su página de reservas como lo haría un huésped, y le muestro dónde un huésped dudaría o se iría. En 48 horas, sin costo." /></p>
               </div>
               <Link className="btn primary" to={WALK}><T en="Book a walkthrough" es="Pedir mi recorrido" /><span className="ar" aria-hidden="true">→</span></Link>
             </div>

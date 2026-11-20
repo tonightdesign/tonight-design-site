@@ -30,7 +30,7 @@ export const BRIEFS = {
           { en: 'Meta ads', es: 'Anuncios en Meta' },
           { en: 'Website or landing page', es: 'Sitio web o landing page' },
           { en: 'Print: menus, brochures, signage', es: 'Impresos: menús, brochures, señalética' },
-          { en: 'An audit of my booking path', es: 'Una revisión de cómo reservan mis clientes' },
+          { en: 'A review of my website and booking page', es: 'Una revisión de mi sitio web y página de reservas' },
           OTHER,
         ] },
       { id: 'business', type: 'choice', required: true,
@@ -87,8 +87,8 @@ export const BRIEFS = {
   walkthrough: {
     title: { en: 'Guest walkthrough', es: 'Recorrido como huésped' },
     intro: {
-      en: 'Send me your links. Within 48 hours I go through your ads, website and booking page as a guest would, and show you where they drop off. Free.',
-      es: 'Mándeme sus enlaces. En 48 horas reviso sus anuncios, su sitio web y su página de reservas como lo haría un huésped, y le muestro en qué punto se van. Sin costo.',
+      en: 'Send me your links. Within 48 hours I go through your ads, website and booking page as a guest would, and show you where a guest would hesitate or leave. Free.',
+      es: 'Mándeme sus enlaces. En 48 horas reviso sus anuncios, su sitio web y su página de reservas como lo haría un huésped, y le muestro dónde un huésped dudaría o se iría. Sin costo.',
     },
     done: {
       en: 'You will have your walkthrough within 48 hours, by email or WhatsApp. If I need anything else, I will ask.',
@@ -111,7 +111,7 @@ export const BRIEFS = {
         q: { en: 'What worries you most?', es: '¿Qué le gustaría mejorar primero?' },
         help: { en: 'Optional. Choose all that apply.', es: 'Opcional. Puede elegir varias.' },
         options: [
-          { en: 'Ads that don\'t bring bookings', es: 'Anuncios que no traen reservas' },
+          { en: 'My ads', es: 'Mis anuncios' },
           { en: 'Instagram', es: 'Instagram' },
           { en: 'The website', es: 'El sitio web' },
           { en: 'The booking page', es: 'La página de reservas' },
