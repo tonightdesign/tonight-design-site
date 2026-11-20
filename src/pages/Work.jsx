@@ -54,7 +54,9 @@ export default function Work() {
               </div>
             )}
             <div className={s.cols ? `shots c${s.cols}` : 'shots'}>
-              {s.images.map((img) => (
+              {s.images.map((img) => img.video ? (
+                <video key={img.video} className={img.lead ? 'shot lead' : 'shot'} src={img.video} poster={img.src} width={img.w} height={img.h} aria-label={t(img.alt)} autoPlay muted loop playsInline preload="metadata" />
+              ) : (
                 <img key={img.src} className="shot" src={img.src} width={img.w} height={img.h} alt={t(img.alt)} loading={n === 0 ? 'eager' : 'lazy'} decoding="async" />
               ))}
             </div>

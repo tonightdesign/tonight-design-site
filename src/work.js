@@ -2,7 +2,7 @@
   The four brands on the home page, in the order shown on the page.
   Each one has a card (cover + one line) and its own page at /work/<id>.
   `site` is the client's own website (or Instagram), shown under the facts and opened in a new tab.
-  A section is a heading, an optional line, and one or more images. `cols` lays the images side by side.
+  A section is a heading, an optional line, and one or more images. `cols` lays the images side by side. An image with `video` plays that muted loop, with `src` as its poster; `lead` puts it first on phones.
 */
 
 const ALL = [
@@ -49,7 +49,7 @@ const ALL = [
     ],
     sections: [
       {
-        images: [{ src: '/work/mare-banner.webp', w: 1800, h: 900, alt: { en: 'Máre at a glance: logo, the local expression, Mazurquica and Sofia Pro, colours, two of its characters and the menu', es: 'Máre de un vistazo: logo, la expresión local, Mazurquica y Sofia Pro, colores, dos de sus personajes y el menú' } }],
+        images: [{ src: '/work/mare-banner.webp', w: 1800, h: 917, alt: { en: 'The Máre logo, two of its characters and the Spanish menu', es: 'El logo de Máre, dos de sus personajes y el menú en español' } }],
       },
       {
         title: { en: 'The characters', es: 'Los personajes' },
@@ -81,16 +81,16 @@ const ALL = [
     sections: [
       {
         title: { en: 'Campaigns', es: 'Campañas' },
-        text: { en: 'One campaign across the four hotels: the best rate of the year.', es: 'Una campaña para los cuatro hoteles: la mejor tarifa del año.' },
-        images: [{ src: '/work/ahau-best-rate.webp', w: 1600, h: 837, alt: { en: 'The best rate of the year, with the four hotel logos', es: 'La mejor tarifa del año, con los logos de los cuatro hoteles' } }],
+        text: { en: 'New Years Eve at Ahau: dinner, live music and a tribal white dress code.', es: 'Año Nuevo en Ahau: cena, música en vivo y dress code tribal en blanco.' },
+        images: [{ src: '/work/ahau-nye-banner.webp', w: 1600, h: 837, alt: { en: 'New Years Eve Party banner: a statue drawn in white dots on black, 31.12.26, dinner 8 PM', es: 'Banner de la fiesta de Año Nuevo: una estatua dibujada con puntos blancos sobre negro, 31.12.26, cena 8 PM' } }],
       },
       {
         title: { en: 'Stories', es: 'Stories' },
         cols: 3,
         images: [
-          { src: '/work/ahau-best-rate-story.webp', w: 720, h: 1280, alt: { en: 'Story: la mejor tarifa del año', es: 'Story: la mejor tarifa del año' } },
+          { src: '/work/ahau-dj-sessions.webp', w: 720, h: 1280, alt: { en: 'Story: Sunday DJ Sessions on the beach at Ahau', es: 'Story: DJ Sessions del domingo en la playa de Ahau' } },
+          { video: '/work/ahau-nye-story.mp4', src: '/work/ahau-nye-story-poster.webp', w: 720, h: 1280, lead: true, alt: { en: 'Animated story: New Years Eve at Ahau', es: 'Story animada: Año Nuevo en Ahau' } },
           { src: '/work/ahau-christmas.webp', w: 720, h: 1280, alt: { en: 'Story: an evening of joy, the Christmas menu at Ahau', es: 'Story: an evening of joy, el menú de Navidad de Ahau' } },
-          { src: '/work/ahau-ejecutivo.webp', w: 720, h: 1280, alt: { en: 'Story: the executive menu at Ahau', es: 'Story: el menú ejecutivo de Ahau' } },
         ],
       },
     ],
