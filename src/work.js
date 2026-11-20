@@ -167,8 +167,65 @@ const ALL = [
   },
 ]
 
-// Order on the page
-export const WORK = ['ahau-collection', 'la-reserva', 'mare', 'mr-shmokey'].map((id) => ALL.find((w) => w.id === id))
+/*
+  Whiteout Sessions: a self-initiated night series, from Julian's own snowboard photography.
+  `volumes` is five story slots. Slot 03 holds the Ahau New Years Eve story as a stand-in until its
+  own volume is made; 04 and 05 are empty on purpose. Replace them as the volumes get built.
+*/
+ALL.push({
+  id: 'whiteout-sessions',
+  wide: true,
+  tag: { en: 'Self-initiated', es: 'Proyecto propio' },
+  site: { k: { en: 'Event site', es: 'Sitio del evento' }, to: '/whiteout', text: { en: 'Open the concept', es: 'Abrir el concepto' } },
+  name: 'Whiteout Sessions',
+  line: { en: 'A night series, built from my own photography.', es: 'Una serie de noches, hecha con mi propia fotografía.' },
+  cover: { src: '/work/cover-whiteout.webp', alt: { en: 'Two black and white stories: a snowboarder carving through a ring of light dots, and a rider inside a spinning sphere of dots', es: 'Dos stories en blanco y negro: un snowboarder que pasa entre un anillo de puntos de luz, y otro dentro de una esfera de puntos que gira' } },
+  intro: {
+    en: 'A self-initiated identity for five winter nights of electronic music in Niseko. I shot the photos on the mountain, cut the riders out, built the light forms in 3D and timed every move to the track.',
+    es: 'Una identidad propia para cinco noches de invierno de música electrónica en Niseko. Tomé las fotos en la montaña, recorté a los riders, armé las formas de luz en 3D y sincronicé cada movimiento con la pista.',
+  },
+  facts: [
+    { k: { en: 'Type', es: 'Tipo' }, v: { en: 'Self-initiated concept', es: 'Concepto propio' } },
+    { k: { en: 'Place', es: 'Lugar' }, v: { en: 'Hirafu, Niseko', es: 'Hirafu, Niseko' } },
+    { k: { en: 'Made', es: 'Hice' }, v: { en: 'Photography, identity, motion and the event site', es: 'Fotografía, identidad, motion y el sitio del evento' } },
+  ],
+  sections: [
+    {
+      title: { en: 'The volumes', es: 'Los volúmenes' },
+      text: { en: 'One story per night. The light forms move on the beat of the track each one is scored to.', es: 'Una story por noche. Las formas de luz se mueven al ritmo de la pista de cada una.' },
+      volumes: [
+        { n: '01', name: 'Orbit', note: { en: 'Ambient techno, scored to Xtal by Aphex Twin', es: 'Ambient techno, con Xtal de Aphex Twin' }, video: '/work/whiteout-orbit.mp4', poster: '/work/whiteout-orbit-poster.webp', alt: { en: 'Animated story: a snowboarder carving at night while rings of light dots drift around him', es: 'Story animada: un snowboarder de noche mientras unos anillos de puntos de luz giran a su alrededor' } },
+        { n: '02', name: 'Floodlight', note: { en: 'French house, scored to Revolution 909 by Daft Punk', es: 'French house, con Revolution 909 de Daft Punk' }, video: '/work/whiteout-floodlight.mp4', poster: '/work/whiteout-floodlight-poster.webp', alt: { en: 'Animated story: a snowboarder riding the inside wall of a spinning sphere of light', es: 'Story animada: un snowboarder sobre la pared interior de una esfera de luz que gira' } },
+        { n: '03', name: { en: 'In progress', es: 'En proceso' }, note: { en: 'Stand-in: the Ahau New Years Eve story', es: 'Provisional: la story de Año Nuevo de Ahau' }, video: '/work/ahau-nye-story.mp4', poster: '/work/ahau-nye-story-poster.webp', alt: { en: 'Animated story: New Years Eve at Ahau', es: 'Story animada: Año Nuevo en Ahau' } },
+        { n: '04', name: { en: 'Coming soon', es: 'Próximamente' } },
+        { n: '05', name: { en: 'Coming soon', es: 'Próximamente' } },
+      ],
+    },
+    {
+      title: { en: 'From the photo', es: 'Desde la foto' },
+      text: { en: 'Every volume starts with one of my night or powder shots. The rider is cut out so the light can pass behind and in front of him.', es: 'Cada volumen parte de una de mis fotos de noche o de nieve polvo. El rider va recortado para que la luz pase por detrás y por delante de él.' },
+      cols: 4,
+      images: [
+        { src: '/work/whiteout-source-carve.webp', w: 720, h: 1280, alt: { en: 'The original photo: a snowboarder carving at night, motion blur', es: 'La foto original: un snowboarder de noche, con barrido' } },
+        { src: '/work/whiteout-orbit-poster.webp', w: 720, h: 1280, alt: { en: 'The same shot in the Orbit story', es: 'La misma foto en la story Orbit' } },
+        { src: '/work/whiteout-source-grab.webp', w: 720, h: 1280, alt: { en: 'The original photo: a snowboarder grabbing his board against a white sky', es: 'La foto original: un snowboarder agarrando la tabla contra un cielo blanco' } },
+        { src: '/work/whiteout-floodlight-poster.webp', w: 720, h: 1280, alt: { en: 'The same rider inside the Floodlight sphere', es: 'El mismo rider dentro de la esfera de Floodlight' } },
+      ],
+    },
+    {
+      title: { en: 'The event site', es: 'El sitio del evento' },
+      text: { en: 'The identity carried onto the web: the sphere turns in the header, then the volumes, the lineup and the tickets.', es: 'La identidad llevada a la web: la esfera gira en el encabezado, luego los volúmenes, el lineup y los boletos.' },
+      site: { src: '/work/whiteout-site-full.webp', w: 1200, h: 2492, url: 'whiteout-sessions', alt: { en: 'The full Whiteout Sessions event page: the spinning sphere, the volumes, the lineup and the tickets', es: 'La página completa de Whiteout Sessions: la esfera que gira, los volúmenes, el lineup y los boletos' } },
+      live: { to: '/whiteout', text: { en: 'Open the event site', es: 'Abrir el sitio del evento' } },
+    },
+  ],
+})
+
+// Order on the page. The wide card goes last so the four brand cards stay a clean two by two.
+export const WORK = ['ahau-collection', 'la-reserva', 'mare', 'mr-shmokey', 'whiteout-sessions'].map((id) => ALL.find((w) => w.id === id))
+
+// The five nights, shared by the project page and the event site
+export const VOLUMES = ALL.find((w) => w.id === 'whiteout-sessions').sections[0].volumes
 
 export const ALSO = [
   { src: '/work/kin-kakaw-11.webp', name: "K'in Kakaw", place: { en: 'Tulum', es: 'Tulum' }, text: { en: 'Brand for a plant-based restaurant.', es: 'Marca para un restaurante vegetal.' } },

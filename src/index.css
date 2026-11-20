@@ -294,3 +294,24 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rg
 .bk-nav button:disabled{opacity:.35;cursor:default}
 .bk-nav .bk-full{margin-left:auto;font-size:13px}
 @media (prefers-reduced-motion:reduce){.bk-leaf{animation:none}}
+
+/* Wide self-initiated card under the four brands */
+@media (min-width:700px){.cards li.wide{grid-column:1 / -1}}
+.wc .ttl .tag{flex:none}
+
+/* Four images in a row on a computer, two on a phone */
+.shots.c4{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (min-width:900px){.shots.c4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+/* Story slots for a series */
+.vols{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}
+@media (min-width:700px){.vols{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1100px){.vols{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.vol{display:flex;flex-direction:column;gap:10px;min-width:0}
+.vol-media{display:block;width:100%;height:auto;aspect-ratio:9/16;background:#000;object-fit:cover}
+.vol.empty .vol-media{display:grid;place-items:center;background:transparent;border:1px dashed var(--edge)}
+.vol.empty .vol-media span{font-family:var(--mono);font-size:28px;color:var(--edge)}
+.vol-nm{font-family:var(--mono);font-size:15px}
+.vol.empty .vol-nm>span[translate]{color:var(--dim)}
+.vol-tx{font-size:13px;line-height:1.45;color:var(--muted)}
+.wp-live{margin:0}

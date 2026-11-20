@@ -1,0 +1,76 @@
+/* Whiteout Sessions event site. Only loaded on /whiteout. */
+@font-face{font-family:"WO Grotesk";src:url("/fonts/space-grotesk.woff2") format("woff2");font-weight:300 700;font-display:swap}
+@font-face{font-family:"WO Mono";src:url("/fonts/space-mono.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"WO Mono";src:url("/fonts/space-mono-bold.woff2") format("woff2");font-weight:700;font-display:swap}
+
+.wo{--wo-pad:max(20px,env(safe-area-inset-left,0px));--wo-ink:#fff;--wo-dim:#9a9a9a;--wo-line:#262626;
+  min-height:100svh;background:#050505 url("/img/grain.png");color:var(--wo-ink);font-family:"WO Grotesk",var(--sans);font-size:17px;line-height:1.5}
+@media (min-width:900px){.wo{--wo-pad:48px}}
+.wo a{color:inherit}
+.wo .wo-mono,.wo-note,.wo-hd,.wo-meta,.wo-tag{font-family:"WO Mono",var(--mono)}
+.wo .lang button{color:var(--wo-dim)}
+.wo .lang button[aria-pressed="true"]{color:var(--wo-ink)}
+
+.wo-note{margin:0;display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;padding:10px var(--wo-pad);font-size:12px;color:var(--wo-dim);border-bottom:1px solid var(--wo-line)}
+.wo-note a{text-decoration:none;color:var(--wo-ink)}
+.wo-note a:hover{text-decoration:underline;text-underline-offset:4px}
+
+.wo-hd{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:20px;padding:10px var(--wo-pad);background:rgba(5,5,5,.86);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:13px;font-weight:700;letter-spacing:.06em}
+.wo-brand{text-decoration:none;margin-right:auto}
+.wo-hd nav{display:flex;gap:4px}
+.wo-hd nav a{text-decoration:none;padding:12px 8px;font-weight:400;color:var(--wo-dim)}
+.wo-hd nav a:hover{color:var(--wo-ink)}
+@media (max-width:640px){.wo-hd nav{display:none}}
+
+.wo-hero{display:flex;flex-direction:column;padding:8px var(--wo-pad) 56px}
+.wo-orb{position:relative;width:min(100%,72svh,760px);aspect-ratio:1;margin:0 auto}
+.wo-orb canvas,.wo-rider{position:absolute}
+.wo-orb canvas{inset:0;width:100%;height:100%}
+.wo-rider{left:50.7%;top:36.8%;width:39.8%;height:50.2%;user-select:none;-webkit-user-drag:none}
+/* Fits the line to the full width: 9.25 is the title's width in ems at this tracking */
+.wo-hero h1{margin:8px 0 0 -.012em;font-family:"WO Grotesk",var(--sans);font-weight:700;font-size:calc((100vw - 2 * var(--wo-pad)) / 9.25);line-height:.86;letter-spacing:-.03em;white-space:nowrap}
+.wo-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 20px;margin-top:22px;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+.wo-meta p{margin:0}
+@media (min-width:900px){.wo-meta{grid-template-columns:repeat(3,minmax(0,1fr)) auto;align-items:center}}
+.wo-btn{justify-self:start;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:12px 22px;background:var(--wo-ink);color:#050505 !important;text-decoration:none;font-weight:700;letter-spacing:.06em;grid-column:1 / -1;margin-top:10px}
+.wo-btn:hover{background:#d8d8d8}
+@media (min-width:900px){.wo-btn{grid-column:auto;margin-top:0;justify-self:end}}
+
+.wo-sec{display:flex;flex-direction:column;gap:28px;padding:64px var(--wo-pad);border-top:1px solid var(--wo-line)}
+.wo-sec-hd{display:grid;gap:8px}
+@media (min-width:900px){.wo-sec-hd{grid-template-columns:320px minmax(0,1fr);gap:40px;align-items:baseline}}
+.wo-sec-hd h2{margin:0;font-family:"WO Grotesk",var(--sans);font-weight:700;font-size:clamp(34px,6vw,64px);line-height:.95;letter-spacing:-.04em;text-transform:uppercase}
+.wo-sec-hd p{margin:0;color:var(--wo-dim);max-width:52ch}
+
+.wo-vols{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 14px}
+@media (min-width:760px){.wo-vols{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1180px){.wo-vols{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.wo-vol{display:flex;flex-direction:column;gap:12px;min-width:0}
+.wo-vol-media{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;background:#000}
+.wo-vol.empty .wo-vol-media{display:grid;place-items:center;background:transparent;border:1px dashed #3a3a3a}
+.wo-vol.empty .wo-vol-media span{font-family:"WO Grotesk",var(--sans);font-weight:700;font-size:44px;color:#3a3a3a}
+.wo-vol-tx{display:flex;flex-direction:column;gap:3px}
+.wo-vol-tx .wo-mono{font-size:12px;letter-spacing:.06em;color:var(--wo-dim)}
+.wo-vol-nm{font-weight:700;font-size:22px;letter-spacing:-.02em;line-height:1.15}
+.wo-vol.empty .wo-vol-nm{color:#5a5a5a}
+.wo-dim{color:var(--wo-dim);font-size:14px;line-height:1.45}
+
+.wo-sets{list-style:none;margin:0;padding:0;border-top:1px solid var(--wo-line)}
+.wo-sets li{display:grid;grid-template-columns:72px minmax(0,1fr);gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--wo-line)}
+@media (min-width:900px){.wo-sets li{grid-template-columns:360px minmax(0,1fr)}}
+.wo-sets .wo-mono{font-size:14px;color:var(--wo-dim)}
+.wo-act{font-weight:700;font-size:clamp(24px,4vw,40px);line-height:1.1;letter-spacing:-.03em}
+.wo-venue{margin:0;color:var(--wo-dim);max-width:56ch}
+@media (min-width:900px){.wo-venue{margin-left:376px}}
+
+.wo-tix{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+@media (min-width:760px){.wo-tix{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.wo-tix li{display:flex;flex-direction:column;gap:8px;padding:22px;border:1px solid var(--wo-line);background:rgba(255,255,255,.02)}
+.wo-tix-nm{font-weight:700;font-size:26px;letter-spacing:-.02em}
+.wo-tag{align-self:flex-start;margin-top:10px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;border:1px solid #3a3a3a;color:var(--wo-dim)}
+
+.wo-ft{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 40px;padding:40px var(--wo-pad) calc(40px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--wo-line);color:var(--wo-dim);font-size:14px}
+.wo-ft p{margin:0;max-width:52ch}
+.wo-ft-links{display:flex;gap:20px;font-family:"WO Mono",var(--mono);font-size:13px}
+.wo-ft-links a{text-decoration:none;color:var(--wo-ink);padding:10px 0}
+.wo-ft-links a:hover{text-decoration:underline;text-underline-offset:4px}

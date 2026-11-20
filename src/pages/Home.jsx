@@ -72,7 +72,7 @@ export default function Home() {
         <section className="hero wrap" ref={heroRef} aria-labelledby="hero-h">
           <div className="hero-copy">
             <h1 id="hero-h"><T en="Before anyone says yes, four things happen in their head." es="Antes de decir que sí, a cualquiera le pasan cuatro cosas por la cabeza." /></h1>
-            <p className="hero-sub"><T en="Brand, content, websites and Meta ads, in English and Spanish. Most of my work is for hotels, restaurants and real estate in Tulum." es="Marca, contenido, sitios web y anuncios en Meta, en español e inglés. La mayor parte de mi trabajo es para hoteles, restaurantes y bienes raíces en Tulum." /></p>
+            <p className="hero-sub"><T en="Brand, content, websites and Meta ads, in English and Spanish. Most of my work is for hotels, restaurants and real estate in Tulum, and I also design for music and nightlife." es="Marca, contenido, sitios web y anuncios en Meta, en español e inglés. La mayor parte de mi trabajo es para hoteles, restaurantes y bienes raíces en Tulum, y también diseño para música y vida nocturna." /></p>
             <ol className={active >= 0 ? 'steps focus' : 'steps'}>
               {STEPS.map((s, i) => (
                 <li
@@ -110,10 +110,10 @@ export default function Home() {
           <h2 id="work-h"><T en="Behind these brands" es="Detrás de estas marcas" /></h2>
           <ul className="cards">
             {WORK.map((w) => (
-              <li key={w.id}>
+              <li key={w.id} className={w.wide ? 'wide' : undefined}>
                 <Link className="wc" to={`/work/${w.id}`}>
-                  <img src={w.cover.src} srcSet={`${w.cover.src.replace('.webp', '-900.webp')} 900w, ${w.cover.src} 1400w`} sizes="(max-width: 640px) 100vw, 560px" width="1400" height="713" alt={t(w.cover.alt)} loading="lazy" decoding="async" />
-                  <span className="ttl"><h3 translate="no">{w.name}</h3></span>
+                  <img src={w.cover.src} srcSet={`${w.cover.src.replace('.webp', '-900.webp')} 900w, ${w.cover.src} 1400w`} sizes={w.wide ? '(max-width: 640px) 100vw, 1152px' : '(max-width: 640px) 100vw, 560px'} width="1400" height="713" alt={t(w.cover.alt)} loading="lazy" decoding="async" />
+                  <span className="ttl"><h3 translate="no">{w.name}</h3>{w.tag && <span className="tag dim">{t(w.tag)}</span>}</span>
                   <span className="ln">{t(w.line)}</span>
                 </Link>
               </li>

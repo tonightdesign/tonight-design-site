@@ -40,7 +40,9 @@ export default function Work() {
               <div key={f.k.en}><dt className="tag">{t(f.k)}</dt><dd>{t(f.v)}</dd></div>
             ))}
             {w.site && (
-              <div><dt className="tag">{t(w.site.k)}</dt><dd><a className="site" href={w.site.url} target="_blank" rel="noopener noreferrer" translate="no">{w.site.text} ↗</a></dd></div>
+              <div><dt className="tag">{t(w.site.k)}</dt><dd>{w.site.to
+                ? <Link className="site" to={w.site.to}>{t(w.site.text)} →</Link>
+                : <a className="site" href={w.site.url} target="_blank" rel="noopener noreferrer" translate="no">{w.site.text} ↗</a>}</dd></div>
             )}
           </dl>
         </div>
@@ -53,6 +55,7 @@ export default function Work() {
                 {s.text && <p>{t(s.text)}</p>}
               </div>
             )}
+            {s.volumes && <Volumes v={s.volumes} />}
             {s.carousel && <Carousel c={s.carousel} />}
             {s.site && <SitePreview s={s.site} />}
             {s.book && <Book b={s.book} />}
@@ -63,6 +66,7 @@ export default function Work() {
                 <img key={img.src} className="shot" src={img.src} {...srcset(img, s.cols)} width={img.w} height={img.h} alt={t(img.alt)} loading={n === 0 ? 'eager' : 'lazy'} decoding="async" />
               ))}
             </div>}
+            {s.live && <p className="wp-live"><Link className="btn primary" to={s.live.to}>{t(s.live.text)}<span className="ar" aria-hidden="true">→</span></Link></p>}
           </section>
         ))}
 
@@ -198,6 +202,24 @@ function Book({ b }) {
   )
 }
 
+/** Story slots for a series: a muted loop where the volume exists, an empty frame where it is still to come. */
+export function Volumes({ v }) {
+  const t = useT()
+  return (
+    <ol className="vols">
+      {v.map((x) => (
+        <li key={x.n} className={x.video ? 'vol' : 'vol empty'}>
+          {x.video
+            ? <LazyVideo className="vol-media" src={x.video} poster={x.poster} width="720" height="1280" label={t(x.alt)} />
+            : <div className="vol-media" aria-hidden="true"><span>{x.n}</span></div>}
+          <span className="vol-nm"><span className="tag">Vol {x.n}</span> <span translate="no">{t(x.name)}</span></span>
+          {x.note && <span className="vol-tx">{t(x.note)}</span>}
+        </li>
+      ))}
+    </ol>
+  )
+}
+
 /** Images 1400 px and wider also ship a 900 px copy (name-900.webp) for phones. */
 function srcset(img, cols) {
   if (!img.w || img.w < 1400) return {}
@@ -206,7 +228,7 @@ function srcset(img, cols) {
 }
 
 /** A muted story loop that only starts downloading when it is about to scroll into view. */
-function LazyVideo({ src, poster, label, ...rest }) {
+export function LazyVideo({ src, poster, label, ...rest }) {
   const ref = useRef(null)
   const [on, setOn] = useState(false)
   useEffect(() => {

@@ -7,6 +7,7 @@ import Home from './pages/Home.jsx'
 const Brief = lazy(() => import('./pages/Brief.jsx'))
 const Work = lazy(() => import('./pages/Work.jsx'))
 const NotFound = lazy(() => import('./pages/NotFound.jsx'))
+const Whiteout = lazy(() => import('./pages/Whiteout.jsx'))
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/work/:id" element={<Work />} />
+          <Route path="/whiteout" element={<Whiteout />} />
           <Route path="/brief" element={<Brief />} />
           <Route path="/brief/:project" element={<Brief />} />
           <Route path="*" element={<NotFound />} />
