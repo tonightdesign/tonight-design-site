@@ -124,8 +124,8 @@ export default function Home() {
             <ul>
               {ALSO.map((a) => (
                 <li key={a.name}>
-                  <img src={a.src} width="1200" height="900" alt="" loading="lazy" decoding="async" />
-                  <span className="also-nm"><span translate="no">{a.name}</span> <span className="dim">{t(a.place)}</span></span>
+                  <img src={a.src} width="1080" height="1080" alt="" loading="lazy" decoding="async" />
+                  <span className="also-nm"><span translate="no">{a.name}</span>{a.place && <> <span className="dim">{t(a.place)}</span></>}</span>
                   <span className="also-tx">{t(a.text)}</span>
                 </li>
               ))}

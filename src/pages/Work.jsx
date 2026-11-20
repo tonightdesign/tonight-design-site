@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { T, useT } from '../lang.jsx'
 import { Footer, Header } from '../components/Chrome.jsx'
@@ -53,13 +53,14 @@ export default function Work() {
                 {s.text && <p>{t(s.text)}</p>}
               </div>
             )}
-            <div className={s.cols ? `shots c${s.cols}` : 'shots'}>
+            {s.carousel && <Carousel c={s.carousel} />}
+            {s.images && <div className={s.cols ? `shots c${s.cols}` : 'shots'}>
               {s.images.map((img) => img.video ? (
                 <video key={img.video} className={img.lead ? 'shot lead' : 'shot'} src={img.video} poster={img.src} width={img.w} height={img.h} aria-label={t(img.alt)} autoPlay muted loop playsInline preload="metadata" />
               ) : (
                 <img key={img.src} className="shot" src={img.src} width={img.w} height={img.h} alt={t(img.alt)} loading={n === 0 ? 'eager' : 'lazy'} decoding="async" />
               ))}
-            </div>
+            </div>}
           </section>
         ))}
 
@@ -77,5 +78,30 @@ export default function Work() {
       </main>
       <Footer cta />
     </>
+  )
+}
+
+/** An ad carousel the way it runs in the feed: swipe on a phone, arrows on a computer. */
+function Carousel({ c }) {
+  const t = useT()
+  const row = useRef(null)
+  const go = (d) => {
+    const el = row.current
+    if (!el) return
+    const card = el.querySelector('img')
+    el.scrollBy({ left: d * (card ? card.offsetWidth + 16 : el.clientWidth), behavior: 'smooth' })
+  }
+  return (
+    <div className="car">
+      <div className="car-row" ref={row} tabIndex="0" aria-label={t({ en: 'Ad carousel, scroll sideways', es: 'Carrusel de anuncios, desplace hacia los lados' })}>
+        {c.slides.map((sl, i) => (
+          <img key={i} src={t(sl)} width={c.w} height={c.h} alt={t(c.alts[i])} loading="lazy" decoding="async" />
+        ))}
+      </div>
+      <div className="car-nav">
+        <button type="button" onClick={() => go(-1)} aria-label={t({ en: 'Previous card', es: 'Tarjeta anterior' })}>←</button>
+        <button type="button" onClick={() => go(1)} aria-label={t({ en: 'Next card', es: 'Tarjeta siguiente' })}>→</button>
+      </div>
+    </div>
   )
 }

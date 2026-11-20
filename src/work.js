@@ -10,25 +10,34 @@ const ALL = [
     id: 'mr-shmokey',
     site: { k: { en: 'Instagram', es: 'Instagram' }, url: 'https://www.instagram.com/mr.shmokey/', text: '@mr.shmokey' },
     name: 'Mr. Shmokey',
-    line: { en: 'Signage that stops the street.', es: 'Letreros que detienen a la calle.' },
-    cover: { src: '/work/cover-shmokey.webp', alt: { en: 'The Mr. Shmokey logo above the coffee board', es: 'El logo de Mr. Shmokey sobre el menú de café' } },
+    line: { en: 'Burgers, signs and menus that stop the street.', es: 'Hamburguesas, letreros y menús que detienen la calle.' },
+    cover: { src: '/work/cover-shmokey.webp', alt: { en: 'The Mr. Shmokey Smokehouse logo over three burgers on a yellow logo pattern', es: 'El logo de Mr. Shmokey Smokehouse sobre tres hamburguesas y un patrón de logos amarillo' } },
     intro: {
-      en: 'Smokehouse and coffee bar in Tulum. The light boxes out front and the coffee board over the counter.',
-      es: 'Smokehouse y coffee bar en Tulum. Las cajas de luz de la entrada y el menú de café sobre la barra.',
+      en: 'Smokehouse and coffee bar in Tulum. The logo, the food photography and the light box menus over the counter.',
+      es: 'Smokehouse y coffee bar en Tulum. El logo, la fotografía de comida y los menús de caja de luz sobre la barra.',
     },
     facts: [
       { k: { en: 'Client', es: 'Cliente' }, v: { en: 'Mr. Shmokey', es: 'Mr. Shmokey' } },
       { k: { en: 'Place', es: 'Lugar' }, v: { en: 'Tulum', es: 'Tulum' } },
-      { k: { en: 'Made', es: 'Hice' }, v: { en: 'Light boxes, street signs and the coffee board', es: 'Cajas de luz, letreros y el menú de café' } },
+      { k: { en: 'Made', es: 'Hice' }, v: { en: 'Logo, food photography, light box and printed menus', es: 'Logo, fotografía de comida, menús de caja de luz e impresos' } },
     ],
     sections: [
       {
-        title: { en: 'The light boxes', es: 'Las cajas de luz' },
-        images: [{ src: '/work/shmokey-lightbox.webp', w: 1800, h: 398, alt: { en: 'Light box with the Mr. Shmokey logo', es: 'Caja de luz con el logo de Mr. Shmokey' } }],
+        images: [{ src: '/work/shmokey-logo-board.webp', w: 1400, h: 713, alt: { en: 'The Mr. Shmokey Smokehouse logo on its logo pattern', es: 'El logo de Mr. Shmokey Smokehouse sobre su patrón de logos' } }],
       },
       {
-        title: { en: 'The coffee board', es: 'El menú de café' },
-        images: [{ src: '/work/shmokey-coffee-board.webp', w: 1800, h: 348, alt: { en: 'Coffee menu board: cold coffees, freddo, iced latte and the classics', es: 'Menú de café: cafés fríos, freddo, iced latte y los clásicos' } }],
+        title: { en: 'The burgers', es: 'Las hamburguesas' },
+        text: { en: 'Two burgers on the logo pattern.', es: 'Dos hamburguesas sobre el patrón del logo.' },
+        cols: 2,
+        images: [
+          { src: '/work/shmokey-burger-1.webp', w: 1000, h: 1000, alt: { en: 'A cheese burger on the Mr. Shmokey logo pattern', es: 'Una hamburguesa con queso sobre el patrón del logo de Mr. Shmokey' } },
+          { src: '/work/shmokey-burger-2.webp', w: 1000, h: 1000, alt: { en: 'A second burger with cheese and onions on the Mr. Shmokey logo pattern', es: 'Otra hamburguesa con queso y cebolla sobre el patrón del logo de Mr. Shmokey' } },
+        ],
+      },
+      {
+        title: { en: 'The menus', es: 'Los menús' },
+        text: { en: 'Light box menus over the counter and printed menus along the bar.', es: 'Menús de caja de luz sobre la barra y menús impresos a lo largo del mostrador.' },
+        images: [{ src: '/work/shmokey-storefront.webp', w: 1800, h: 917, alt: { en: 'The Mr. Shmokey counter at night with the lit menus above and printed menus below', es: 'La barra de Mr. Shmokey de noche con los menús iluminados arriba y los impresos abajo' } }],
       },
     ],
   },
@@ -81,8 +90,8 @@ const ALL = [
     sections: [
       {
         title: { en: 'The system', es: 'El sistema' },
-        text: { en: 'One wordmark over four hotels: Ahau, Alaya, Villa Pescadores and Casa Ganesh.', es: 'Un solo logo sobre cuatro hoteles: Ahau, Alaya, Villa Pescadores y Casa Ganesh.' },
-        images: [{ src: '/work/ahau-brand.webp', w: 1400, h: 713, alt: { en: 'The Ahau Collection wordmark below the logos of Ahau, Alaya, Villa Pescadores and Casa Ganesh', es: 'El logo de Ahau Collection bajo los de Ahau, Alaya, Villa Pescadores y Casa Ganesh' } }],
+        text: { en: 'Four hotels, one family: Ahau, Alaya, Villa Pescadores and Casa\u00a0Ganesh.', es: 'Cuatro hoteles, una familia: Ahau, Alaya, Villa Pescadores y Casa\u00a0Ganesh.' },
+        images: [{ src: '/work/ahau-brand.webp', w: 1080, h: 550, alt: { en: 'The logos of Ahau, Alaya, Villa Pescadores and Casa Ganesh framed by paper-cut leaves', es: 'Los logos de Ahau, Alaya, Villa Pescadores y Casa Ganesh entre hojas de papel recortado' } }],
       },
       {
         title: { en: 'Stories', es: 'Stories' },
@@ -118,6 +127,22 @@ const ALL = [
       },
       {
         title: { en: 'Meta ads', es: 'Anuncios en Meta' },
+        text: { en: 'A five-card carousel for buyers, from the AD México feature to a WhatsApp chat with the sales director.', es: 'Un carrusel de cinco tarjetas para compradores, del reportaje en AD México a un chat de WhatsApp con el director de ventas.' },
+        carousel: {
+          w: 864,
+          h: 1080,
+          slides: [1, 2, 3, 4, 5].map((n) => ({ en: `/work/la-reserva-ad-en-${n}.webp`, es: `/work/la-reserva-ad-es-${n}.webp` })),
+          alts: [
+            { en: 'Card 1: Architectural Digest México called it a refuge, call it home', es: 'Tarjeta 1: Architectural Digest México lo llamó un refugio' },
+            { en: 'Card 2: a collection of 42 residences with the jungle in between', es: 'Tarjeta 2: una colección de 42 residencias con la selva en medio' },
+            { en: 'Card 3: designed by Co-Lab to let the jungle in', es: 'Tarjeta 3: diseñado por Co-Lab para dejar entrar la selva' },
+            { en: 'Card 4: stay before you buy', es: 'Tarjeta 4: quédese antes de comprar' },
+            { en: 'Card 5: Ben, the sales director, with a WhatsApp button', es: 'Tarjeta 5: Ben, el director de ventas, con un botón de WhatsApp' },
+          ],
+        },
+      },
+      {
+        title: { en: 'Referral ads', es: 'Anuncios de referidos' },
         text: { en: 'Ads for the broker referral program.', es: 'Anuncios del programa de referidos para brokers.' },
         images: [{ src: '/work/la-reserva-ads.webp', w: 2056, h: 720, alt: { en: 'Three Meta ads for the La Reserva referral program', es: 'Tres anuncios en Meta del programa de referidos de La Reserva' } }],
       },
@@ -137,7 +162,8 @@ const ALL = [
 export const WORK = ['ahau-collection', 'la-reserva', 'mare', 'mr-shmokey'].map((id) => ALL.find((w) => w.id === id))
 
 export const ALSO = [
-  { src: '/work/petrodex-43.webp', name: 'Petrodex', place: { en: 'Dubai', es: 'Dubái' }, text: { en: 'Investor company profile, printed in A5 and A4.', es: 'Perfil para inversionistas, impreso en A5 y A4.' } },
-  { src: '/work/water-toys-43.webp', name: 'Water Toys Center', place: { en: 'Cannes, Monaco', es: 'Cannes, Mónaco' }, text: { en: 'Boat show backdrops and banners.', es: 'Fondos y banners para salones náuticos.' } },
-  { src: '/work/carmel-43.webp', name: 'Carmel', place: { en: 'Mexico', es: 'México' }, text: { en: 'Press kit for a French music producer and DJ.', es: 'Press kit para un productor musical y DJ francés.' } },
+  { src: '/work/kin-kakaw-11.webp', name: "K'in Kakaw", text: { en: 'Logo for a cacao brand.', es: 'Logo para una marca de cacao.' } },
+  { src: '/work/petrodex-11.webp', name: 'Petrodex', place: { en: 'Dubai', es: 'Dubái' }, text: { en: 'Investor company profile, printed in A5 and A4.', es: 'Perfil para inversionistas, impreso en A5 y A4.' } },
+  { src: '/work/water-toys-11.webp', name: 'Water Toys Center', place: { en: 'Cannes, Monaco', es: 'Cannes, Mónaco' }, text: { en: 'Boat show backdrops and banners.', es: 'Fondos y banners para salones náuticos.' } },
+  { src: '/work/carmel-11.webp', name: 'Carmel', place: { en: 'Mexico', es: 'México' }, text: { en: 'Press kit for a French music producer and DJ.', es: 'Press kit para un productor musical y DJ francés.' } },
 ]
