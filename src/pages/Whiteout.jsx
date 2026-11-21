@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { T, useT } from '../lang.jsx'
 import { LangSwitch } from '../components/Chrome.jsx'
@@ -71,20 +71,7 @@ export default function Whiteout() {
             <h2 id="wo-vol"><T en="Volumes" es="Volúmenes" /></h2>
             <p><T en="One night every second Saturday, each with its own light form and its own track." es="Una noche cada dos sábados, cada una con su propia forma de luz y su propia pista." /></p>
           </div>
-          <ol className="wo-vols">
-            {VOLUMES.map((v, i) => (
-              <li key={v.n} className={v.video ? 'wo-vol' : 'wo-vol empty'}>
-                {v.video
-                  ? <LazyVideo className="wo-vol-media" src={v.video} poster={v.poster} width="720" height="1280" label={t(v.alt)} />
-                  : <div className="wo-vol-media" aria-hidden="true"><span>{v.n}</span></div>}
-                <div className="wo-vol-tx">
-                  <span className="wo-mono">VOL {v.n} · {DATES[i]}</span>
-                  <span className="wo-vol-nm" translate="no">{t(v.name)}</span>
-                  {v.note && <span className="wo-dim">{t(v.note)}</span>}
-                </div>
-              </li>
-            ))}
-          </ol>
+          <Volumes t={t} />
         </section>
 
         <section className="wo-sec" id="lineup" aria-labelledby="wo-line">
@@ -125,5 +112,144 @@ export default function Whiteout() {
         </div>
       </footer>
     </div>
+  )
+}
+
+/*
+  The flyers, with sound. Nothing plays until the visitor presses the sound button once
+  (browsers block sound before a click anyway). Then, on a computer, a flyer plays its track
+  while the pointer is on it, picked up at the same moment as the video. On a phone there is
+  no hover: the button starts the flyer most in view, and a tap on another flyer switches to it.
+  Only one track ever plays. The videos stay muted, silent loops; the sound is a separate file,
+  so a tap never opens a video player.
+*/
+const FADE = 220
+
+function Volumes({ t }) {
+  const hasSound = VOLUMES.some((v) => v.audio)
+  const [sound, setSound] = useState(false)
+  const [playing, setPlaying] = useState(null) // index of the flyer playing
+  const items = useRef([]) // { li, audio }
+  const fades = useRef({})
+  const hover = useRef(typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches)
+
+  const fadeTo = (i, target, then) => {
+    const a = items.current[i]?.audio
+    if (!a) return
+    clearInterval(fades.current[i])
+    const step = (target - a.volume) / (FADE / 20)
+    fades.current[i] = setInterval(() => {
+      const v = a.volume + step
+      if ((step >= 0 && v >= target) || (step < 0 && v <= target)) {
+        a.volume = target; clearInterval(fades.current[i]); then && then()
+      } else a.volume = Math.min(1, Math.max(0, v))
+    }, 20)
+  }
+
+  const stop = useCallback((i) => {
+    const a = items.current[i]?.audio
+    if (!a) return
+    fadeTo(i, 0, () => a.pause())
+    setPlaying((p) => (p === i ? null : p))
+  }, [])
+
+  const start = useCallback((i) => {
+    const it = items.current[i]
+    if (!it?.audio) return
+    items.current.forEach((_, j) => { if (j !== i) stop(j) })
+    const video = it.li.querySelector('video')
+    const a = it.audio
+    if (video && a.duration) a.currentTime = video.currentTime % a.duration
+    a.volume = 0
+    a.play().then(() => { fadeTo(i, 1); setPlaying(i) }).catch(() => {})
+  }, [stop])
+
+  const mostInView = () => {
+    let best = null, area = 0
+    items.current.forEach((it, i) => {
+      if (!it?.audio) return
+      const r = it.li.getBoundingClientRect()
+      const seen = Math.max(0, Math.min(r.bottom, innerHeight) - Math.max(r.top, 0)) * Math.max(0, Math.min(r.right, innerWidth) - Math.max(r.left, 0))
+      if (seen > area) { area = seen; best = i }
+    })
+    return best
+  }
+
+  const toggle = () => {
+    if (sound) {
+      items.current.forEach((_, i) => stop(i))
+      setSound(false)
+      return
+    }
+    setSound(true)
+    items.current.forEach((it) => it?.audio && (it.audio.preload = 'auto'))
+    if (!hover.current) { const i = mostInView(); if (i != null) start(i) }
+  }
+
+  // stop everything when the tab is hidden or the page is left
+  useEffect(() => {
+    const off = () => { if (document.hidden) items.current.forEach((_, i) => stop(i)) }
+    document.addEventListener('visibilitychange', off)
+    return () => { document.removeEventListener('visibilitychange', off); items.current.forEach((it) => it?.audio?.pause()) }
+  }, [stop])
+
+  return (
+    <>
+      {hasSound && (
+        <div className="wo-sound">
+          <button type="button" className={sound ? 'wo-sound-btn on' : 'wo-sound-btn'} aria-pressed={sound} onClick={toggle}>
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor" />
+              {sound ? <><path d="M16.5 8.5a5 5 0 0 1 0 7" /><path d="M19 6a8.5 8.5 0 0 1 0 12" /></> : <><path d="M17 9l5 6" /><path d="M22 9l-5 6" /></>}
+            </svg>
+            {sound ? <T en="Sound on" es="Sonido activado" /> : <T en="Turn sound on" es="Activar sonido" />}
+          </button>
+          <span className="wo-dim">
+            {hover.current
+              ? <T en="Then point at a flyer to hear its track." es="Luego pase el cursor sobre un flyer para escuchar su pista." />
+              : <T en="Then tap a flyer to hear its track." es="Luego toque un flyer para escuchar su pista." />}
+          </span>
+        </div>
+      )}
+      <ol className="wo-vols">
+        {VOLUMES.map((v, i) => (
+          <li
+            key={v.n}
+            ref={(el) => { items.current[i] = { ...(items.current[i] || {}), li: el } }}
+            className={[v.video ? 'wo-vol' : 'wo-vol empty', playing === i ? 'is-playing' : ''].join(' ').trim()}
+            onPointerEnter={(e) => { if (sound && v.audio && e.pointerType === 'mouse') start(i) }}
+            onPointerLeave={(e) => { if (v.audio && e.pointerType === 'mouse') stop(i) }}
+            onClick={() => { if (!sound || !v.audio || hover.current) return; playing === i ? stop(i) : start(i) }}
+          >
+            <div className="wo-vol-box">
+              {v.video
+                ? <LazyVideo className="wo-vol-media" src={v.video} poster={v.poster} width="720" height="1280" label={t(v.alt)} />
+                : <div className="wo-vol-media" aria-hidden="true"><span>{v.n}</span></div>}
+              {v.audio && sound && (
+                <span className="wo-eq" aria-hidden="true"><i /><i /><i /></span>
+              )}
+            </div>
+            {v.audio && (
+              <audio
+                ref={(el) => { items.current[i] = { ...(items.current[i] || {}), audio: el } }}
+                src={v.audio}
+                loop
+                preload="none"
+              />
+            )}
+            <div className="wo-vol-tx">
+              <span className="wo-mono">VOL {v.n} · {DATES[i]}</span>
+              <span className="wo-vol-nm" translate="no">{t(v.name)}</span>
+              {v.note && <span className="wo-dim">{t(v.note)}</span>}
+              {v.listen && (
+                <a className="wo-listen" href={v.listen} target="_blank" rel="noopener noreferrer">
+                  <T en="Hear the original" es="Escuchar el original" /> ↗
+                </a>
+              )}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </>
   )
 }
