@@ -191,8 +191,7 @@ const ALL = [
 
 /*
   Whiteout Sessions: a self-initiated night series, from Julian's own snowboard photography.
-  `volumes` is five story slots. Slot 03 holds the Ahau New Years Eve story as a stand-in until its
-  own volume is made; 04 and 05 are empty on purpose. Replace them as the volumes get built.
+  `volumes` is five story slots. 04 and 05 are empty on purpose. Fill them as the volumes get built.
 */
 ALL.push({
   id: 'whiteout-sessions',
@@ -223,7 +222,7 @@ ALL.push({
       volumes: [
         { n: '01', name: 'Orbit', note: { en: 'Ambient techno, scored to Xtal by Aphex Twin', es: 'Ambient techno, con Xtal de Aphex Twin' }, video: '/work/whiteout-orbit.mp4', poster: '/work/whiteout-orbit-poster.webp', alt: { en: 'Animated story: a snowboarder carving at night while rings of light dots drift around him', es: 'Story animada: un snowboarder de noche mientras unos anillos de puntos de luz giran a su alrededor' } },
         { n: '02', name: 'Floodlight', note: { en: 'French house, scored to Revolution 909 by Daft Punk', es: 'French house, con Revolution 909 de Daft Punk' }, video: '/work/whiteout-floodlight.mp4', poster: '/work/whiteout-floodlight-poster.webp', alt: { en: 'Animated story: a snowboarder riding the inside wall of a spinning sphere of light', es: 'Story animada: un snowboarder sobre la pared interior de una esfera de luz que gira' } },
-        { n: '03', name: { en: 'In progress', es: 'En proceso' }, note: { en: 'Stand-in: the Ahau New Years Eve story', es: 'Provisional: la story de Año Nuevo de Ahau' }, video: '/work/ahau-nye-story.mp4', poster: '/work/ahau-nye-story-poster.webp', alt: { en: 'Animated story: New Years Eve at Ahau', es: 'Story animada: Año Nuevo en Ahau' } },
+        { n: '03', name: 'Voyager', note: { en: 'Space disco, scored to Voyager by Daft Punk', es: 'Space disco, con Voyager de Daft Punk' }, video: '/work/whiteout-voyager.mp4', poster: '/work/whiteout-voyager-poster.webp', alt: { en: 'Animated story: a skier in mid-air inside three crossing rings of light dots that speed up when the track drops', es: 'Story animada: un esquiador en el aire dentro de tres anillos de puntos de luz que se cruzan y aceleran cuando entra la pista' } },
         { n: '04', name: { en: 'Coming soon', es: 'Próximamente' } },
         { n: '05', name: { en: 'Coming soon', es: 'Próximamente' } },
       ],
