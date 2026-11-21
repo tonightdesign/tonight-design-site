@@ -174,7 +174,6 @@ const ALL = [
 */
 ALL.push({
   id: 'whiteout-sessions',
-  wide: true,
   tag: { en: 'Self-initiated', es: 'Proyecto propio' },
   site: { k: { en: 'Event site', es: 'Sitio del evento' }, to: '/whiteout', text: { en: 'Open the concept', es: 'Abrir el concepto' } },
   name: 'Whiteout Sessions',
@@ -221,7 +220,7 @@ ALL.push({
   ],
 })
 
-// Order on the page. The wide card goes last so the four brand cards stay a clean two by two.
+// Order on the page
 export const WORK = ['ahau-collection', 'la-reserva', 'mare', 'mr-shmokey', 'whiteout-sessions'].map((id) => ALL.find((w) => w.id === id))
 
 // The five nights, shared by the project page and the event site

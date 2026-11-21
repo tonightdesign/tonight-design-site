@@ -115,7 +115,6 @@ export default function Home() {
                 <Link className="wc" to={`/work/${w.id}`}>
                   {w.id === 'whiteout-sessions' ? (
                     <div className="wb">
-                      <span className="wb-t" aria-hidden="true" translate="no">WHITEOUT SESSIONS</span>
                       <WhiteoutOrb label={t({ en: 'A snowboarder riding the inside wall of a spinning sphere of light dots', es: 'Un snowboarder sobre la pared interior de una esfera de puntos de luz que gira' })} />
                     </div>
                   ) : (
