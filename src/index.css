@@ -328,7 +328,7 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rg
 /* Home banner for Whiteout Sessions: the spinning sphere on black, the same size as the other covers */
 .wb{position:relative;container-type:inline-size;display:block;width:100%;aspect-ratio:2160/1100;background:#050505 url("/img/grain.png");overflow:hidden;transition:opacity .2s}
 .wc:hover .wb{opacity:.92}
-.wb .wo-orb{position:absolute;left:50%;top:50%;width:60cqw;transform:translate(-50%,-50%)}
+.wb .wo-orb{position:absolute;left:50%;top:50%;width:52cqw;transform:translate(-50%,-50%)}
 
 /* The card's cover rule (.wc img) must not resize the rider cutout */
 .wc .wb img.wo-rider{width:39.8%;height:50.2%;aspect-ratio:auto;transition:none}
