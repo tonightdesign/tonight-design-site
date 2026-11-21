@@ -196,6 +196,7 @@ const ALL = [
 */
 ALL.push({
   id: 'whiteout-sessions',
+  cardTo: '/whiteout', // the home card opens the event site itself; the case study stays at /work/whiteout-sessions
   tag: { en: 'Self-initiated', es: 'Proyecto propio' },
   site: { k: { en: 'Event site', es: 'Sitio del evento' }, to: '/whiteout', text: { en: 'Open the concept', es: 'Abrir el concepto' } },
   name: 'Whiteout Sessions',

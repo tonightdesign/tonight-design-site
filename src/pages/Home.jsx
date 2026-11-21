@@ -112,7 +112,7 @@ export default function Home() {
           <ul className="cards">
             {WORK.map((w) => (
               <li key={w.id} className={w.wide ? 'wide' : undefined}>
-                <Link className="wc" to={`/work/${w.id}`}>
+                <Link className="wc" to={w.cardTo || `/work/${w.id}`}>
                   {w.id === 'whiteout-sessions' ? (
                     <div className="wb">
                       <WhiteoutOrb label={t({ en: 'A snowboarder riding the inside wall of a spinning sphere of light dots', es: 'Un snowboarder sobre la pared interior de una esfera de puntos de luz que gira' })} />
