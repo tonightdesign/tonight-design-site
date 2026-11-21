@@ -221,7 +221,7 @@ ALL.push({
       text: { en: 'One story per night. The light forms move on the beat of the track each one is scored to.', es: 'Una story por noche. Las formas de luz se mueven al ritmo de la pista de cada una.' },
       volumes: [
         { n: '01', name: 'Revolution 909', note: { en: 'French house, scored to Revolution 909 by Daft Punk', es: 'French house, con Revolution 909 de Daft Punk' }, video: '/work/whiteout-revolution-909-v2.mp4', poster: '/work/whiteout-revolution-909-v2-poster.webp', alt: { en: 'Animated story: a snowboarder riding the inside wall of a spinning sphere of light', es: 'Story animada: un snowboarder sobre la pared interior de una esfera de luz que gira' } },
-        { n: '02', name: 'XTAL', note: { en: 'Ambient techno, scored to Xtal by Aphex Twin', es: 'Ambient techno, con Xtal de Aphex Twin' }, video: '/work/whiteout-xtal-v3.mp4', poster: '/work/whiteout-xtal-v3-poster.webp', alt: { en: 'Animated story: a snowboarder carving at night while rings of light dots drift around him', es: 'Story animada: un snowboarder de noche mientras unos anillos de puntos de luz giran a su alrededor' } },
+        { n: '02', name: 'XTAL', note: { en: 'Ambient techno, scored to Xtal by Aphex Twin', es: 'Ambient techno, con Xtal de Aphex Twin' }, video: '/work/whiteout-xtal-v4.mp4', poster: '/work/whiteout-xtal-v4-poster.webp', alt: { en: 'Animated story: a snowboarder carving at night while rings of light dots drift around him', es: 'Story animada: un snowboarder de noche mientras unos anillos de puntos de luz giran a su alrededor' } },
         { n: '03', name: 'Voyager', note: { en: 'Space disco, scored to Voyager by Daft Punk', es: 'Space disco, con Voyager de Daft Punk' }, video: '/work/whiteout-voyager-v3.mp4', poster: '/work/whiteout-voyager-v3-poster.webp', alt: { en: 'Animated story: a skier in mid-air inside three crossing rings of light dots that speed up when the track drops', es: 'Story animada: un esquiador en el aire dentro de tres anillos de puntos de luz que se cruzan y aceleran cuando entra la pista' } },
         { n: '04', name: { en: 'Coming soon', es: 'Próximamente' } },
         { n: '05', name: { en: 'Coming soon', es: 'Próximamente' } },
@@ -235,7 +235,7 @@ ALL.push({
         { src: '/work/whiteout-source-grab.webp', w: 720, h: 1280, alt: { en: 'The original photo: a snowboarder grabbing his board against a white sky', es: 'La foto original: un snowboarder agarrando la tabla contra un cielo blanco' } },
         { src: '/work/whiteout-revolution-909-v2-poster.webp', w: 720, h: 1280, alt: { en: 'The same rider inside the Revolution 909 sphere', es: 'El mismo rider dentro de la esfera de Revolution 909' } },
         { src: '/work/whiteout-source-carve.webp', w: 720, h: 1280, alt: { en: 'The original photo: a snowboarder carving at night, motion blur', es: 'La foto original: un snowboarder de noche, con barrido' } },
-        { src: '/work/whiteout-xtal-v3-poster.webp', w: 720, h: 1280, alt: { en: 'The same shot in the XTAL story', es: 'La misma foto en la story XTAL' } },
+        { src: '/work/whiteout-xtal-v4-poster.webp', w: 720, h: 1280, alt: { en: 'The same shot in the XTAL story', es: 'La misma foto en la story XTAL' } },
       ],
     },
     {
