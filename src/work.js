@@ -2,6 +2,7 @@
   The four brands on the home page, in the order shown on the page.
   Each one has a card (cover + one line) and its own page at /work/<id>.
   `site` is the client's own website (or Instagram), shown under the facts and opened in a new tab.
+  `story` is the problem, what I did and the result, shown under the title in place of the intro.
   A section is a heading, an optional line, and one or more images. `cols` lays the images side by side. An image with `video` plays that muted loop, with `src` as its poster; `lead` puts it first on phones.
 */
 
@@ -16,6 +17,11 @@ const ALL = [
       en: 'Smokehouse and coffee bar in Tulum, and my first project after university. I shot the food photography and designed the branded menus, from the light boxes over the counter to the printed menus along the bar.',
       es: 'Smokehouse y coffee bar en Tulum, y mi primer proyecto al salir de la universidad. Hice la fotografía de comida y diseñé los menús de marca, de las cajas de luz sobre la barra a los menús impresos del mostrador.',
     },
+    story: [
+      { k: { en: 'The problem', es: 'El problema' }, v: { en: 'A smokehouse and coffee bar in Tulum with a long menu and a street full of passers-by to win over.', es: 'Un smokehouse y coffee bar en Tulum con un menú largo y una calle llena de gente que pasa y hay que convencer.' } },
+      { k: { en: 'What I did', es: 'Lo que hice' }, v: { en: 'I shot the food and designed the branded menus, from the light boxes over the counter to the printed menus along the bar. My first project after university.', es: 'Hice la fotografía de comida y diseñé los menús de marca, de las cajas de luz sobre la barra a los menús impresos del mostrador. Mi primer proyecto al salir de la universidad.' } },
+      { k: { en: 'The result', es: 'El resultado' }, v: { en: 'The food sells itself from the sidewalk: every dish is shown before anyone has to read a word.', es: 'La comida se vende sola desde la banqueta: cada plato se ve antes de que alguien tenga que leer una palabra.' } },
+    ],
     facts: [
       { k: { en: 'Client', es: 'Cliente' }, v: { en: 'Mr. Shmokey', es: 'Mr. Shmokey' } },
       { k: { en: 'Place', es: 'Lugar' }, v: { en: 'Tulum', es: 'Tulum' } },
@@ -51,6 +57,11 @@ const ALL = [
       en: 'The restaurant and beach club at Villa Pescadores, part of Ahau Collection. A brush wordmark, a cast of hand-drawn characters and a local expression: máre, said when something is really good.',
       es: 'El restaurante y beach club de Villa Pescadores, parte de Ahau Collection. Un logo a pincel, un elenco de personajes dibujados a mano y una expresión local: máre, lo que se dice cuando algo está muy bueno.',
     },
+    story: [
+      { k: { en: 'The problem', es: 'El problema' }, v: { en: 'The restaurant and beach club at Villa Pescadores needed a brand of its own, one that stands out on a busy stretch of Tulum beach.', es: 'El restaurante y beach club de Villa Pescadores necesitaba una marca propia, una que destaque en un tramo concurrido de la playa de Tulum.' } },
+      { k: { en: 'What I did', es: 'Lo que hice' }, v: { en: 'I built it from scratch around a local expression, máre, said when something is really good: a brush wordmark and a cast of hand-drawn characters who carry every menu, story and flyer.', es: 'La hice desde cero alrededor de una expresión local, máre, lo que se dice cuando algo está muy bueno: un logo a pincel y un elenco de personajes dibujados a mano que llevan cada menú, story y flyer.' } },
+      { k: { en: 'The result', es: 'El resultado' }, v: { en: 'A brand you can spot from one drawing, with a cast the team puts on anything new, from the breakfast tent cards to the New Years dinner.', es: 'Una marca que se reconoce por un solo dibujo, con un elenco que el equipo pone en todo lo nuevo, de las tarjetas del desayuno a la cena de Año Nuevo.' } },
+    ],
     facts: [
       { k: { en: 'Client', es: 'Cliente' }, v: { en: 'Ahau Collection', es: 'Ahau Collection' } },
       { k: { en: 'Place', es: 'Lugar' }, v: { en: 'Villa Pescadores, Tulum', es: 'Villa Pescadores, Tulum' } },
@@ -82,6 +93,11 @@ const ALL = [
       en: 'Four boutique hotels in Tulum. Ahau, Alaya and Villa Pescadores, each with rooms, a restaurant and a beach club, and Casa Ganesh. Six years on the brands, from menus to campaigns.',
       es: 'Cuatro hoteles boutique en Tulum. Ahau, Alaya y Villa Pescadores, cada uno con habitaciones, restaurante y beach club, y Casa Ganesh. Seis años en las marcas, de los menús a las campañas.',
     },
+    story: [
+      { k: { en: 'The problem', es: 'El problema' }, v: { en: 'Four hotels in Tulum, three of them with a restaurant and beach club, each needing menus, stories and campaigns every week, in two languages, without looking like four different companies.', es: 'Cuatro hoteles en Tulum, tres con restaurante y beach club, que necesitan menús, stories y campañas cada semana, en dos idiomas, sin parecer cuatro empresas distintas.' } },
+      { k: { en: 'What I did', es: 'Lo que hice' }, v: { en: 'One brand system across the four, then six years of menus, stories and campaigns built on it, from the Sunday DJ Sessions to New Years Eve.', es: 'Un sistema de marca para los cuatro, y luego seis años de menús, stories y campañas sobre él, de las DJ Sessions del domingo a Año Nuevo.' } },
+      { k: { en: 'The result', es: 'El resultado' }, v: { en: 'Every piece looks like the same family, and each new campaign starts from the system instead of a blank page.', es: 'Cada pieza se ve de la misma familia, y cada campaña nueva parte del sistema y no de una hoja en blanco.' } },
+    ],
     facts: [
       { k: { en: 'Client', es: 'Cliente' }, v: { en: 'Ahau Collection', es: 'Ahau Collection' } },
       { k: { en: 'Place', es: 'Lugar' }, v: { en: 'Tulum', es: 'Tulum' } },
@@ -94,7 +110,8 @@ const ALL = [
         images: [{ src: '/work/ahau-brand.webp', w: 1080, h: 550, alt: { en: 'The logos of Ahau, Alaya, Villa Pescadores and Casa Ganesh framed by paper-cut leaves', es: 'Los logos de Ahau, Alaya, Villa Pescadores y Casa Ganesh entre hojas de papel recortado' } }],
       },
       {
-        title: { en: 'Stories', es: 'Stories' },
+        title: { en: 'Campaigns', es: 'Campañas' },
+        text: { en: 'Built on the system: Sunday DJ Sessions, New Years Eve and the Christmas menu.', es: 'Hechas sobre el sistema: las DJ Sessions del domingo, Año Nuevo y el menú de Navidad.' },
         cols: 3,
         images: [
           { src: '/work/ahau-dj-sessions.webp', w: 720, h: 1280, alt: { en: 'Story: Sunday DJ Sessions on the beach at Ahau', es: 'Story: DJ Sessions del domingo en la playa de Ahau' } },
@@ -109,12 +126,17 @@ const ALL = [
     id: 'la-reserva',
     site: { k: { en: 'Website', es: 'Sitio web' }, url: 'https://lareservatulum.com/', text: 'lareservatulum.com' },
     name: 'La Reserva',
-    line: { en: 'The website and Meta ads.', es: 'El sitio web y los anuncios en Meta.' },
+    line: { en: 'Selling the last residences through Meta ads.', es: 'Vendiendo las últimas residencias con anuncios en Meta.' },
     cover: { src: '/work/cover-la-reserva.webp', alt: { en: 'The La Reserva Tulum home page with two referral ads', es: 'La página de inicio de La Reserva Tulum con dos anuncios de referidos' } },
     intro: {
       en: 'Branded residences in Tulum. I designed the website, run their Meta ads and make the creative, from buyer campaigns to the broker referral program.',
       es: 'Residencias de marca en Tulum. Diseñé el sitio web, manejo sus anuncios en Meta y hago el creativo, de las campañas para compradores al programa de referidos para brokers.',
     },
+    story: [
+      { k: { en: 'The problem', es: 'El problema' }, v: { en: 'A collection of 42 branded residences in Tulum with the last units still to sell, to buyers who mostly live abroad and want to trust a place before they fly in.', es: 'Una colección de 42 residencias de marca en Tulum con las últimas unidades por vender, a compradores que en su mayoría viven fuera y quieren confiar en un lugar antes de viajar.' } },
+      { k: { en: 'What I did', es: 'Lo que hice' }, v: { en: 'I rebuilt the website so it sells the stay before the sale. Then I designed and ran Meta ad carousels in English and Spanish that take a buyer from the AD México feature to a WhatsApp chat with the sales director, with the brochure for the follow-up.', es: 'Rehice el sitio web para que venda la estancia antes que la compra. Luego diseñé y lancé carruseles en Meta, en inglés y en español, que llevan al comprador del reportaje en AD México a un chat de WhatsApp con el director de ventas, con el brochure para el seguimiento.' } },
+      { k: { en: 'The result', es: 'El resultado' }, v: { en: 'Units are selling to buyers who first met La Reserva through the ads, and new leads keep arriving straight in the sales director\'s WhatsApp.', es: 'Se están vendiendo unidades a compradores que conocieron La Reserva por los anuncios, y siguen llegando leads directo al WhatsApp del director de ventas.' } },
+    ],
     facts: [
       { k: { en: 'Client', es: 'Cliente' }, v: { en: 'La Reserva Tulum', es: 'La Reserva Tulum' } },
       { k: { en: 'Place', es: 'Lugar' }, v: { en: 'Tulum', es: 'Tulum' } },
@@ -123,12 +145,12 @@ const ALL = [
     sections: [
       {
         title: { en: 'The website', es: 'El sitio web' },
-        text: { en: 'The whole home page. Scroll inside the window to read it.', es: 'La página de inicio completa. Desplácese dentro de la ventana para recorrerla.' },
+        text: { en: 'Step 1: a home page that sells the stay before the sale. Scroll inside the window to read it.', es: 'Paso 1: una página de inicio que vende la estancia antes que la compra. Desplácese dentro de la ventana para recorrerla.' },
         site: { src: '/work/la-reserva-site-full.webp', w: 1200, h: 6834, url: 'lareservatulum.com', alt: { en: 'The full La Reserva Tulum home page, from the hero to the footer', es: 'La página de inicio completa de La Reserva Tulum, del encabezado al pie' } },
       },
       {
         title: { en: 'Meta ads', es: 'Anuncios en Meta' },
-        text: { en: 'A five-card carousel for buyers, from the AD México feature to a WhatsApp chat with the sales director.', es: 'Un carrusel de cinco tarjetas para compradores, del reportaje en AD México a un chat de WhatsApp con el director de ventas.' },
+        text: { en: 'Step 2: a five-card carousel for buyers, from the AD México feature to a WhatsApp chat with the sales director.', es: 'Paso 2: un carrusel de cinco tarjetas para compradores, del reportaje en AD México a un chat de WhatsApp con el director de ventas.' },
         carousel: {
           w: 864,
           h: 1080,
@@ -144,7 +166,7 @@ const ALL = [
       },
       {
         title: { en: 'A day at La Reserva', es: 'Un día en La Reserva' },
-        text: { en: 'A second carousel: morning, afternoon and dinner, then a WhatsApp chat with the sales director.', es: 'Un segundo carrusel: mañana, tarde y cena, y luego un chat de WhatsApp con el director de ventas.' },
+        text: { en: 'Step 3: a second carousel that lets them live a day there first, then opens the same WhatsApp chat.', es: 'Paso 3: un segundo carrusel que les deja vivir un día ahí primero, y luego abre el mismo chat de WhatsApp.' },
         carousel: {
           w: 960,
           h: 960,
@@ -160,7 +182,7 @@ const ALL = [
       },
       {
         title: { en: 'The brochure', es: 'El brochure' },
-        text: { en: 'Fifteen of its fifty-one pages. Turn them with the arrows, a swipe or a tap on either side.', es: 'Quince de sus cincuenta y una páginas. Páselas con las flechas, deslizando o tocando a cada lado.' },
+        text: { en: 'Step 4: the brochure buyers get after the first chat. Fifteen of its fifty-one pages, turn them with the arrows or a swipe.', es: 'Paso 4: el brochure que reciben después del primer chat. Quince de sus cincuenta y una páginas, páselas con las flechas o deslizando.' },
         book: { pages: 15, src: { en: '/work/brochure-en-', es: '/work/brochure-es-' }, w: 1600, h: 900 },
       },
     ],
@@ -183,6 +205,11 @@ ALL.push({
     en: 'A self-initiated identity for five winter nights of electronic music in Niseko. I shot the photos on the mountain, cut the riders out, built the light forms in 3D and timed every move to the track.',
     es: 'Una identidad propia para cinco noches de invierno de música electrónica en Niseko. Tomé las fotos en la montaña, recorté a los riders, armé las formas de luz en 3D y sincronicé cada movimiento con la pista.',
   },
+    story: [
+      { k: { en: 'The brief', es: 'El brief' }, v: { en: 'A self-set brief: an identity for five winter nights of electronic music in Niseko, made only from my own photography.', es: 'Un brief propio: una identidad para cinco noches de invierno de música electrónica en Niseko, hecha solo con mi propia fotografía.' } },
+      { k: { en: 'What I made', es: 'Lo que hice' }, v: { en: 'I shot the riders on the mountain, cut them out, built the light forms in 3D and timed every move to the track, then carried it all onto an event site.', es: 'Tomé las fotos de los riders en la montaña, los recorté, armé las formas de luz en 3D y sincronicé cada movimiento con la pista, y luego lo llevé todo a un sitio del evento.' } },
+      { k: { en: 'What it shows', es: 'Lo que demuestra' }, v: { en: 'How one set of photos becomes a full identity, motion and a website, without a single stock image.', es: 'Cómo un grupo de fotos se vuelve identidad, motion y sitio web, sin una sola imagen de stock.' } },
+    ],
   facts: [
     { k: { en: 'Type', es: 'Tipo' }, v: { en: 'Self-initiated concept', es: 'Concepto propio' } },
     { k: { en: 'Place', es: 'Lugar' }, v: { en: 'Hirafu, Niseko', es: 'Hirafu, Niseko' } },

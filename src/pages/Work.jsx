@@ -33,7 +33,7 @@ export default function Work() {
           <div className="wp-title">
             <h1 translate="no">{w.name}</h1>
             <p className="wp-line">{t(w.line)}</p>
-            <p className="wp-intro">{t(w.intro)}</p>
+            {!w.story && <p className="wp-intro">{t(w.intro)}</p>}
           </div>
           <dl className="facts">
             {w.facts.map((f) => (
@@ -46,6 +46,14 @@ export default function Work() {
             )}
           </dl>
         </div>
+
+        {w.story && (
+          <ol className="story">
+            {w.story.map((b) => (
+              <li key={b.k.en}><h2 className="tag">{t(b.k)}</h2><p>{t(b.v)}</p></li>
+            ))}
+          </ol>
+        )}
 
         {w.sections.map((s, n) => (
           <section className="wp-sec" key={n} aria-label={s.title ? t(s.title) : w.name}>
