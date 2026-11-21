@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 
 /*
-  The Floodlight sphere for the Whiteout Sessions header: a sphere of light dots spinning
+  The Revolution 909 sphere for the Whiteout Sessions header: a sphere of light dots spinning
   on a 126 BPM pulse, with the rider cut out and riding its inside wall. Dots behind him
   draw on the back canvas, dots in front of him on the front canvas, so he sits inside it.
   Sizes are fractions of the square box, matching the story render.

@@ -90,7 +90,7 @@ export default function Whiteout() {
         <section className="wo-sec" id="lineup" aria-labelledby="wo-line">
           <div className="wo-sec-hd">
             <h2 id="wo-line"><T en="Next night" es="Próxima noche" /></h2>
-            <p><T en="Vol 02, Floodlight. Saturday 23 January, Lift 3 Hall." es="Vol 02, Floodlight. Sábado 23 de enero, Lift 3 Hall." /></p>
+            <p><T en="Vol 02, XTAL. Saturday 23 January, Lift 3 Hall." es="Vol 02, XTAL. Sábado 23 de enero, Lift 3 Hall." /></p>
           </div>
           <ol className="wo-sets">
             {SETS.map((s) => (
