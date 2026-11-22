@@ -31,8 +31,9 @@ function loadDraft(key) {
   try { return JSON.parse(sessionStorage.getItem(key)) || null } catch { return null }
 }
 
-export default function Brief() {
-  const { project = 'studio' } = useParams()
+export default function Brief({ project: fixed }) {
+  const { project: fromUrl = 'studio' } = useParams()
+  const project = fixed || fromUrl
   const brief = BRIEFS[project]
   const { lang, setLang } = useLang()
   const t = useT()

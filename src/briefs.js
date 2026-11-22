@@ -253,6 +253,167 @@ BRIEFS['kin-kakaw'] = {
   title: { en: 'K’in Kakaw · brand discovery', es: 'K’in Kakaw · descubrimiento de marca' },
 }
 
+// Casa China Bacalar: questions before the AI renders (rooms, restaurants, pier on the lagoon).
+BRIEFS.casachina = {
+  lang: 'es',
+  client: 'Casa China Bacalar',
+  title: { en: 'Casa China Bacalar · renders', es: 'Casa China Bacalar · renders' },
+  intro: {
+    en: 'So the renders look like what you have in mind, I need to understand the project first. Twenty-two questions, about fifteen minutes. Short answers are fine, and anything you skip we cover on a call.',
+    es: 'Para que los renders se parezcan a lo que tiene en mente, primero necesito entender el proyecto. Son veintidós preguntas, unos quince minutos. Con respuestas cortas basta, y lo que deje en blanco lo vemos en una llamada.',
+  },
+  done: {
+    en: 'I will read everything and come back within one business day with the shot list and any open questions.',
+    es: 'Voy a leer todo y en un día hábil le mando la lista de tomas y las dudas que me queden.',
+  },
+  questions: [
+    // 1. El proyecto
+    { id: 'building', type: 'choice', required: true,
+      q: { en: 'What happens to the existing Casa China building?', es: '¿Qué va a pasar con el edificio actual de Casa China?' },
+      options: [
+        { en: 'It stays and gets restored', es: 'Se conserva y se restaura' },
+        { en: 'It stays and gets extended', es: 'Se conserva y se amplía' },
+        { en: 'It gets rebuilt', es: 'Se reconstruye' },
+        { en: 'Not decided yet', es: 'Todavía no está definido' },
+        OTHER,
+      ] },
+    { id: 'design', type: 'multi', required: true,
+      q: { en: 'Is there an architect’s design?', es: '¿Hay un diseño del arquitecto?' },
+      help: { en: 'Choose all that exist.', es: 'Elija todo lo que ya exista.' },
+      options: [
+        { en: 'Plans', es: 'Planos' },
+        { en: 'Massing or sketches', es: 'Volumetría o bocetos' },
+        { en: '3D model (SketchUp, Revit, Rhino…)', es: 'Modelo 3D (SketchUp, Revit, Rhino…)' },
+        { en: 'Not yet, the renders will define the concept', es: 'Todavía no, los renders van a definir el concepto' },
+        OTHER,
+      ] },
+    { id: 'purpose', type: 'multi', required: true,
+      q: { en: 'What are the renders for?', es: '¿Para qué son los renders?' },
+      help: { en: 'Choose all that apply.', es: 'Puede elegir varias.' },
+      options: [
+        { en: 'Investor presentation', es: 'Presentación a inversionistas' },
+        { en: 'Pre-sale', es: 'Preventa' },
+        { en: 'Social media', es: 'Redes sociales' },
+        { en: 'Website', es: 'Sitio web' },
+        { en: 'Permits', es: 'Permisos' },
+        OTHER,
+      ] },
+    { id: 'positioning', type: 'textarea', required: true,
+      q: { en: 'What is the project called, and how is it positioned?', es: '¿Cómo se llama el proyecto y cuál es su posicionamiento?' },
+      help: { en: 'For example: boutique eco hotel, luxury, family, wellness, adults only.', es: 'Por ejemplo: hotel boutique ecológico, de lujo, familiar, de bienestar, solo adultos.' } },
+
+    // 2. El terreno
+    { id: 'photos', type: 'textarea', required: true,
+      q: { en: 'Do you have photos or drone shots of the site and the lagoon edge?', es: '¿Tiene fotos o tomas de dron del terreno y de la orilla de la laguna?' },
+      help: { en: 'Paste a Drive or WeTransfer link and say from which angles. "Not yet" is a fine answer.', es: 'Pegue un enlace de Drive o WeTransfer y diga desde qué ángulos. "Todavía no" también es respuesta.' } },
+    { id: 'facing', type: 'text',
+      q: { en: 'Which way does the main facade face?', es: '¿Hacia dónde mira la fachada principal?' },
+      help: { en: 'It decides the sunset light over the water. "Towards the lagoon, to the east" is enough.', es: 'Define la luz del atardecer sobre el agua. Basta con algo como "hacia la laguna, al oriente".' } },
+    { id: 'surroundings', type: 'textarea',
+      q: { en: 'What around the site should be kept or hidden?', es: '¿Qué hay alrededor que se deba conservar u ocultar?' },
+      help: { en: 'Neighbours, the road, construction, trees.', es: 'Vecinos, el camino, obras, árboles.' } },
+
+    // 3. El programa
+    { id: 'rooms', type: 'textarea', required: true,
+      q: { en: 'Rooms: how many, what type and how many floors?', es: 'Habitaciones: ¿cuántas, de qué tipo y de cuántos pisos?' },
+      help: { en: 'Bungalows, overwater villas, rooms in the main building.', es: 'Bungalows, villas sobre el agua, cuartos en el edificio principal.' } },
+    { id: 'restaurants', type: 'textarea', required: true,
+      q: { en: 'Restaurants: how many, indoor or open air, on the water or on land?', es: 'Restaurantes: ¿cuántos, cerrados o al aire libre, sobre el agua o en tierra?' } },
+    { id: 'pier', type: 'textarea', required: true,
+      q: { en: 'The pier: how long, what shape, and for which boats?', es: 'El muelle: ¿de qué largo, con qué forma y para qué embarcaciones?' },
+      help: { en: 'Boats with a canopy, sailboats, kayaks, paddle boards.', es: 'Lanchas con toldo, veleros, kayaks, paddle boards.' } },
+    { id: 'extras', type: 'multi',
+      q: { en: 'Anything else on site?', es: '¿Algo más en el proyecto?' },
+      help: { en: 'Choose all that apply.', es: 'Puede elegir varias.' },
+      options: [
+        { en: 'Pool', es: 'Alberca' },
+        { en: 'Spa', es: 'Spa' },
+        { en: 'Beach club', es: 'Club de playa' },
+        { en: 'Palapas', es: 'Palapas' },
+        { en: 'Temazcal', es: 'Temazcal' },
+        { en: 'Gardens', es: 'Jardines' },
+        OTHER,
+      ] },
+
+    // 4. Estilo y materiales
+    { id: 'heritage', type: 'choice', required: true,
+      q: { en: 'How present should the Chinese heritage be?', es: '¿Qué tan presente debe estar la herencia china?' },
+      options: [
+        { en: 'Red pagoda roofs across the whole project', es: 'Techos rojos tipo pagoda en todo el proyecto' },
+        { en: 'Only on the original building', es: 'Solo en el edificio original' },
+        { en: 'Blended with Bacalar materials (chukum, wood, palapa, limestone)', es: 'Mezclada con materiales de Bacalar (chukum, madera, palapa, piedra caliza)' },
+        OTHER,
+      ] },
+    { id: 'palette', type: 'choice', required: true,
+      q: { en: 'Which colours?', es: '¿Qué paleta de colores?' },
+      options: [
+        { en: 'The red and gold of the current roof', es: 'El rojo y dorado del techo actual' },
+        { en: 'Something quieter', es: 'Algo más sobrio' },
+        OTHER,
+      ] },
+    { id: 'references', type: 'textarea',
+      q: { en: 'Hotels or images you like, and ones you don’t?', es: '¿Tiene hoteles o imágenes de referencia que le gusten, y que no le gusten?' },
+      help: { en: 'Links are welcome. Say what you like or dislike about each.', es: 'Puede pegar enlaces. Dígame qué le gusta o no le gusta de cada uno.' } },
+
+    // 5. Lista de tomas
+    { id: 'shots', type: 'multi', required: true,
+      q: { en: 'Which views do you need?', es: '¿Qué vistas necesita?' },
+      help: { en: 'Choose all that apply.', es: 'Puede elegir varias.' },
+      options: [
+        { en: 'Drone view of the whole site', es: 'Vista aérea con dron de todo el proyecto' },
+        { en: 'From the water', es: 'Desde el agua' },
+        { en: 'The pier at sunset', es: 'El muelle al atardecer' },
+        { en: 'Restaurant interior', es: 'Interior del restaurante' },
+        { en: 'Room interior with a lagoon view', es: 'Interior de habitación con vista a la laguna' },
+        { en: 'The arrival', es: 'La llegada' },
+        OTHER,
+      ] },
+    { id: 'light', type: 'multi',
+      q: { en: 'What time of day?', es: '¿A qué hora del día?' },
+      help: { en: 'If each view needs a different time, say so under "Other".', es: 'Si cada vista lleva una hora distinta, indíquelo en "Otro".' },
+      options: [
+        { en: 'Morning', es: 'Mañana' },
+        { en: 'Midday, bright water', es: 'Mediodía, con el agua brillante' },
+        { en: 'Sunset', es: 'Atardecer' },
+        { en: 'Night, lights on', es: 'Noche, con las luces encendidas' },
+        OTHER,
+      ] },
+    { id: 'people', type: 'choice',
+      q: { en: 'People in the shots?', es: '¿Con personas en las imágenes?' },
+      options: [
+        { en: 'Yes, a few guests', es: 'Sí, algunos huéspedes' },
+        { en: 'No, empty', es: 'No, sin personas' },
+        { en: 'Depends on the view', es: 'Depende de la vista' },
+      ] },
+    { id: 'boats', type: 'choice',
+      q: { en: 'Boats on the water?', es: '¿Con lanchas en el agua?' },
+      options: [
+        { en: 'Yes', es: 'Sí' },
+        { en: 'No', es: 'No' },
+        { en: 'Only at the pier', es: 'Solo en el muelle' },
+      ] },
+
+    // 6. Entrega
+    { id: 'formats', type: 'multi', required: true,
+      q: { en: 'Which formats?', es: '¿En qué formatos?' },
+      help: { en: 'Choose all that apply.', es: 'Puede elegir varias.' },
+      options: [
+        { en: '16:9 for presentations', es: '16:9 para presentación' },
+        { en: '4:5 for posts', es: '4:5 para publicaciones' },
+        { en: '9:16 for stories', es: '9:16 para historias' },
+        { en: 'Print', es: 'Impresión' },
+        OTHER,
+      ] },
+    { id: 'quantity', type: 'text', required: true,
+      q: { en: 'How many final images, and how many rounds of changes?', es: '¿Cuántas imágenes finales y cuántas rondas de cambios?' } },
+    { id: 'deadline', type: 'text', required: true,
+      q: { en: 'When do you need them?', es: '¿Para cuándo las necesita?' } },
+    { id: 'approver', type: 'text', required: true,
+      q: { en: 'Who approves the renders, and does the architect sign off on accuracy?', es: '¿Quién aprueba los renders, y el arquitecto valida que sean fieles al proyecto?' },
+      help: { en: 'Name and role.', es: 'Nombre y puesto.' } },
+  ],
+}
+
 // Old links still work: same form, new name.
 BRIEFS.walkthrough = BRIEFS.review
 BRIEFS.fixes = BRIEFS.review

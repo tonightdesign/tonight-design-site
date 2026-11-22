@@ -17,6 +17,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/work/:id" element={<Work />} />
           <Route path="/whiteout" element={<Whiteout />} />
+          <Route path="/casachina" element={<Brief project="casachina" />} />
           <Route path="/brief" element={<Brief />} />
           <Route path="/brief/:project" element={<Brief />} />
           <Route path="*" element={<NotFound />} />
