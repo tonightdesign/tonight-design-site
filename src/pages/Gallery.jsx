@@ -1,20 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { T, useT } from '../lang.jsx'
 import { Header } from '../components/Chrome.jsx'
-import '../yuu.css'
+import '../gallery.css'
+import { GALLERIES } from '../galleries.js'
 
-// YUU Temaki + HiFi Bar, soft opening 27.11.26. Client delivery page: unlisted, noindex.
-// Originals sit behind the Worker (worker/yuu.js); this page only shows web copies.
-const PHOTOS = [
-  { src: '/work/yuu/yuu-01.webp', w: 1400, h: 2489 },
-  { src: '/work/yuu/yuu-02.webp', w: 1400, h: 2488 },
-  { src: '/work/yuu/yuu-03.webp', w: 1400, h: 2489 },
-  { src: '/work/yuu/yuu-04.webp', w: 1400, h: 2489 },
-  { src: '/work/yuu/yuu-05.webp', w: 1400, h: 1867 },
-]
-// Desktop rows: three, then two. Each row shares one height.
-const ROWS = [[0, 1, 2], [3, 4]]
-
+// Client delivery galleries (/yuu, /clockit): unlisted, noindex.
+// Each gallery is set up in src/galleries.js. Originals sit behind the Worker
+// (worker/galleries.js); this page only shows web copies.
 const small = (src) => src.replace('.webp', '-900.webp')
 
 function useNoIndex(title) {
@@ -29,7 +21,7 @@ function useNoIndex(title) {
   }, [title])
 }
 
-function Download() {
+function Download({ slug }) {
   const t = useT()
   const [open, setOpen] = useState(false)
   const [pw, setPw] = useState('')
@@ -43,7 +35,7 @@ function Download() {
     if (!pw.trim()) return
     setState('busy')
     try {
-      const res = await fetch('/api/yuu', {
+      const res = await fetch(`/api/${slug}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password: pw }),
@@ -95,7 +87,7 @@ function Download() {
   )
 }
 
-function Lightbox({ index, onClose, onStep }) {
+function Lightbox({ photos: PHOTOS, index, onClose, onStep }) {
   const close = useRef(null)
   const startX = useRef(null)
   useEffect(() => {
@@ -135,10 +127,12 @@ function Lightbox({ index, onClose, onStep }) {
   )
 }
 
-export default function Yuu() {
-  useNoIndex('YUU · tonight.design')
+export default function Gallery({ slug }) {
+  const g = GALLERIES[slug]
+  const PHOTOS = g.photos
+  useNoIndex(`${g.title} · tonight.design`)
   const [lb, setLb] = useState(null)
-  const step = useCallback((d) => setLb((i) => (i + d + PHOTOS.length) % PHOTOS.length), [])
+  const step = useCallback((d) => setLb((i) => (i + d + PHOTOS.length) % PHOTOS.length), [PHOTOS.length])
   const closeLb = useCallback(() => setLb(null), [])
 
   return (
@@ -147,45 +141,48 @@ export default function Yuu() {
       <main id="main" className="wrap yuu-main">
         <div className="yuu-hd">
           <div>
-            <h1 translate="no">YUU</h1>
-            <p className="yuu-sub"><span translate="no">Temaki + HiFi Bar</span> · Soft opening 27.11.26</p>
+            <h1 translate="no">{g.title}</h1>
+            {g.sub && <p className="yuu-sub" translate="no">{g.sub}</p>}
           </div>
-          <Download />
+          <Download slug={slug} />
         </div>
 
         <div className="yuu-grid">
-          {ROWS.map((row, r) => (
-            <div className="yuu-row" key={r}>
-              {row.map((i) => {
-                const p = PHOTOS[i]
-                const ar = p.w / p.h
-                return (
-                  <button
-                    type="button"
-                    key={i}
-                    className="yuu-ph"
-                    style={{ '--ar': ar }}
-                    onClick={() => setLb(i)}
-                    aria-label={`${i + 1} / ${PHOTOS.length}`}
-                  >
-                    <img
-                      src={p.src}
-                      srcSet={`${small(p.src)} 900w, ${p.src} 1400w`}
-                      sizes={`(max-width: 699px) 100vw, ${row.length === 3 ? 400 : 560}px`}
-                      width={p.w}
-                      height={p.h}
-                      alt=""
-                      loading={r === 0 ? 'eager' : 'lazy'}
-                      decoding="async"
-                    />
-                  </button>
-                )
-              })}
-            </div>
-          ))}
+          {g.rows.map((row, r) => {
+            const sum = row.reduce((n, i) => n + PHOTOS[i].w / PHOTOS[i].h, 0)
+            return (
+              <div className="yuu-row" key={r}>
+                {row.map((i) => {
+                  const p = PHOTOS[i]
+                  const ar = p.w / p.h
+                  return (
+                    <button
+                      type="button"
+                      key={i}
+                      className="yuu-ph"
+                      style={{ '--ar': ar }}
+                      onClick={() => setLb(i)}
+                      aria-label={`${i + 1} / ${PHOTOS.length}`}
+                    >
+                      <img
+                        src={p.src}
+                        srcSet={`${small(p.src)} 900w, ${p.src} ${p.w}w`}
+                        sizes={`(max-width: 699px) 100vw, ${Math.round((1152 * ar) / sum)}px`}
+                        width={p.w}
+                        height={p.h}
+                        alt=""
+                        loading={r === 0 ? 'eager' : 'lazy'}
+                        decoding="async"
+                      />
+                    </button>
+                  )
+                })}
+              </div>
+            )
+          })}
         </div>
       </main>
-      {lb !== null && <Lightbox index={lb} onClose={closeLb} onStep={step} />}
+      {lb !== null && <Lightbox photos={PHOTOS} index={lb} onClose={closeLb} onStep={step} />}
     </div>
   )
 }

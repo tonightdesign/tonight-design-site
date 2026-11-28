@@ -3,7 +3,7 @@
  * - Serves the built site from dist/ (single-page app: unknown paths get index.html)
  * - www.tonight.design redirects to tonight.design
  * - POST /api/brief emails a brief through Resend
- * - /api/yuu and /yuu-files/*: password-gated client download (see worker/yuu.js)
+ * - /api/<slug> and /<slug>-files/*: password-gated client galleries (see worker/galleries.js)
  *
  * Variables (Workers & Pages > tonight-design-site > Settings > Variables and secrets):
  *   RESEND_API_KEY  secret, from resend.com (needed only for the brief)
@@ -11,7 +11,7 @@
  *   BRIEF_FROM      sender on a domain verified in Resend, default "tonight.design <briefs@tonight.design>"
  */
 
-import { handleYuuFiles, handleYuuLogin, YUU_PREFIX } from './yuu.js'
+import { handleGalleryFiles, handleGalleryLogin, matchGallery } from './galleries.js'
 
 export default {
   async fetch(request, env, ctx) {
@@ -24,8 +24,9 @@ export default {
       if (request.method !== 'POST') return json({ ok: false, error: 'method_not_allowed' }, 405)
       return handleBrief(request, env)
     }
-    if (url.pathname === '/api/yuu') return handleYuuLogin(request, env)
-    if (url.pathname.startsWith(YUU_PREFIX)) return handleYuuFiles(request, env, ctx)
+    const gallery = matchGallery(url.pathname)
+    if (gallery?.kind === 'login') return handleGalleryLogin(gallery.slug, request, env)
+    if (gallery?.kind === 'files') return handleGalleryFiles(gallery.slug, request, env, ctx)
     return env.ASSETS.fetch(request)
   },
 }
